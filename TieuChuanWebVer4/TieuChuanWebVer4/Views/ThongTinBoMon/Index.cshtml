@@ -1,0 +1,265 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin bộ môn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    .cbo {
+        width: 168px;
+        height: 22px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #txtHiddenId {
+        display: none;
+    }
+
+    .cs {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        width: 700px;
+        border-radius: 20px;
+        border: 2px solid blue;
+        margin: 0px auto;
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+
+    table#ThongTinBoMon {
+        width: 95%;
+        margin: auto;
+    }
+
+    div#khung {
+        margin-top: 1%;
+    }
+
+    .space {
+        width: 50px;
+    }
+
+    table.tableEdit {
+        margin-left: 30%;
+    }
+
+    td.ten {
+        padding-left: 15px;
+    }
+</style>
+<script type="text/javascript">
+    function OnGridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'id;mabomon;tenbomon;makhoa;googledrive', OnGetRowValues);
+    }
+    function OnGetRowValues(values) {
+        txtHiddenId.SetText(values[0]);
+        txt_mabomon.SetText(values[1]);
+        txt_tenbomon.SetText(values[2]);
+        document.getElementById("txt_makhoa").value = values[3];
+        txt_googledrive.SetText(values[4]);
+    }
+    function fncBtnXoaClick() {
+        var x = document.getElementById("txtHiddenId_I").value;
+        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        if (result) {
+            var url = '@Url.Action("Xoa", "ThongTinBoMon")' + '?id=' + x;
+            window.location.href = url;
+            alert("Đã xóa thành công");
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+<div id="khung">
+
+    @Html.Action("ThongTinBoMonPartial")
+
+    <div style="width:100%;text-align:center;margin-top:2%">
+        @*--------------------------------------Button Thêm*@
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalThem" name="btnThêm">Thêm</button>
+        @*--------------------------------------Button Sửa*@
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSua" name="btnSua">Sửa</button>
+        @*--------------------------------------Button Xóa*@
+        <button type="button" class="btn btn-default" name="btnXoa" onclick="fncBtnXoaClick()">Xóa</button>
+    </div>
+</div>
+@*//--------------------------------------*@
+@*--------------------------------------*@
+@using (Html.BeginForm("SaveNewDocument", "ThongTinBoMon"))
+{
+    <!-- Modal Thêm-->
+    <div class="modal fade" id="myModalThem" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">THÊM BỘ MÔN</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="tableEdit">
+                        <tr>
+                            <td class="lbl">
+                                <label>Mã bộ môn</label>
+                            </td>
+
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                       {
+                           settings.Name = "txtNew_mabomon";
+                       }).GetHtml()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Tên bộ môn</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txtNew_tenbomon";
+                            }).GetHtml()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Khoa</label>
+                            </td>
+                            <td class="ten">
+                                @*@Html.DevExpress().TextBox(settings =>
+                                    {
+                                        settings.Name = "txtNew_makhoa";
+                                    }).GetHtml()*@
+                                @Html.DropDownList("txtNew_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Chọn khoa---", new { @class = "cbo" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Google Drive</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txtNew_googledrive";
+                            }).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="submit" class="btn">Lưu</button>
+                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<!--End Modal Thêm-->
+@*@Html.Hidden("id")*@
+@using (Html.BeginForm("SaveEditDocument", "ThongTinBoMon"))
+{
+    <!-- Modal Sửa-->
+    <div class="modal fade" id="myModalSua" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">SỬA BỘ MÔN</h4>
+                    @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txtHiddenId";
+    settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+                </div>
+                <div class="modal-body">
+                    <table class="tableEdit">
+                        <tr>
+                            <td class="lbl">
+                                <label>Mã bộ môn</label>
+                            </td>
+
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                       {
+                           settings.Name = "txt_mabomon";
+                       }).GetHtml()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Tên bộ môn</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txt_tenbomon";
+                            }).GetHtml()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Khoa</label>
+                            </td>
+                            <td class="ten">
+                                @*@Html.DevExpress().TextBox(settings =>
+                                    {
+                                        settings.Name = "txt_makhoa";
+                                    }).GetHtml()*@
+                                @Html.DropDownList("txt_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Chọn khoa---", new { @class = "cbo" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Google Drive</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txt_googledrive";
+                            }).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="submit" class="btn" id="btnLuuSua">Lưu</button>
+                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<!--End Modal Sửa-->

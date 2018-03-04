@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<style type="text/css">
+    .cs {
+        padding: 30px;
+        width: 320px;
+        border-radius: 20px;
+        border: 2px solid blue;
+        margin: 0px auto;
+        margin-top: 7%;
+    }
+
+    tr.trDMK {
+        padding: 5px;
+    }
+
+    table {
+        height: 210px;
+    }
+
+    tr.trDMK input {
+        margin-left: 10px;
+        margin-right: 5px;
+        width: 170px;
+        height: 21px;
+        font-size: 13.3333px;
+    }
+
+    .error {
+        font-size: 12px;
+        color: red;
+        float: left;
+        display: inline-flex;
+    }
+</style>
+<div class="cs">
+    @using (Html.BeginForm("DoiMatKhau", "TaiKhoan", FormMethod.Post, new { id = "frmDoiMatKhau" }))
+    {
+        <table>
+            <tr>
+                <th colspan="2" style="text-align:center;margin-bottom:30px;color:red;font-size:large"><b>ĐỔI MẬT KHẨU</b></th>
+            </tr>
+            <tr class="trDMK">
+                <td>Tên đăng nhập:</td>
+                <td><input type="text" name="txtTenDangNhap" maxlength="20" value="@Session["TenDangNhap"]" disabled /></td>
+            </tr>
+            <tr class="trDMK">
+                <td>Mật khẩu cũ:</td>
+                <td><input type="password" name="txtMatKhau" maxlength="20" /></td>
+            </tr>
+            <tr class="trDMK">
+                <td>Mật khẩu mới:</td>
+                <td><input type="password" name="txtMatKhauMoi" maxlength="20" /><br /></td>
+            </tr>
+            <tr class="trDMK">
+                <td>Xác nhận mật khẩu:</td>
+                <td><input type="password" name="txtXacNhanMK" maxlength="20" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center">
+                    <input type="submit" value="Đồng ý" />
+                    <input type="button" id="btnHuy" value="Hủy" />
+                </td>
+            </tr>
+        </table>
+        @Html.ValidationSummary(true)
+    }
+</div>
+<script>
+    $(document).ready(function () {
+        $("#frmDoiMatKhau").validate({
+            rules: {
+                txtMatKhau: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 12,
+                },
+                txtMatKhauMoi: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 12
+                },
+                txtXacNhanMK: {
+                    required: true,
+                    minlength: 3,
+                    maxlength:12,
+                    equalTo:"#txtMatKhauMoi"
+                }
+            },
+            messages: {
+                txtMatKhau: {
+                    required: "(*)",
+                    minlength: "Độ dài >=3",
+                    maxlength: "Độ dài <=12"
+                },
+                txtMatKhauMoi: {
+                    required: "(*)",
+                    minlength: "Độ dài >=3",
+                    maxlength: "Độ dài <=12"
+                },
+                txtXacNhanMK: {
+                    required: "(*)",
+                    minlength: "Độ dài >=3",
+                    maxlength: "Độ dài <=12",
+                    equalTo: "Không khớp với mật khẩu mới"
+                }
+            }
+        });
+        $("#btnHuy").click(function () {
+            window.location.href ="@Url.Action("DoiMatKhau", "TaiKhoan")";
+        });
+    });
+</script>

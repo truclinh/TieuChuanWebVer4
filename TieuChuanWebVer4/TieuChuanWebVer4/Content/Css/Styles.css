@@ -1,0 +1,34 @@
+﻿body 
+{
+	margin:0px;
+	padding:0px;
+	background-color:#E6EFF8;
+
+}
+body>form#layout
+{
+	border:solid 1px #E6EFF8;
+    margin:0px auto;
+	}
+article
+{
+    display:table-row;
+    }
+aside#left, section
+{
+    display:table-cell;
+	
+    
+    }
+aside#left
+{
+    width:210px;
+    vertical-align:top;
+    background-color:#FFC;
+   
+    
+    }
+section
+{
+   
+    }

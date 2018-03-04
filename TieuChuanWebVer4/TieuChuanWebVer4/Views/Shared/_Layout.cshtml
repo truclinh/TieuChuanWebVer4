@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/VTAccounting/Vector-Arts.ico" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+    <link href="~/Content/Css/Styles.css" rel="stylesheet" />
+   @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.VerticalGrid },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.VerticalGrid },
+        new Script { ExtensionSuite = ExtensionSuite.Report },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+    )
+
+
+    <style>
+        div#content{
+            border:1px solid #d7d7c1;
+        }
+        body{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .dxflFormLayout_DevEx{
+            /*background-color:lightblue;*/
+        }
+        /*#FooterPanel{
+            background-color:white;
+            padding-bottom:7px;
+        }*/
+    </style>
+</head>
+
+<body>
+    @*@Html.Partial("HeaderPartialView")*@
+    @Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "HeaderPanel";
+    settings.FixedPosition = PanelFixedPosition.WindowTop;
+    //settings.FixedPosition = PanelFixedPosition.None;
+    //settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToTop;
+    settings.Collapsible = true;
+    settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 900;
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("HeaderPartial");
+    });
+}).GetHtml()
+   @* ----------------Left-------------------*@
+        @Html.DevExpress().Panel(settings =>
+   {
+       settings.Name = "Content";
+       settings.FixedPosition = PanelFixedPosition.None;
+       settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.Auto;
+       settings.Width = Unit.Percentage(100);
+       settings.Height = Unit.Percentage(100);
+       settings.ScrollBars = ScrollBars.Auto;
+       settings.ControlStyle.BackColor = System.Drawing.Color.Transparent;
+       settings.SetContent(() =>
+       {
+
+           ViewContext.Writer.Write(@RenderBody());
+       });
+   }).GetHtml()
+       @*// @Html.Partial("FooterPartial")*@
+    @*@RenderBody()*@
+    @Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "FooterPanel";
+    settings.FixedPosition = PanelFixedPosition.WindowBottom;
+    //settings.FixedPosition = PanelFixedPosition.None;
+    //settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToBottom;
+    settings.Collapsible = false;
+    settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 900;
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("FooterPartial");
+    });
+}).GetHtml()
+</body>
+</html>

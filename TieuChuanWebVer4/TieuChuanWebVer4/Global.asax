@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="TieuChuanWebVer4.MvcApplication" Language="C#" %>
