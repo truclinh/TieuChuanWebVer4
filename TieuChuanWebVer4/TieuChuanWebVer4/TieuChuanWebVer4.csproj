@@ -254,6 +254,9 @@
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\DanhMucTieuChi\Index.cshtml" />
+    <Content Include="Views\DanhMucTieuChi\_DanhMucTieuChiPartial.cshtml" />
+    <Content Include="Views\QuanLyDuLieu\GetGoogleDriveFiles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,9 +268,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DanhMucTieuChiController.cs" />
     <Compile Include="Controllers\DanhMucTieuChuanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhanQuyenController.cs" />
+    <Compile Include="Controllers\QuanLyDuLieuController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\ThongTinBoMonController.cs" />
