@@ -23,5 +23,6 @@ namespace TieuChuanWebVer4.Models
         public string nguoisua { get; set; }
         public string ten_tieuchi { get; set; }
         public string noidung { get; set; }
+        public byte[] noidungbyte { get; set; }
     }
 }

@@ -1,205 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QL_TieuChuan2ModelStoreContainer" CdmEntityContainer="QL_TieuChuan2Entities">
-    <EntitySetMapping Name="bang1_final">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.bang1_final">
-        <MappingFragment StoreEntitySet="bang1_final">
-          <ScalarProperty Name="A" ColumnName="A" />
-          <ScalarProperty Name="B" ColumnName="B" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_bomon">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_bomon">
-        <MappingFragment StoreEntitySet="dm_bomon">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="mabomon" ColumnName="mabomon" />
-          <ScalarProperty Name="tenbomon" ColumnName="tenbomon" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="googledrive" ColumnName="googledrive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_dinhdanh">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_dinhdanh">
-        <MappingFragment StoreEntitySet="dm_dinhdanh">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
-          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_khoa">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
-        <MappingFragment StoreEntitySet="dm_khoa">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_tieuchi">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_tieuchi">
-        <MappingFragment StoreEntitySet="dm_tieuchi">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
-          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
-          <ScalarProperty Name="ma_tieuchuan" ColumnName="ma_tieuchuan" />
-          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-          <ScalarProperty Name="noidung" ColumnName="noidung" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_tieuchuan">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_tieuchuan">
-        <MappingFragment StoreEntitySet="dm_tieuchuan">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_tieuchuan" ColumnName="ma_tieuchuan" />
-          <ScalarProperty Name="ten_tieuchuan" ColumnName="ten_tieuchuan" />
-          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-          <ScalarProperty Name="noidung" ColumnName="noidung" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="hs_noidung">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_noidung">
-        <MappingFragment StoreEntitySet="hs_noidung">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
-          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
-          <ScalarProperty Name="noidung" ColumnName="noidung" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="hs_taptinct">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_taptinct">
-        <MappingFragment StoreEntitySet="hs_taptinct">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="soid" ColumnName="soid" />
-          <ScalarProperty Name="tentaptin" ColumnName="tentaptin" />
-          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
-          <ScalarProperty Name="driveid" ColumnName="driveid" />
-          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="sott" ColumnName="sott" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="hs_tapting">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_tapting">
-        <MappingFragment StoreEntitySet="hs_tapting">
-          <ScalarProperty Name="soid" ColumnName="soid" />
-          <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
-          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_dm_form">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_form">
-        <MappingFragment StoreEntitySet="ht_dm_form">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_form" ColumnName="ma_form" />
-          <ScalarProperty Name="ten_form" ColumnName="ten_form" />
-          <ScalarProperty Name="loaict" ColumnName="loaict" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-          <ScalarProperty Name="them" ColumnName="them" />
-          <ScalarProperty Name="xoa" ColumnName="xoa" />
-          <ScalarProperty Name="sua" ColumnName="sua" />
-          <ScalarProperty Name="xem" ColumnName="xem" />
-          <ScalarProperty Name="in" ColumnName="in" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_dm_menu">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_menu">
-        <MappingFragment StoreEntitySet="ht_dm_menu">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
-          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_dm_nsd">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_nsd">
-        <MappingFragment StoreEntitySet="ht_dm_nsd">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
-          <ScalarProperty Name="ten_nsd" ColumnName="ten_nsd" />
-          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="mabomon" ColumnName="mabomon" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
-          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
-          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
-          <ScalarProperty Name="uyquyen" ColumnName="uyquyen" />
-          <ScalarProperty Name="ds_tk" ColumnName="ds_tk" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_nsd_form">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_nsd_form">
-        <MappingFragment StoreEntitySet="ht_nsd_form">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
-          <ScalarProperty Name="ma_form" ColumnName="ma_form" />
-          <ScalarProperty Name="them" ColumnName="them" />
-          <ScalarProperty Name="xoa" ColumnName="xoa" />
-          <ScalarProperty Name="sua" ColumnName="sua" />
-          <ScalarProperty Name="xem" ColumnName="xem" />
-          <ScalarProperty Name="in" ColumnName="in" />
-          <ScalarProperty Name="ten_form" ColumnName="ten_form" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_nsd_menu">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_nsd_menu">
-        <MappingFragment StoreEntitySet="ht_nsd_menu">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
-          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
-          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionName="QL_TieuChuan2Model.Store.LayBangTheoCot" FunctionImportName="LayBangTheoCot">
       <ResultMapping>
         <ComplexTypeMapping TypeName="QL_TieuChuan2Model.LayBangTheoCot_Result">
@@ -295,5 +96,206 @@
     <FunctionImportMapping FunctionImportName="th_CanDoiPhatSinh" FunctionName="QL_TieuChuan2Model.Store.th_CanDoiPhatSinh" />
     <FunctionImportMapping FunctionImportName="th_SoChiTiet" FunctionName="QL_TieuChuan2Model.Store.th_SoChiTiet" />
     <FunctionImportMapping FunctionImportName="th_TongHopChiPhiTheoBoPhan" FunctionName="QL_TieuChuan2Model.Store.th_TongHopChiPhiTheoBoPhan" />
+    <EntitySetMapping Name="bang1_final">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.bang1_final">
+        <MappingFragment StoreEntitySet="bang1_final">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_bomon">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_bomon">
+        <MappingFragment StoreEntitySet="dm_bomon">
+          <ScalarProperty Name="googledrive" ColumnName="googledrive" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="tenbomon" ColumnName="tenbomon" />
+          <ScalarProperty Name="mabomon" ColumnName="mabomon" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_dinhdanh">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_dinhdanh">
+        <MappingFragment StoreEntitySet="dm_dinhdanh">
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
+          <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_khoa">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
+        <MappingFragment StoreEntitySet="dm_khoa">
+          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_tieuchi">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_tieuchi">
+        <MappingFragment StoreEntitySet="dm_tieuchi">
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ma_tieuchuan" ColumnName="ma_tieuchuan" />
+          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
+          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_tieuchuan">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_tieuchuan">
+        <MappingFragment StoreEntitySet="dm_tieuchuan">
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ten_tieuchuan" ColumnName="ten_tieuchuan" />
+          <ScalarProperty Name="ma_tieuchuan" ColumnName="ma_tieuchuan" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hs_noidung">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_noidung">
+        <MappingFragment StoreEntitySet="hs_noidung">
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hs_taptinct">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_taptinct">
+        <MappingFragment StoreEntitySet="hs_taptinct">
+          <ScalarProperty Name="sott" ColumnName="sott" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="driveid" ColumnName="driveid" />
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+          <ScalarProperty Name="tentaptin" ColumnName="tentaptin" />
+          <ScalarProperty Name="soid" ColumnName="soid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hs_tapting">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_tapting">
+        <MappingFragment StoreEntitySet="hs_tapting">
+          <ScalarProperty Name="ten_tieuchi" ColumnName="ten_tieuchi" />
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
+          <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
+          <ScalarProperty Name="soid" ColumnName="soid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_dm_form">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_form">
+        <MappingFragment StoreEntitySet="ht_dm_form">
+          <ScalarProperty Name="in" ColumnName="in" />
+          <ScalarProperty Name="xem" ColumnName="xem" />
+          <ScalarProperty Name="sua" ColumnName="sua" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="them" ColumnName="them" />
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="loaict" ColumnName="loaict" />
+          <ScalarProperty Name="ten_form" ColumnName="ten_form" />
+          <ScalarProperty Name="ma_form" ColumnName="ma_form" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_dm_menu">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_menu">
+        <MappingFragment StoreEntitySet="ht_dm_menu">
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_dm_nsd">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_dm_nsd">
+        <MappingFragment StoreEntitySet="ht_dm_nsd">
+          <ScalarProperty Name="ds_tk" ColumnName="ds_tk" />
+          <ScalarProperty Name="uyquyen" ColumnName="uyquyen" />
+          <ScalarProperty Name="ngaysua" ColumnName="ngaysua" />
+          <ScalarProperty Name="nguoisua" ColumnName="nguoisua" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="mabomon" ColumnName="mabomon" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="ten_nsd" ColumnName="ten_nsd" />
+          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_nsd_form">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_nsd_form">
+        <MappingFragment StoreEntitySet="ht_nsd_form">
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ten_form" ColumnName="ten_form" />
+          <ScalarProperty Name="in" ColumnName="in" />
+          <ScalarProperty Name="xem" ColumnName="xem" />
+          <ScalarProperty Name="sua" ColumnName="sua" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="them" ColumnName="them" />
+          <ScalarProperty Name="ma_form" ColumnName="ma_form" />
+          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_nsd_menu">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.ht_nsd_menu">
+        <MappingFragment StoreEntitySet="ht_nsd_menu">
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+          <ScalarProperty Name="ma_nsd" ColumnName="ma_nsd" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CapNhatND" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatND" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiND" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiND" />
   </EntityContainerMapping>
 </Mapping>

@@ -258,6 +258,12 @@
     <Content Include="Views\DanhMucTieuChi\_DanhMucTieuChiPartial.cshtml" />
     <Content Include="Views\QuanLyDuLieu\GetGoogleDriveFiles.cshtml" />
     <Content Include="Views\QuanLyDuLieu\GetSubGoogleDriveFiles.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\Index.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\_NhapThongTinChiTietPartial.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\ThemMoi.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\_NoiDungThemMoiPartial.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\ChinhSua.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\_NoiDungPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -272,6 +278,7 @@
     <Compile Include="Controllers\DanhMucTieuChiController.cs" />
     <Compile Include="Controllers\DanhMucTieuChuanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NhapThongTinChiTietController.cs" />
     <Compile Include="Controllers\PhanQuyenController.cs" />
     <Compile Include="Controllers\QuanLyDuLieuController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />

@@ -1,4 +1,4 @@
-﻿@model TieuChuanWebVer4.Models.dm_tieuchuan
+﻿@model TieuChuanWebVer4.Models.hs_noidung
 @{
     ViewBag.Title = "Chỉnh sửa";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
@@ -9,23 +9,23 @@
 @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.RichEdit }
     )
-@using (Html.BeginForm("SaveEditDocument", "DanhMucTieuChuan"))
+@using (Html.BeginForm("SaveEditDocument", "NhapThongTinChiTiet"))
 {
     @Html.Hidden("id", Model.id)
-        @Html.Action("NoiDungPartial")
+    @Html.Action("NoiDungPartial")
     <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:2% ;">
         <div style="width:40%;float:left;">
             <div style="width:30%;float:left">
                 @Html.DevExpress().Label(settings =>
    {
-       settings.Text = "Mã tiêu chuẩn";
+       settings.Text = "Mã tiêu chí";
    }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
                 @Html.DevExpress().TextBox(settings =>
 {
-    settings.Name = "txt_ma_tieuchuan";
-    settings.Text = Model.ma_tieuchuan;
+    settings.Name = "txt_ma_tieuchi";
+    settings.Text = Model.ma_tieuchi;
     //settings.ReadOnly = true;
     // settings.ClientVisible = false;
 }).GetHtml()
@@ -36,14 +36,14 @@
             <div style="width:30%;float:left;">
                 @Html.DevExpress().Label(settings =>
            {
-               settings.Text = "Tên tiêu chuẩn";
+               settings.Text = "Tên tiêu chí";
            }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
                 @Html.DevExpress().TextBox(settings =>
 {
-    settings.Name = "txt_ten_tieuchuan";
-    settings.Text = Model.ten_tieuchuan;
+    settings.Name = "txt_ten_tieuchi";
+    settings.Text = Model.ten_tieuchi;
     //settings.ReadOnly = true;
     // settings.ClientVisible = false;
 }).GetHtml()
@@ -74,7 +74,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#btnBoLuu').click(function () {
-            var url = '@Url.Action("Index", "DanhMucTieuChuan")';
+            var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
             window.location.href = url;
         });
     });

@@ -1,0 +1,28 @@
+@model TieuChuanWebVer4.Models.hs_noidung
+
+@Html.DevExpress().RichEdit(settings =>
+{
+    settings.Name = "NoiDungThemMoi";
+    settings.CallbackRouteValues = new { Controller = "NhapThongTinChiTiet", Action = "NoiDungThemMoi1Partial", id = Model.id };
+    settings.Width = Unit.Percentage(100);
+    settings.Height = 610;
+    settings.ReadOnly = false;
+    settings.RibbonMode = RichEditRibbonMode.OneLineRibbon;
+    settings.Settings.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
+    settings.Init = (s, e) =>
+    {
+        var rich = s as MVCxRichEdit;
+        rich.CreateDefaultRibbonTabs(true);
+        //rich.RibbonTabs[0].Visible = false;
+        //rich.RibbonTabs[2].Visible = false;
+        //rich.RibbonTabs[3].Visible = false;
+        //rich.RibbonTabs[4].Visible = false;
+        //rich.RibbonTabs[5].Visible = false;
+    };
+    settings.Saving = (s, e) =>
+    {
+        byte[] docBytes = RichEditExtension.SaveCopy("NoiDung", DevExpress.XtraRichEdit.DocumentFormat.Html);
+        //DXWebApplication1.Models.DataHelper.SaveDocument(docBytes);
+        e.Handled = true;
+    };
+}).Open("document" + Model.id, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()

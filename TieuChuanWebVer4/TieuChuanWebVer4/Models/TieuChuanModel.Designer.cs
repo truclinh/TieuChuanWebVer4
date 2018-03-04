@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Tieu chuan\TieuChuanWebVer4\TieuChuanWebVer4\Models\TieuChuanModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\TieuChuanWebVer4\TieuChuanWebVer4\TieuChuanWebVer4\Models\TieuChuanModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

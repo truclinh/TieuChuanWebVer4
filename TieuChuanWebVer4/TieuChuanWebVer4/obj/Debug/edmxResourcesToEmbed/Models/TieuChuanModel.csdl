@@ -7,206 +7,7 @@
   <ComplexType Name="Split_Result">
     <Property Name="items" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
   </ComplexType>
-  <EntityType Name="bang1_final">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="A" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="B" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="id" Type="Guid" Nullable="false" />
-  </EntityType>
-  <EntityType Name="dm_bomon">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tenbomon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="googledrive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="dm_dinhdanh">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="dinhdanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="dm_khoa">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tenkhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="dm_tieuchi">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-    <Property Name="noidung" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="dm_tieuchuan">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_tieuchuan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="hs_noidung">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="hs_taptinct">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="soid" Type="Guid" />
-    <Property Name="tentaptin" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="tinhtrang" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="driveid" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="sott" Type="Int32" />
-  </EntityType>
-  <EntityType Name="hs_tapting">
-    <Key>
-      <PropertyRef Name="soid" />
-    </Key>
-    <Property Name="soid" Type="Guid" Nullable="false" />
-    <Property Name="dinhdanh" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="ht_dm_form">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_form" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="loaict" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="them" Type="Boolean" />
-    <Property Name="xoa" Type="Boolean" />
-    <Property Name="sua" Type="Boolean" />
-    <Property Name="xem" Type="Boolean" />
-    <Property Name="in" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="ht_dm_menu">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="ht_dm_nsd">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_nsd" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysua" Type="DateTime" Precision="3" />
-    <Property Name="uyquyen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="ds_tk" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="ht_nsd_form">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="them" Type="Boolean" />
-    <Property Name="xoa" Type="Boolean" />
-    <Property Name="sua" Type="Boolean" />
-    <Property Name="xem" Type="Boolean" />
-    <Property Name="in" Type="Boolean" />
-    <Property Name="ten_form" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="ht_nsd_menu">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityContainer Name="QL_TieuChuan2Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="bang1_final" EntityType="Self.bang1_final" />
-    <EntitySet Name="dm_bomon" EntityType="Self.dm_bomon" />
-    <EntitySet Name="dm_dinhdanh" EntityType="Self.dm_dinhdanh" />
-    <EntitySet Name="dm_khoa" EntityType="Self.dm_khoa" />
-    <EntitySet Name="dm_tieuchi" EntityType="Self.dm_tieuchi" />
-    <EntitySet Name="dm_tieuchuan" EntityType="Self.dm_tieuchuan" />
-    <EntitySet Name="hs_noidung" EntityType="Self.hs_noidung" />
-    <EntitySet Name="hs_taptinct" EntityType="Self.hs_taptinct" />
-    <EntitySet Name="hs_tapting" EntityType="Self.hs_tapting" />
-    <EntitySet Name="ht_dm_form" EntityType="Self.ht_dm_form" />
-    <EntitySet Name="ht_dm_menu" EntityType="Self.ht_dm_menu" />
-    <EntitySet Name="ht_dm_nsd" EntityType="Self.ht_dm_nsd" />
-    <EntitySet Name="ht_nsd_form" EntityType="Self.ht_nsd_form" />
-    <EntitySet Name="ht_nsd_menu" EntityType="Self.ht_nsd_menu" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <FunctionImport Name="LayBangTheoCot" IsComposable="true" ReturnType="Collection(QL_TieuChuan2Model.LayBangTheoCot_Result)">
       <Parameter Name="column_name" Mode="In" Type="String" />
       <Parameter Name="table_name" Mode="In" Type="String" />
@@ -480,6 +281,37 @@
       <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
       <Parameter Name="denNgay" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
+    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
+    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
+    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
+    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
+    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
+    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
+    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
+    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
+    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
+    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
+    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
+    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
+    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
+    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
+    <FunctionImport Name="sp_CapNhatND">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiND">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -502,4 +334,188 @@
     <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
   </ComplexType>
+  <EntityType Name="bang1_final">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="A" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="B" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dm_bomon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenbomon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="googledrive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_dinhdanh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="dinhdanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="dm_khoa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenkhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_tieuchi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="noidung" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_tieuchuan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchuan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hs_noidung">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hs_taptinct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="soid" Type="Guid" />
+    <Property Name="tentaptin" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="tinhtrang" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="driveid" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="sott" Type="Int32" />
+  </EntityType>
+  <EntityType Name="hs_tapting">
+    <Key>
+      <PropertyRef Name="soid" />
+    </Key>
+    <Property Name="soid" Type="Guid" Nullable="false" />
+    <Property Name="dinhdanh" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_dm_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_form" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="loaict" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="them" Type="Boolean" />
+    <Property Name="xoa" Type="Boolean" />
+    <Property Name="sua" Type="Boolean" />
+    <Property Name="xem" Type="Boolean" />
+    <Property Name="in" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ht_dm_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_dm_nsd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_nsd" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="uyquyen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ds_tk" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_nsd_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="them" Type="Boolean" />
+    <Property Name="xoa" Type="Boolean" />
+    <Property Name="sua" Type="Boolean" />
+    <Property Name="xem" Type="Boolean" />
+    <Property Name="in" Type="Boolean" />
+    <Property Name="ten_form" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_nsd_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

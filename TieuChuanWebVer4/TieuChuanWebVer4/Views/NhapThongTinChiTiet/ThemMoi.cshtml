@@ -1,6 +1,5 @@
-﻿@model TieuChuanWebVer4.Models.dm_tieuchuan
-@{
-    ViewBag.Title = "Chỉnh sửa";
+﻿@{
+    ViewBag.Title = "Thêm mới";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
 @Html.DevExpress().GetStyleSheets(
@@ -9,56 +8,50 @@
 @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.RichEdit }
     )
-@using (Html.BeginForm("SaveEditDocument", "DanhMucTieuChuan"))
+@using (Html.BeginForm("SaveNewDocument", "NhapThongTinChiTiet"))
 {
-    @Html.Hidden("id", Model.id)
-        @Html.Action("NoiDungPartial")
+        @Html.Action("NoiDungThemMoiPartial")
     <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:2% ;">
         <div style="width:40%;float:left;">
             <div style="width:30%;float:left">
                 @Html.DevExpress().Label(settings =>
    {
-       settings.Text = "Mã tiêu chuẩn";
+       settings.Text = "Mã tiêu chí";
    }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
                 @Html.DevExpress().TextBox(settings =>
-{
-    settings.Name = "txt_ma_tieuchuan";
-    settings.Text = Model.ma_tieuchuan;
-    //settings.ReadOnly = true;
-    // settings.ClientVisible = false;
-}).GetHtml()
+       {
+           settings.Name = "txtNew_ma_tieuchi";
+           settings.Width = Unit.Percentage(100);
+       }).GetHtml()
             </div>
-
         </div>
         <div style="width:40%;float:left;">
             <div style="width:30%;float:left;">
                 @Html.DevExpress().Label(settings =>
            {
-               settings.Text = "Tên tiêu chuẩn";
+               settings.Text = "Tên tiêu chí";
            }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
                 @Html.DevExpress().TextBox(settings =>
-{
-    settings.Name = "txt_ten_tieuchuan";
-    settings.Text = Model.ten_tieuchuan;
-    //settings.ReadOnly = true;
-    // settings.ClientVisible = false;
-}).GetHtml()
+       {
+           settings.Name = "txtNew_ten_tieuchi";
+           settings.Width = Unit.Percentage(100);
+       }).GetHtml()
             </div>
         </div>
         <div style="width:20%;float:left;">
             @Html.DevExpress().Button(settings =>
-   {
-       settings.Name = "btnLuu";
-       settings.Text = "Lưu";
-       settings.UseSubmitBehavior = true;
-       // settings.ClientSideEvents.Click = "fncBtnLuu1Click";
-       settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
-       settings.ImagePosition = ImagePosition.Left;
-   }).GetHtml()
+       {
+           settings.Name = "btnLuu";
+           settings.Text = "Lưu";
+           settings.UseSubmitBehavior = true;
+           //settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
             @Html.DevExpress().Button(settings =>
        {
            settings.Name = "btnBoLuu";
@@ -70,17 +63,13 @@
        }).GetHtml()
         </div>
     </div>
+
 }
 <script type="text/javascript">
     $(document).ready(function () {
         $('#btnBoLuu').click(function () {
-            var url = '@Url.Action("Index", "DanhMucTieuChuan")';
+            var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
             window.location.href = url;
         });
     });
 </script>
-<style>
-    #frmTieuChuan {
-        margin-top: 8px;
-    }
-</style>

@@ -443,7 +443,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.'Form Responses 1$'' does not ha
     <Property Name="ngaysua" Type="datetime" />
     <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
     <Property Name="ten_tieuchi" Type="nvarchar" MaxLength="512" />
-    <Property Name="noidung" Type="ntext" />
+    <Property Name="noidung" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="hs_taptinct">
     <Key>
@@ -736,6 +736,14 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="ngaytao" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="sp_CapNhatND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
@@ -827,6 +835,14 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="sp_ThemMoiQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
