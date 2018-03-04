@@ -257,6 +257,7 @@
     <Content Include="Views\DanhMucTieuChi\Index.cshtml" />
     <Content Include="Views\DanhMucTieuChi\_DanhMucTieuChiPartial.cshtml" />
     <Content Include="Views\QuanLyDuLieu\GetGoogleDriveFiles.cshtml" />
+    <Content Include="Views\QuanLyDuLieu\GetSubGoogleDriveFiles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

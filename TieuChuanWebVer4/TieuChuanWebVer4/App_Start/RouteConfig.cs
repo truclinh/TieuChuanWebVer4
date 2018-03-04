@@ -14,7 +14,7 @@ namespace TieuChuanWebVer4 {
             routes.MapRoute(
                 name: "Default", // Route name
                 url: "{controller}/{action}/{id}", // URL with parameters
-                defaults: new { controller = "DanhMucTieuChi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                defaults: new { controller = "QuanLyDuLieu", action = "GetGoogleDriveFiles", id = UrlParameter.Optional } // Parameter defaults
             );
         }
     }
