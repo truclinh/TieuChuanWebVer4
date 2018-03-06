@@ -297,5 +297,18 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_CapNhatND" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatND" />
     <FunctionImportMapping FunctionImportName="sp_ThemMoiND" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiND" />
+    <FunctionImportMapping FunctionImportName="sp_DanhSachTaiLieu" FunctionName="QL_TieuChuan2Model.Store.sp_DanhSachTaiLieu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.sp_DanhSachTaiLieu_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="soid" ColumnName="soid" />
+          <ScalarProperty Name="tentaptin" ColumnName="tentaptin" />
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+          <ScalarProperty Name="driveid" ColumnName="driveid" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="sott" ColumnName="sott" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

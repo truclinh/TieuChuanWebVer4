@@ -20,6 +20,9 @@
         //rich.RibbonTabs[4].Visible = false;
         //rich.RibbonTabs[5].Visible = false;
     };
+    settings.EnableClientSideAPI = true;
+    settings.ClientSideEvents.HyperlinkClick="SelectionChanged";
+    //string.Format("function (s,e) {{ OnMoreInfoClick1({0}); }}", Model.id);
     settings.Saving = (s, e) =>
     {
         byte[] docBytes = RichEditExtension.SaveCopy("NoiDung", DevExpress.XtraRichEdit.DocumentFormat.Html);

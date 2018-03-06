@@ -182,6 +182,10 @@ namespace TieuChuanWebVer4.Controllers
             return PartialView("_NoiDungThemMoiPartial", x);
         }
         //--------------------------------------End Hiện lên nội dung trong Word
-
+        //public ActionResult DocumentPartial(string box)
+        //{
+        //    var da=db.hs_noidung.Where(n.)
+        //    return PartialView("_DocumentPartial")
+        //}
     }
 }

@@ -1071,5 +1071,18 @@ namespace TieuChuanWebVer4.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiND", idParameter, ma_tieuchiParameter, ten_tieuchiParameter, nguoitaoParameter, ngaytaoParameter, noidungParameter);
         }
+    
+        public virtual ObjectResult<sp_DanhSachTaiLieu_Result> sp_DanhSachTaiLieu(string dinhdanh, string ma_tieuchi)
+        {
+            var dinhdanhParameter = dinhdanh != null ?
+                new ObjectParameter("dinhdanh", dinhdanh) :
+                new ObjectParameter("dinhdanh", typeof(string));
+    
+            var ma_tieuchiParameter = ma_tieuchi != null ?
+                new ObjectParameter("ma_tieuchi", ma_tieuchi) :
+                new ObjectParameter("ma_tieuchi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DanhSachTaiLieu_Result>("sp_DanhSachTaiLieu", dinhdanhParameter, ma_tieuchiParameter);
+        }
     }
 }

@@ -264,6 +264,8 @@
     <Content Include="Views\NhapThongTinChiTiet\_NoiDungThemMoiPartial.cshtml" />
     <Content Include="Views\NhapThongTinChiTiet\ChinhSua.cshtml" />
     <Content Include="Views\NhapThongTinChiTiet\_NoiDungPartial.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\DanhSachTaiLieuPartial.cshtml" />
+    <Content Include="Views\NhapThongTinChiTiet\Dialog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -343,6 +345,9 @@
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\spPhanQuyenNguoiDung_Result.cs">
+      <DependentUpon>TieuChuanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_DanhSachTaiLieu_Result.cs">
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">

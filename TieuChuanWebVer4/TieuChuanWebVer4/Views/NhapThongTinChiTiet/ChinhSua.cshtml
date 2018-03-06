@@ -3,6 +3,20 @@
     ViewBag.Title = "Chỉnh sửa";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
+<script type="text/javascript">
+    function SelectionChanged(s, e) {
+        var url = "/NhapThongTinChiTiet/Dialog?dinhdanh=" + e.targetUri+"&ma_tieuchi=@(Model.ma_tieuchi)";
+        //+ "'&ma_tieuchi='" + Model.ma_tieuchi + "'";
+        //'Url.Action("Dialog", "NhapThongTinChiTiet")' + '?dinhdanh=' + e.targetUri + '&ma_tieuchi="' +Model.ma_tieuchi +'"';
+        window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
+    }
+    $(document).ready(function () {
+        $('#btnBoLuu').click(function () {
+            var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
+            window.location.href = url;
+        });
+    });
+</script>
 @Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
     )
@@ -71,14 +85,7 @@
         </div>
     </div>
 }
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#btnBoLuu').click(function () {
-            var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
-            window.location.href = url;
-        });
-    });
-</script>
+
 <style>
     #frmTieuChuan {
         margin-top: 8px;

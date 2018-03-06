@@ -244,7 +244,17 @@ namespace TieuChuanWebVer4.Controllers
             //var y = model.SingleOrDefault(n => n.id == (System.Guid)id);
             return PartialView("_NoiDungPartial", x);
         }
-
+        //-------------------------------------- 
+        public ActionResult Dialog(string dinhdanh, string ma_tieuchi)
+        {
+            var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
+            return View(da);
+        }
+        public ActionResult DanhSachTaiLieuPartial(string dinhdanh, string ma_tieuchi)
+        {
+            var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
+            return PartialView("DanhSachTaiLieuPartial", da);
+        }
 
     }
 }

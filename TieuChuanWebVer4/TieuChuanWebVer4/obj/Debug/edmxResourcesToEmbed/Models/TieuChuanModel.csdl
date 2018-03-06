@@ -312,6 +312,10 @@
       <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
       <Parameter Name="noidung" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_DanhSachTaiLieu" ReturnType="Collection(QL_TieuChuan2Model.sp_DanhSachTaiLieu_Result)">
+      <Parameter Name="dinhdanh" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -518,4 +522,13 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <ComplexType Name="sp_DanhSachTaiLieu_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="Guid" Name="soid" Nullable="true" />
+    <Property Type="String" Name="tentaptin" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="tinhtrang" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="driveid" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="ghichu" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="sott" Nullable="true" />
+  </ComplexType>
 </Schema>
