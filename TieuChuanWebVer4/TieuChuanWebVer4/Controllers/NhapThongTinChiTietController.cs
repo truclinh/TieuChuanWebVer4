@@ -248,11 +248,13 @@ namespace TieuChuanWebVer4.Controllers
         public ActionResult Dialog(string dinhdanh, string ma_tieuchi)
         {
             var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
+            ViewBag.DinhDanh = dinhdanh.ToString();
             return View(da);
         }
         public ActionResult DanhSachTaiLieuPartial(string dinhdanh, string ma_tieuchi)
         {
             var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
+           
             return PartialView("DanhSachTaiLieuPartial", da);
         }
 

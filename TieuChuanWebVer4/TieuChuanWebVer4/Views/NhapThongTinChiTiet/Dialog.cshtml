@@ -1,10 +1,33 @@
 ﻿@model IEnumerable<TieuChuanWebVer4.Models.sp_DanhSachTaiLieu_Result>
 @{
-    ViewBag.Title = "Dialog";
+    ViewBag.Title = "Tài liệu";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
+<style>
+    body {
+        background-color: lightcyan;
+    }
+    table{border-collapse:collapse;
+          width:500px;
+background-color: white;
+    }
+    tr,td{
+        border:1px solid #808080;
+    }
+    td{
+        padding:5px;
+           }
+</style>
+<center>
+    <table>
+       <tr><td style="font-weight:bold;text-align:center" colspan="2">TÀI LIỆU CHO <b style="color:red">@(ViewBag.DinhDanh)</b></td></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.tentaptin</td>
+                <td><a href="https://drive.google.com/open?id=@item.driveid" target="_blank">Xem</a></td>
+            </tr>
+        }
 
-@foreach (var item in Model)
-{
-    <p style="font-size:17px;font-weight:bold">@item.tentaptin</p><a href="https://drive.google.com/open?id=@item.driveid" target="_blank">Xem</a>
-}
+    </table>
+</center>

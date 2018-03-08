@@ -3,15 +3,19 @@
     ViewBag.Title = "Chỉnh sửa";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
-<script type="text/javascript">
+<script>
     function SelectionChanged(s, e) {
-        var url = "/NhapThongTinChiTiet/DanhSachTaiLieuPartial?dinhdanh=" + e.targetUri + "&ma_tieuchi=@(Model.ma_tieuchi)";
-        window.location.href = url;
+        e.handled = true;
+        var url = "/NhapThongTinChiTiet/Dialog?dinhdanh=" + e.targetUri + "&ma_tieuchi=@(Model.ma_tieuchi)";
+        //window.location.href = url;
+        window.open(url, "_blank", "toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no,left=900,width=520, height=520,scrollbars=yes")
+
     }
     $(document).ready(function () {
         $('#btnBoLuu').click(function () {
             var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
             window.location.href = url;
+           
         });
     });
 </script>
