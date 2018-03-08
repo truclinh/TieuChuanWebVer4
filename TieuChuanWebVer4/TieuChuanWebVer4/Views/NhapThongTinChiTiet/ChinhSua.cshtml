@@ -5,10 +5,8 @@
 }
 <script type="text/javascript">
     function SelectionChanged(s, e) {
-        var url = "/NhapThongTinChiTiet/Dialog?dinhdanh=" + e.targetUri+"&ma_tieuchi=@(Model.ma_tieuchi)";
-        //+ "'&ma_tieuchi='" + Model.ma_tieuchi + "'";
-        //'Url.Action("Dialog", "NhapThongTinChiTiet")' + '?dinhdanh=' + e.targetUri + '&ma_tieuchi="' +Model.ma_tieuchi +'"';
-        window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
+        var url = "/NhapThongTinChiTiet/DanhSachTaiLieuPartial?dinhdanh=" + e.targetUri + "&ma_tieuchi=@(Model.ma_tieuchi)";
+        window.location.href = url;
     }
     $(document).ready(function () {
         $('#btnBoLuu').click(function () {
