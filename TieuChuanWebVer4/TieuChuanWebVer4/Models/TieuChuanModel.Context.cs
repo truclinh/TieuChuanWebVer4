@@ -1084,5 +1084,15 @@ namespace TieuChuanWebVer4.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DanhSachTaiLieu_Result>("sp_DanhSachTaiLieu", dinhdanhParameter, ma_tieuchiParameter);
         }
+    
+        public virtual ObjectResult<sp_DuLieuChiTiet_Result> sp_DuLieuChiTiet()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DuLieuChiTiet_Result>("sp_DuLieuChiTiet");
+        }
+    
+        public virtual ObjectResult<sp_DuLieuGoc_Result> sp_DuLieuGoc()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DuLieuGoc_Result>("sp_DuLieuGoc");
+        }
     }
 }

@@ -281,21 +281,6 @@
       <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
       <Parameter Name="denNgay" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
-    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
-    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
-    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
-    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
-    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
-    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
-    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
-    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
-    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
-    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
-    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
-    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
-    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
-    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
     <FunctionImport Name="sp_CapNhatND">
       <Parameter Name="id" Mode="In" Type="Guid" />
       <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
@@ -316,6 +301,23 @@
       <Parameter Name="dinhdanh" Mode="In" Type="String" />
       <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
+    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
+    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
+    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
+    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
+    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
+    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
+    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
+    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
+    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
+    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
+    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
+    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
+    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
+    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
+    <FunctionImport Name="sp_DuLieuChiTiet" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuChiTiet_Result)" />
+    <FunctionImport Name="sp_DuLieuGoc" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuGoc_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -337,6 +339,15 @@
     <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="sp_DanhSachTaiLieu_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="Guid" Name="soid" Nullable="true" />
+    <Property Type="String" Name="tentaptin" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="tinhtrang" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="driveid" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="ghichu" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="sott" Nullable="true" />
   </ComplexType>
   <EntityType Name="bang1_final">
     <Key>
@@ -522,13 +533,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <ComplexType Name="sp_DanhSachTaiLieu_Result">
-    <Property Type="Guid" Name="id" Nullable="false" />
-    <Property Type="Guid" Name="soid" Nullable="true" />
-    <Property Type="String" Name="tentaptin" Nullable="true" MaxLength="512" />
-    <Property Type="String" Name="tinhtrang" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="driveid" Nullable="true" MaxLength="512" />
-    <Property Type="String" Name="ghichu" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="sott" Nullable="true" />
+  <ComplexType Name="sp_DuLieuChiTiet_Result">
+    <Property Type="String" Name="ma_tieuchi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidung" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_DuLieuGoc_Result">
+    <Property Type="Boolean" Name="nhom" Nullable="true" />
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_nhom" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="ma_nhom_cha" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

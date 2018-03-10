@@ -9,6 +9,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+    ribbon.SetActiveTabIndex(1);
     //document.getElementById("ribbon_State").SetActiveTabIndex(1);
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchi;ten_tieuchi;noidung', OnGetRowValues);

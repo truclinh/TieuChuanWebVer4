@@ -6,6 +6,7 @@
 }
 @*<p name="DetailNotes"></p>*@
 <script type="text/javascript">
+    ribbon.SetActiveTabIndex(1);
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchuan;ten_tieuchuan', OnGetRowValues);
     }

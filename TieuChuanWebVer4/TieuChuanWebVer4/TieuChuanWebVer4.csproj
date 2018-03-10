@@ -51,6 +51,7 @@
     <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.Resources.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -266,6 +267,11 @@
     <Content Include="Views\NhapThongTinChiTiet\_NoiDungPartial.cshtml" />
     <Content Include="Views\NhapThongTinChiTiet\DanhSachTaiLieuPartial.cshtml" />
     <Content Include="Views\NhapThongTinChiTiet\Dialog.cshtml" />
+    <Content Include="Views\XemChiTietTieuChuan\Index.cshtml" />
+    <Content Include="Views\XemChiTietTieuChuan\Left1PanelPartial.cshtml" />
+    <Content Include="Views\XemChiTietTieuChuan\Right1PanelPartial.cshtml" />
+    <Content Include="Views\XemChiTietTieuChuan\_TreeListPartial.cshtml" />
+    <Content Include="Views\XemChiTietTieuChuan\_RichEditPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -287,6 +293,7 @@
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\ThongTinBoMonController.cs" />
     <Compile Include="Controllers\ThongTinKhoaController.cs" />
+    <Compile Include="Controllers\XemChiTietTieuChuanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -348,6 +355,12 @@
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_DanhSachTaiLieu_Result.cs">
+      <DependentUpon>TieuChuanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_DuLieuChiTiet_Result.cs">
+      <DependentUpon>TieuChuanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_DuLieuGoc_Result.cs">
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">

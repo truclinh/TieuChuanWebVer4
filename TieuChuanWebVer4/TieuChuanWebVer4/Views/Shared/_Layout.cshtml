@@ -12,13 +12,14 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 
     <link href="~/Content/Css/Styles.css" rel="stylesheet" />
-   @Html.DevExpress().GetStyleSheets(
+@Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
         new StyleSheet { ExtensionSuite = ExtensionSuite.VerticalGrid },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList }
     )
 @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
@@ -26,9 +27,9 @@
         new Script { ExtensionSuite = ExtensionSuite.Editors },
         new Script { ExtensionSuite = ExtensionSuite.VerticalGrid },
         new Script { ExtensionSuite = ExtensionSuite.Report },
-        new Script { ExtensionSuite = ExtensionSuite.GridView }
+        new Script { ExtensionSuite = ExtensionSuite.GridView },
+        new Script { ExtensionSuite = ExtensionSuite.TreeList }
     )
-
 
     <style>
         div#content{

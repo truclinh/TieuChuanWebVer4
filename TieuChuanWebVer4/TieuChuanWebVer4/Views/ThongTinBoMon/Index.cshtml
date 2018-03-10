@@ -52,6 +52,7 @@
     }
 </style>
 <script type="text/javascript">
+    ribbon.SetActiveTabIndex(0);
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;mabomon;tenbomon;makhoa;googledrive', OnGetRowValues);
     }
