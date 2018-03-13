@@ -1,0 +1,11 @@
+﻿@using TieuChuanWebVer4.Models;
+@model IEnumerable<ht_nsd_menu>
+    
+    @foreach (var item in Model)
+    {
+       <script>
+           ribbon.GetItemByName("@item.ma_menu").SetEnabled(true);
+</script>
+    }
+
+    

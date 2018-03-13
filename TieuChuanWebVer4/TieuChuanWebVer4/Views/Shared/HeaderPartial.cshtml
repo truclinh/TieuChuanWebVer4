@@ -1,4 +1,5 @@
-﻿@Html.DevExpress().Ribbon(settings =>
+﻿
+@Html.DevExpress().Ribbon(settings =>
 {
     settings.Name = "ribbon";
     settings.ShowFileTab = false;
@@ -9,19 +10,22 @@
     var tabHeThong = settings.Tabs.Add("HỆ THỐNG");
     //Đăng nhập
     var tasksGroupDangNhap = tabHeThong.Groups.Add("Đăng nhập");
+    tasksGroupDangNhap.Name = "DangNhap";
     tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
         i.Text = "Đổi mật khẩu";
         i.Name = "DoiMatKhau";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/change key.png");
-        ((RibbonButtonItem)i).NavigateUrl= Url.Action("DoiMatKhau", "TaiKhoan");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("DoiMatKhau", "TaiKhoan");
     });
     tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
         i.Text = "Đăng nhập lại";
         i.Name = "DangNhapLai";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/login2.png");
@@ -33,6 +37,7 @@
     {
         i.Text = "Quản lý người dùng";
         i.Name = "QuanLyNguoiDung";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/user2.png");
@@ -42,6 +47,7 @@
     {
         i.Text = "Thông tin khoa";
         i.Name = "ThongTinKhoa";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/khoa.png");
@@ -51,6 +57,7 @@
     {
         i.Text = "Thông tin bộ môn";
         i.Name = "ThongTinBoMon";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/bomon.ico");
@@ -61,6 +68,7 @@
     {
         i.Text = "Phân quyền người sử dụng";
         i.Name = "PhanQuyenNguoiSuDung";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/user.png");
@@ -75,6 +83,7 @@
     {
         i.Text = "Danh mục tiêu chuẩn";
         i.Name = "DanhMucTieuChuan";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
@@ -84,6 +93,7 @@
     {
         i.Text = "Danh mục tiêu chí";
         i.Name = "DanhMucTieuChi";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
@@ -93,6 +103,7 @@
     {
         i.Text = "Quản lý dữ liệu";
         i.Name = "QuanLyDuLieu";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/Works-in-progress-icon.png");
@@ -102,6 +113,7 @@
     {
         i.Text = "Nhập thông tin chi tiết";
         i.Name = "NhapThongTinChiTiet";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/nhaplieu.png");
@@ -111,6 +123,7 @@
     {
         i.Text = "Xem chi tiết tiêu chuẩn";
         i.Name = "XemChiTietTieuChuan";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
@@ -120,6 +133,7 @@
     {
         i.Text = "Danh sách mục lục";
         i.Name = "DanhSachMucLuc";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
@@ -128,7 +142,8 @@
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
         i.Text = "MC bổ sung lần 1";
-        i.Name = "MCBoSungLan1";
+        i.Name = "DanhSachBoSung";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
@@ -142,13 +157,16 @@
     {
         i.Text = "Hướng dẫn sử dụng";
         i.Name = "HuongDanSuDung";
+        i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/help.png");
         ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "HuongDanSuDung");
     });
-}).GetHtml()
+}).GetHtml()   
+ @Html.Action("MenuPartial", "Home", new { @ma_nsd = @Session["TenDangNhap"].ToString() })
 <script>
+    
     $(document).ready(function () {
         $("#ribbon_T0G0I1").click(function () {
             var save = window.confirm('Bạn có chắc chắn muốn Đăng nhâp lại?')

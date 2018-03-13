@@ -30,7 +30,6 @@ namespace TieuChuanWebVer4.Models
         public virtual DbSet<bang1_final> bang1_final { get; set; }
         public virtual DbSet<dm_bomon> dm_bomon { get; set; }
         public virtual DbSet<dm_dinhdanh> dm_dinhdanh { get; set; }
-        public virtual DbSet<dm_khoa> dm_khoa { get; set; }
         public virtual DbSet<dm_tieuchi> dm_tieuchi { get; set; }
         public virtual DbSet<dm_tieuchuan> dm_tieuchuan { get; set; }
         public virtual DbSet<hs_noidung> hs_noidung { get; set; }
@@ -42,6 +41,7 @@ namespace TieuChuanWebVer4.Models
         public virtual DbSet<ht_nsd_form> ht_nsd_form { get; set; }
         public virtual DbSet<ht_nsd_menu> ht_nsd_menu { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<dm_khoa> dm_khoa { get; set; }
     
         [DbFunction("QL_TieuChuan2Entities", "LayBangTheoCot")]
         public virtual IQueryable<LayBangTheoCot_Result> LayBangTheoCot(string column_name, string table_name)
@@ -1093,6 +1093,65 @@ namespace TieuChuanWebVer4.Models
         public virtual ObjectResult<sp_DuLieuGoc_Result> sp_DuLieuGoc()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DuLieuGoc_Result>("sp_DuLieuGoc");
+        }
+    
+        public virtual int sp_CapNhatPhanQuyen(Nullable<System.Guid> id, string ma_nsd, string ma_menu, string ten_menu, string ma_nhom)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            var ma_menuParameter = ma_menu != null ?
+                new ObjectParameter("ma_menu", ma_menu) :
+                new ObjectParameter("ma_menu", typeof(string));
+    
+            var ten_menuParameter = ten_menu != null ?
+                new ObjectParameter("ten_menu", ten_menu) :
+                new ObjectParameter("ten_menu", typeof(string));
+    
+            var ma_nhomParameter = ma_nhom != null ?
+                new ObjectParameter("ma_nhom", ma_nhom) :
+                new ObjectParameter("ma_nhom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhanQuyen", idParameter, ma_nsdParameter, ma_menuParameter, ten_menuParameter, ma_nhomParameter);
+        }
+    
+        public virtual int sp_CapNhatPhanQuyen1(Nullable<System.Guid> id, string ma_nsd, string ma_menu, string ten_menu, string ma_nhom)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            var ma_menuParameter = ma_menu != null ?
+                new ObjectParameter("ma_menu", ma_menu) :
+                new ObjectParameter("ma_menu", typeof(string));
+    
+            var ten_menuParameter = ten_menu != null ?
+                new ObjectParameter("ten_menu", ten_menu) :
+                new ObjectParameter("ten_menu", typeof(string));
+    
+            var ma_nhomParameter = ma_nhom != null ?
+                new ObjectParameter("ma_nhom", ma_nhom) :
+                new ObjectParameter("ma_nhom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhanQuyen1", idParameter, ma_nsdParameter, ma_menuParameter, ten_menuParameter, ma_nhomParameter);
+        }
+    
+        public virtual int sp_XoaPhanQuyen(string ma_nsd)
+        {
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaPhanQuyen", ma_nsdParameter);
         }
     }
 }

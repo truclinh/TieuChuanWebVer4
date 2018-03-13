@@ -144,15 +144,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="dm_khoa">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
-        <MappingFragment StoreEntitySet="dm_khoa">
-          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="dm_tieuchi">
       <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_tieuchi">
         <MappingFragment StoreEntitySet="dm_tieuchi">
@@ -328,5 +319,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="dm_khoa">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
+        <MappingFragment StoreEntitySet="dm_khoa">
+          <ScalarProperty Name="drivedulieu" ColumnName="drivedulieu" />
+          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen1" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen1" />
+    <FunctionImportMapping FunctionImportName="sp_XoaPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_XoaPhanQuyen" />
   </EntityContainerMapping>
 </Mapping>

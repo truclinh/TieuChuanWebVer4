@@ -49,13 +49,20 @@ namespace TieuChuanWebVer4.Controllers
                     {
                         if (ad.matkhau == txtMatKhau && ad.makhoa == valKhoa && ad.mabomon == valBoMon)
                         {
-                            ViewBag.ThongBao = "Đăng nhập thành công";
                             Session["TaiKhoan"] = ad;
                             Session["TenDangNhap"] = ad.ma_nsd;
                             Session["MatKhau"] = ad.matkhau;
                             Session["TenNguoiDung"] = ad.ten_nsd;
                             Session["MaKhoa"] = ad.makhoa;
                             Session["MaBoMon"] = ad.mabomon;
+                            //-------------Get drive theo khoa và id của người sử dụng giúp cho 
+                            //-------------việc lúc lấy dữ liệu trên Google Drive
+                            var drivedulieu = (from k in db.dm_khoa
+                                               join nsd in db.ht_dm_nsd
+                                               on k.makhoa equals nsd.makhoa
+                                               where nsd.id == ad.id
+                                               select k.drivedulieu).ToArray();
+                            Session["Drive"] = drivedulieu[0];
                             return RedirectToAction("Index", "Home");
                         }
                         else

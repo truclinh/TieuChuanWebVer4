@@ -376,6 +376,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.data' does not have a primary ke
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="makhoa" Type="nvarchar" MaxLength="50" />
     <Property Name="tenkhoa" Type="nvarchar" MaxLength="200" />
+    <Property Name="drivedulieu" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="dm_tieuchi">
     <Key>
@@ -744,6 +745,20 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="ngaysua" Type="datetime" Mode="In" />
     <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
   </Function>
+  <Function Name="sp_CapNhatPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatPhanQuyen1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
@@ -896,6 +911,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="denngay" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_XoaPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="spDanhMucPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
   </Function>

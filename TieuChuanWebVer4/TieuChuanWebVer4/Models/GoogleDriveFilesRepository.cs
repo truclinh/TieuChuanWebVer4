@@ -45,13 +45,14 @@ namespace TieuChuanWebVer4.Models
 
 
         //get all files from Google Drive.
-        public static List<GoogleDriveFiles> GetDriveFiles()
+        public static List<GoogleDriveFiles> GetDriveFiles(string drive)
         {
             DriveService service = GetService();
 
             // define parameters of request.
             FilesResource.ListRequest FileListRequest = service.Files.List();
-            FileListRequest.Q = "'0B9hgKCBhg5FsZUlVT2swWlVIeGs' in parents and trashed=false ";
+           // string s = "0B9hgKCBhg5FsZUlVT2swWlVIeGs";
+            FileListRequest.Q = "'" + drive + "' in parents and trashed=false ";
             //listRequest.PageSize = 10;
             //listRequest.PageToken = 10;
             FileListRequest.Fields = "nextPageToken, files(id, name, size, version,parents,thumbnailLink,webContentLink,webViewLink,createdTime)";

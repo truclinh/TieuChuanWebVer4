@@ -13,7 +13,7 @@ namespace TieuChuanWebVer4.Controllers
         [HttpGet]
         public ActionResult GetGoogleDriveFiles()
         {
-            return View(GoogleDriveFilesRepository.GetDriveFiles());
+            return View(GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString()));
         }
         [HttpGet]
         public ActionResult GetSubGoogleDriveFiles(string folderId)
@@ -24,7 +24,7 @@ namespace TieuChuanWebVer4.Controllers
         public ActionResult LayDuLieu()
         {
             db.sp_LayDuLieu();
-            List<GoogleDriveFiles> lstDataMaster = GoogleDriveFilesRepository.GetDriveFiles();
+            List<GoogleDriveFiles> lstDataMaster = GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString());
             foreach (var item in lstDataMaster)
             {
                 if (!item.Name.Contains("MUCLUC") && !item.Name.Contains("MUC LUC") && !item.Name.Contains("BOSUNG") && !item.Name.Contains("TAILIEUHUONGDAN") && !item.Name.Contains("PHIEUKIEMTRA"))

@@ -17,5 +17,6 @@ namespace TieuChuanWebVer4.Models
         public System.Guid id { get; set; }
         public string makhoa { get; set; }
         public string tenkhoa { get; set; }
+        public string drivedulieu { get; set; }
     }
 }

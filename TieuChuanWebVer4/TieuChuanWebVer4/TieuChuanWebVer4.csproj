@@ -272,6 +272,7 @@
     <Content Include="Views\XemChiTietTieuChuan\Right1PanelPartial.cshtml" />
     <Content Include="Views\XemChiTietTieuChuan\_TreeListPartial.cshtml" />
     <Content Include="Views\XemChiTietTieuChuan\_RichEditPartial.cshtml" />
+    <Content Include="Views\Home\_MenuPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

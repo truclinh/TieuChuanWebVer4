@@ -381,6 +381,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.data' does not have a primary ke
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="makhoa" Type="nvarchar" MaxLength="50" />
           <Property Name="tenkhoa" Type="nvarchar" MaxLength="200" />
+          <Property Name="drivedulieu" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="dm_tieuchi">
           <Key>
@@ -749,6 +750,20 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Parameter Name="ngaysua" Type="datetime" Mode="In" />
           <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="sp_CapNhatPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CapNhatPhanQuyen1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
@@ -901,6 +916,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Parameter Name="denngay" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_XoaPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="spDanhMucPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
         </Function>
@@ -1284,7 +1302,6 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
           <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
           <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
-          <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
           <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
           <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
           <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
@@ -1298,6 +1315,24 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
           <FunctionImport Name="sp_DuLieuChiTiet" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuChiTiet_Result)" />
           <FunctionImport Name="sp_DuLieuGoc" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuGoc_Result)" />
+          <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
+          <FunctionImport Name="sp_CapNhatPhanQuyen">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+            <Parameter Name="ma_menu" Mode="In" Type="String" />
+            <Parameter Name="ten_menu" Mode="In" Type="String" />
+            <Parameter Name="ma_nhom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CapNhatPhanQuyen1">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+            <Parameter Name="ma_menu" Mode="In" Type="String" />
+            <Parameter Name="ten_menu" Mode="In" Type="String" />
+            <Parameter Name="ma_nhom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaPhanQuyen">
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1358,14 +1393,6 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Property Name="ngaytao" Type="DateTime" Precision="3" />
           <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ngaysua" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="dm_khoa">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="tenkhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="dm_tieuchi">
           <Key>
@@ -1523,6 +1550,15 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Property Type="String" Name="ten_nhom" Nullable="true" MaxLength="512" />
           <Property Type="String" Name="ma_nhom_cha" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="dm_khoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenkhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="drivedulieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1668,15 +1704,6 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
                 <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
                 <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
                 <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dm_khoa">
-            <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
-              <MappingFragment StoreEntitySet="dm_khoa">
-                <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
-                <ScalarProperty Name="makhoa" ColumnName="makhoa" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1856,6 +1883,19 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="dm_khoa">
+            <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
+              <MappingFragment StoreEntitySet="dm_khoa">
+                <ScalarProperty Name="drivedulieu" ColumnName="drivedulieu" />
+                <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
+                <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen" />
+          <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen1" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen1" />
+          <FunctionImportMapping FunctionImportName="sp_XoaPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_XoaPhanQuyen" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
