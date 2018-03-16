@@ -30,6 +30,7 @@ namespace TieuChuanWebVer4.Models
         public virtual DbSet<bang1_final> bang1_final { get; set; }
         public virtual DbSet<dm_bomon> dm_bomon { get; set; }
         public virtual DbSet<dm_dinhdanh> dm_dinhdanh { get; set; }
+        public virtual DbSet<dm_khoa> dm_khoa { get; set; }
         public virtual DbSet<dm_tieuchi> dm_tieuchi { get; set; }
         public virtual DbSet<dm_tieuchuan> dm_tieuchuan { get; set; }
         public virtual DbSet<hs_noidung> hs_noidung { get; set; }
@@ -41,7 +42,6 @@ namespace TieuChuanWebVer4.Models
         public virtual DbSet<ht_nsd_form> ht_nsd_form { get; set; }
         public virtual DbSet<ht_nsd_menu> ht_nsd_menu { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<dm_khoa> dm_khoa { get; set; }
     
         [DbFunction("QL_TieuChuan2Entities", "LayBangTheoCot")]
         public virtual IQueryable<LayBangTheoCot_Result> LayBangTheoCot(string column_name, string table_name)
@@ -440,7 +440,7 @@ namespace TieuChuanWebVer4.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinBM", idParameter, mabomonParameter, tenbomonParameter, makhoaParameter, googledriveParameter);
         }
     
-        public virtual int sp_CapNhatThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa)
+        public virtual int sp_CapNhatThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa, string drivedulieu)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -454,7 +454,11 @@ namespace TieuChuanWebVer4.Models
                 new ObjectParameter("tenkhoa", tenkhoa) :
                 new ObjectParameter("tenkhoa", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter);
+            var drivedulieuParameter = drivedulieu != null ?
+                new ObjectParameter("drivedulieu", drivedulieu) :
+                new ObjectParameter("drivedulieu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter, drivedulieuParameter);
         }
     
         public virtual int sp_CapNhatTieuChi(Nullable<System.Guid> id, string ma_tieuchi, string ten_tieuchi, string ma_tieuchuan, string nguoisua, Nullable<System.DateTime> ngaysua, string noidung)
@@ -765,7 +769,7 @@ namespace TieuChuanWebVer4.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinBM", idParameter, mabomonParameter, tenbomonParameter, makhoaParameter, googledriveParameter);
         }
     
-        public virtual int sp_ThemMoiThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa)
+        public virtual int sp_ThemMoiThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa, string drivedulieu)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -779,7 +783,11 @@ namespace TieuChuanWebVer4.Models
                 new ObjectParameter("tenkhoa", tenkhoa) :
                 new ObjectParameter("tenkhoa", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter);
+            var drivedulieuParameter = drivedulieu != null ?
+                new ObjectParameter("drivedulieu", drivedulieu) :
+                new ObjectParameter("drivedulieu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter, drivedulieuParameter);
         }
     
         public virtual int sp_ThemMoiTieuChi(Nullable<System.Guid> id, string ma_tieuchi, string ten_tieuchi, string ma_tieuchuan, string nguoitao, Nullable<System.DateTime> ngaytao, string noidung)

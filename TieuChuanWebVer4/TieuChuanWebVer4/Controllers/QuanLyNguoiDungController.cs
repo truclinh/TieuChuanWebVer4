@@ -152,92 +152,102 @@ namespace TieuChuanWebVer4.Controllers
         //}
         public ActionResult SaveNewDocument(FormCollection f)
         {
-            string txtMaNSD = f["txtNew_ma_nsd"].ToString();
-            string txtTenNSD = f["txtNew_ten_nsd"].ToString();
-            string txtMatKhau = f["txtNew_matkhau"].ToString();
-            string txtGhiChu = f["txtNew_ghichu"].ToString();
-            string txtMaKhoa = f["txtNew_makhoa"].ToString();
-            string txtMaBM = f["txtNew_mabomon"].ToString();
-            string txtMaNhom = f["txtNew_manhom"].ToString();
-
-            ViewBag.DMKhoa1 = new SelectList(db1.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
-            ViewBag.DMBoMon1 = new SelectList(db1.dm_bomon.ToList().OrderBy(n => n.mabomon), "mabomon", "tenbomon");
-
-            Guid id = System.Guid.NewGuid();
-            //  var model = db1.dm_tieuchi;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                string txtMaNSD = f["txtNew_ma_nsd"].ToString();
+                string txtTenNSD = f["txtNew_ten_nsd"].ToString();
+                string txtMatKhau = f["txtNew_matkhau"].ToString();
+                string txtGhiChu = f["txtNew_ghichu"].ToString();
+                string txtMaKhoa = f["txtNew_makhoa"].ToString();
+                string txtMaBM = f["txtNew_mabomon"].ToString();
+                string txtMaNhom = f["txtNew_manhom"].ToString();
+
+                ViewBag.DMKhoa1 = new SelectList(db1.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+                ViewBag.DMBoMon1 = new SelectList(db1.dm_bomon.ToList().OrderBy(n => n.mabomon), "mabomon", "tenbomon");
+
+                Guid id = System.Guid.NewGuid();
+                if (ModelState.IsValid)
                 {
-                    db1.sp_ThemMoiQLNguoiDung(id, txtMaNSD, txtTenNSD, txtMatKhau, txtMaKhoa, txtMaBM, txtMaNhom, txtGhiChu, "Linh", DateTime.Now);
-                    //model.Add(item);
-                    db1.SaveChanges();
+                    try
+                    {
+                        db1.sp_ThemMoiQLNguoiDung(id, txtMaNSD, txtTenNSD, txtMatKhau, txtMaKhoa, txtMaBM, txtMaNhom, txtGhiChu, Session["TenNguoiDung"].ToString(), DateTime.Now);
+                        // db1.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "QuanLyNguoiDung");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "QuanLyNguoiDung");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult SaveEditDocument(FormCollection f)
         {
-            Guid txtId = new Guid(f["txtHiddenId"].ToString());
-            string txtMaNSD = f["txt_ma_nsd"].ToString();
-            string txtTenNSD = f["txt_ten_nsd"].ToString();
-            string txtMatKhau = f["txt_matkhau"].ToString();
-            string txtGhiChu = f["txt_ghichu"].ToString();
-            string txtMaKhoa = f["txt_makhoa"].ToString();
-            string txtMaBM = f["txt_mabomon"].ToString();
-            string txtMaNhom = f["txt_manhom"].ToString();
-
-            ViewBag.DMKhoa1 = new SelectList(db1.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
-            ViewBag.DMBoMon1 = new SelectList(db1.dm_bomon.ToList().OrderBy(n => n.mabomon), "mabomon", "tenbomon");
-
-            var model = db1.ht_dm_nsd;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                Guid txtId = new Guid(f["txtHiddenId"].ToString());
+                string txtMaNSD = f["txt_ma_nsd"].ToString();
+                string txtTenNSD = f["txt_ten_nsd"].ToString();
+                string txtMatKhau = f["txt_matkhau"].ToString();
+                string txtGhiChu = f["txt_ghichu"].ToString();
+                string txtMaKhoa = f["txt_makhoa"].ToString();
+                string txtMaBM = f["txt_mabomon"].ToString();
+                string txtMaNhom = f["txt_manhom"].ToString();
+
+                ViewBag.DMKhoa1 = new SelectList(db1.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+                ViewBag.DMBoMon1 = new SelectList(db1.dm_bomon.ToList().OrderBy(n => n.mabomon), "mabomon", "tenbomon");
+
+                var model = db1.ht_dm_nsd;
+                if (ModelState.IsValid)
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
-                    if (modelItem != null)
+                    try
                     {
-                        db1.sp_CapNhatQLNguoiDung(txtId, txtMaNSD, txtTenNSD, txtMatKhau, txtMaKhoa, txtMaBM, txtMaNhom, txtGhiChu, "Linh", DateTime.Now);
-                        //UpdateModel(modelItem);
-                        db1.SaveChanges();
+                        var modelItem = model.FirstOrDefault(it => it.id == txtId);
+                        if (modelItem != null)
+                        {
+                            db1.sp_CapNhatQLNguoiDung(txtId, txtMaNSD, txtTenNSD, txtMatKhau, txtMaKhoa, txtMaBM, txtMaNhom, txtGhiChu, Session["TenNguoiDung"].ToString(), DateTime.Now);
+                            //UpdateModel(modelItem);
+                            db1.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
                     }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "QuanLyNguoiDung");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "QuanLyNguoiDung");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult Xoa(System.Guid id)
         {
-            var model = db1.ht_dm_nsd;
-            if (id != null)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db1.ht_dm_nsd;
+                if (id != null)
                 {
-                    var item = model.FirstOrDefault(it => it.id == id);
-                    if (item != null)
-                        model.Remove(item);
-                    db1.SaveChanges();
+                    try
+                    {
+                        var item = model.FirstOrDefault(it => it.id == id);
+                        if (item != null)
+                            model.Remove(item);
+                        db1.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                return RedirectToAction("Index", "QuanLyNguoiDung");
             }
-            return RedirectToAction("Index", "QuanLyNguoiDung");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         //public ActionResult SaveDocument()
         //{
@@ -257,6 +267,6 @@ namespace TieuChuanWebVer4.Controllers
         //    return View("Index");
         //}
 
- 
+
     }
 }

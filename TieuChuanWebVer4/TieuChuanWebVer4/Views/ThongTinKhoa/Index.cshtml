@@ -53,12 +53,13 @@
 <script type="text/javascript">
     ribbon.SetActiveTabIndex(0);
     function OnGridFocusedRowChanged(s, e) {
-        s.GetRowValues(s.GetFocusedRowIndex(), 'id;makhoa;tenkhoa', OnGetRowValues);
+        s.GetRowValues(s.GetFocusedRowIndex(), 'id;makhoa;tenkhoa;drivedulieu', OnGetRowValues);
     }
     function OnGetRowValues(values) {
         txtHiddenId.SetText(values[0]);
         txt_makhoa.SetText(values[1]);
         txt_tenkhoa.SetText(values[2]);
+        txt_drivedulieu.SetText(values[3]);
     }
     function fncBtnXoaClick() {
         var x = document.getElementById("txtHiddenId_I").value;
@@ -128,6 +129,18 @@
                             }).GetHtml()
                             </td>
                         </tr>
+
+                        <tr>
+                            <td class="lbl">
+                                <label>Drive dữ liệu</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txtNew_drivedulieu";
+                            }).GetHtml()
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -186,6 +199,17 @@
                                 @Html.DevExpress().TextBox(settings =>
                             {
                                 settings.Name = "txt_tenkhoa";
+                            }).GetHtml()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">
+                                <label>Drive dữ liệu</label>
+                            </td>
+                            <td class="ten">
+                                @Html.DevExpress().TextBox(settings =>
+                            {
+                                settings.Name = "txt_drivedulieu";
                             }).GetHtml()
                             </td>
                         </tr>

@@ -126,84 +126,96 @@ namespace TieuChuanWebVer4.Controllers
         //}
         public ActionResult SaveNewDocument(FormCollection f)
         {
-            string txtMaBM = f["txtNew_mabomon"].ToString();
-            string txtTenBM = f["txtNew_tenbomon"].ToString();
-            string txtMaKhoa = f["txtNew_makhoa"].ToString();
-            string txtGoogleDrive = f["txtNew_googledrive"].ToString();
-
-            ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
-
-            Guid id = System.Guid.NewGuid();
-            var model = db.dm_bomon;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                string txtMaBM = f["txtNew_mabomon"].ToString();
+                string txtTenBM = f["txtNew_tenbomon"].ToString();
+                string txtMaKhoa = f["txtNew_makhoa"].ToString();
+                string txtGoogleDrive = f["txtNew_googledrive"].ToString();
+
+                ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+
+                Guid id = System.Guid.NewGuid();
+                var model = db.dm_bomon;
+                if (ModelState.IsValid)
                 {
-                    db.sp_ThemMoiThongTinBM(id, txtMaBM, txtTenBM, txtMaKhoa, txtGoogleDrive);
-                    //model.Add(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.sp_ThemMoiThongTinBM(id, txtMaBM, txtTenBM, txtMaKhoa, txtGoogleDrive);
+                        //model.Add(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "ThongTinBoMon");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "ThongTinBoMon");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult SaveEditDocument(FormCollection f)
         {
-            Guid txtId = new Guid(f["txtHiddenId"].ToString());
-            string txtMaBM = f["txt_mabomon"].ToString();
-            string txtTenBM = f["txt_tenbomon"].ToString();
-            string txtMaKhoa = f["txt_makhoa"].ToString();
-            string txtGoogleDrive = f["txt_googledrive"].ToString();
-
-            ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
-
-            var model = db.dm_bomon;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                Guid txtId = new Guid(f["txtHiddenId"].ToString());
+                string txtMaBM = f["txt_mabomon"].ToString();
+                string txtTenBM = f["txt_tenbomon"].ToString();
+                string txtMaKhoa = f["txt_makhoa"].ToString();
+                string txtGoogleDrive = f["txt_googledrive"].ToString();
+
+                ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+
+                var model = db.dm_bomon;
+                if (ModelState.IsValid)
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
-                    if (modelItem != null)
+                    try
                     {
-                        db.sp_CapNhatThongTinBM(txtId, txtMaBM, txtTenBM, txtMaKhoa, txtGoogleDrive);
-                        //UpdateModel(modelItem);
-                        db.SaveChanges();
+                        var modelItem = model.FirstOrDefault(it => it.id == txtId);
+                        if (modelItem != null)
+                        {
+                            db.sp_CapNhatThongTinBM(txtId, txtMaBM, txtTenBM, txtMaKhoa, txtGoogleDrive);
+                            //UpdateModel(modelItem);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
                     }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "ThongTinBoMon");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "ThongTinBoMon");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult Xoa(System.Guid id)
         {
-            var model = db.dm_bomon;
-            if (id != null)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_bomon;
+                if (id != null)
                 {
-                    var item = model.FirstOrDefault(it => it.id == id);
-                    if (item != null)
-                        model.Remove(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        var item = model.FirstOrDefault(it => it.id == id);
+                        if (item != null)
+                            model.Remove(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                return RedirectToAction("Index", "ThongTinBoMon");
             }
-            return RedirectToAction("Index", "ThongTinBoMon");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }

@@ -110,76 +110,90 @@ namespace TieuChuanWebVer4.Controllers
         //}
         public ActionResult SaveNewDocument(FormCollection f)
         {
-            string txtMaKhoa = f["txtNew_makhoa"].ToString();
-            string txtTenKhoa = f["txtNew_tenkhoa"].ToString();
-
-            Guid id = System.Guid.NewGuid();
-            var model = db.dm_khoa;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                string txtMaKhoa = f["txtNew_makhoa"].ToString();
+                string txtTenKhoa = f["txtNew_tenkhoa"].ToString();
+                string txtDriveDuLieu = f["txtNew_drivedulieu"].ToString();
+
+                Guid id = System.Guid.NewGuid();
+                var model = db.dm_khoa;
+                if (ModelState.IsValid)
                 {
-                    db.sp_ThemMoiThongTinKhoa(id, txtMaKhoa, txtTenKhoa);
-                    //model.Add(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.sp_ThemMoiThongTinKhoa(id, txtMaKhoa, txtTenKhoa,txtDriveDuLieu);
+                        //model.Add(item);
+                       // db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "ThongTinKhoa");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "ThongTinKhoa");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult SaveEditDocument(FormCollection f)
         {
-            Guid txtId = new Guid(f["txtHiddenId"].ToString());
-            string txtMaKhoa = f["txt_makhoa"].ToString();
-            string txtTenKhoa = f["txt_tenkhoa"].ToString();
-
-            var model = db.dm_khoa;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                Guid txtId = new Guid(f["txtHiddenId"].ToString());
+                string txtMaKhoa = f["txt_makhoa"].ToString();
+                string txtTenKhoa = f["txt_tenkhoa"].ToString();
+                string txtDriveDuLieu = f["txt_drivedulieu"].ToString();
+
+                var model = db.dm_khoa;
+                if (ModelState.IsValid)
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
-                    if (modelItem != null)
+                    try
                     {
-                        db.sp_CapNhatThongTinKhoa(txtId, txtMaKhoa, txtTenKhoa);
-                        //UpdateModel(modelItem);
-                        db.SaveChanges();
+                        var modelItem = model.FirstOrDefault(it => it.id == txtId);
+                        if (modelItem != null)
+                        {
+                            db.sp_CapNhatThongTinKhoa(txtId, txtMaKhoa, txtTenKhoa,txtDriveDuLieu);
+                            //UpdateModel(modelItem);
+                           // db.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
                     }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return RedirectToAction("Index", "ThongTinKhoa");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return RedirectToAction("Index", "ThongTinKhoa");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult Xoa(System.Guid id)
         {
-            var model = db.dm_khoa;
-            if (id != null)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_khoa;
+                if (id != null)
                 {
-                    var item = model.FirstOrDefault(it => it.id == id);
-                    if (item != null)
-                        model.Remove(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        var item = model.FirstOrDefault(it => it.id == id);
+                        if (item != null)
+                            model.Remove(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                return RedirectToAction("Index", "ThongTinKhoa");
             }
-            return RedirectToAction("Index", "ThongTinKhoa");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }

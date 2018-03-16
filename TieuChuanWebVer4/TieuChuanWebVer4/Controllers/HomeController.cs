@@ -19,9 +19,13 @@ namespace TieuChuanWebVer4.Controllers
             return View();
         }
         public ActionResult MenuPartial(string ma_nsd)
-         {
-            var model = db.ht_nsd_menu.Where(n => n.ma_nsd == ma_nsd).ToList();
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                var model = db.ht_nsd_menu.Where(n => n.ma_nsd == ma_nsd).ToList();
                 return PartialView("_MenuPartial", model);
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }

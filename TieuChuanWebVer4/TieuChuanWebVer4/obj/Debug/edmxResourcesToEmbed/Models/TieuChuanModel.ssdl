@@ -782,6 +782,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
     <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="drivedulieu" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -888,6 +889,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
     <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="drivedulieu" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />

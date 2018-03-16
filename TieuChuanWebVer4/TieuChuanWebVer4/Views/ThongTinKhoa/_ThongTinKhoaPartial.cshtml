@@ -78,6 +78,11 @@
             column.FieldName = "tenkhoa";
             column.Caption = "Tên khoa";
         });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "drivedulieu";
+            column.Caption = "Drive dữ liệu";
+        });
         settings.SettingsPager.PageSize = 10;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.FirstPageButton.Text = "Trang đầu";

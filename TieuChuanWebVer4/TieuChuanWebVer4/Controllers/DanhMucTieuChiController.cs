@@ -13,79 +13,93 @@ namespace TieuChuanWebVer4.Controllers
         QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-            return View();
+            if (Session["TaiKhoan"] != null)
+            {
+                ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+                return View();
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [ValidateInput(false)]
         public ActionResult DanhMucTieuChiPartial()
         {
-            var model = db.dm_tieuchi;
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-            return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ngaytao).ToList());
+                var model = db.dm_tieuchi;
+                ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+                return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
         public ActionResult SaveNewDocument(FormCollection f)
         {
-            string txtMaTC = f["txtNew_ma_tieuchi"].ToString();
-            string txtTenTC = f["txtNew_ten_tieuchi"].ToString();
-            string txtNoiDung = f["txtNew_noidung"].ToString();
-            string txtMaTieuChuan = f["txtNew_ma_tieuchuan"].ToString();
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-            //ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
-
-            Guid id = System.Guid.NewGuid();
-            var model = db.dm_tieuchi;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                string txtMaTC = f["txtNew_ma_tieuchi"].ToString();
+                string txtTenTC = f["txtNew_ten_tieuchi"].ToString();
+                string txtNoiDung = f["txtNew_noidung"].ToString();
+                string txtMaTieuChuan = f["txtNew_ma_tieuchuan"].ToString();
+                ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+                //ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
+
+                Guid id = System.Guid.NewGuid();
+                var model = db.dm_tieuchi;
+                if (ModelState.IsValid)
                 {
-                    db.sp_ThemMoiTieuChi(id, txtMaTC, txtTenTC, txtMaTieuChuan, "Linh", DateTime.Now, txtNoiDung);
-                    //model.Add(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.sp_ThemMoiTieuChi(id, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
+                        //model.Add(item);
+                       // db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return View("Index");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return View("Index");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult SaveEditDocument(FormCollection f)
         {
-            Guid txtId = new Guid(f["txtHiddenId"].ToString());
-            string txtMaTC = f["txt_ma_tieuchi"].ToString();
-            string txtTenTC = f["txt_ten_tieuchi"].ToString();
-            string txtNoiDung = f["txt_noidung"].ToString();
-            string txtMaTieuChuan = f["txt_ma_tieuchuan"].ToString();
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-            var model = db.dm_tieuchi;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                Guid txtId = new Guid(f["txtHiddenId"].ToString());
+                string txtMaTC = f["txt_ma_tieuchi"].ToString();
+                string txtTenTC = f["txt_ten_tieuchi"].ToString();
+                string txtNoiDung = f["txt_noidung"].ToString();
+                string txtMaTieuChuan = f["txt_ma_tieuchuan"].ToString();
+                ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+                var model = db.dm_tieuchi;
+                if (ModelState.IsValid)
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
-                    if (modelItem != null)
+                    try
                     {
-                        db.sp_CapNhatTieuChi(txtId, txtMaTC, txtTenTC, txtMaTieuChuan, "Linh", DateTime.Now, txtNoiDung);
-                        //UpdateModel(modelItem);
-                        db.SaveChanges();
+                        var modelItem = model.FirstOrDefault(it => it.id == txtId);
+                        if (modelItem != null)
+                        {
+                            db.sp_CapNhatTieuChi(txtId, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
+                            //UpdateModel(modelItem);
+                            //db.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
                     }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return View("Index");
+                //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return View("Index");
-            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         public ActionResult Xoa(System.Guid id)
         {
-            var model = db.dm_tieuchi;
+            if (Session["TaiKhoan"] != null)
+            {
+                var model = db.dm_tieuchi;
             if (id != null)
             {
                 try
@@ -101,6 +115,8 @@ namespace TieuChuanWebVer4.Controllers
                 }
             }
             return RedirectToAction("Index", "DanhMucTieuChi");
+        }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }

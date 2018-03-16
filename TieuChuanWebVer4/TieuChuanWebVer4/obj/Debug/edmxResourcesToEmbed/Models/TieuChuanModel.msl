@@ -111,6 +111,27 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DuLieuChiTiet" FunctionName="QL_TieuChuan2Model.Store.sp_DuLieuChiTiet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.sp_DuLieuChiTiet_Result">
+          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DuLieuGoc" FunctionName="QL_TieuChuan2Model.Store.sp_DuLieuGoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.sp_DuLieuGoc_Result">
+          <ScalarProperty Name="nhom" ColumnName="nhom" />
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ten_nhom" ColumnName="ten_nhom" />
+          <ScalarProperty Name="ma_nhom_cha" ColumnName="ma_nhom_cha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen1" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen1" />
+    <FunctionImportMapping FunctionImportName="sp_XoaPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_XoaPhanQuyen" />
     <EntitySetMapping Name="bang1_final">
       <EntityTypeMapping TypeName="QL_TieuChuan2Model.bang1_final">
         <MappingFragment StoreEntitySet="bang1_final">
@@ -140,6 +161,16 @@
           <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
           <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
           <ScalarProperty Name="dinhdanh" ColumnName="dinhdanh" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dm_khoa">
+      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
+        <MappingFragment StoreEntitySet="dm_khoa">
+          <ScalarProperty Name="drivedulieu" ColumnName="drivedulieu" />
+          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -301,36 +332,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_DuLieuChiTiet" FunctionName="QL_TieuChuan2Model.Store.sp_DuLieuChiTiet">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.sp_DuLieuChiTiet_Result">
-          <ScalarProperty Name="ma_tieuchi" ColumnName="ma_tieuchi" />
-          <ScalarProperty Name="noidung" ColumnName="noidung" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_DuLieuGoc" FunctionName="QL_TieuChuan2Model.Store.sp_DuLieuGoc">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.sp_DuLieuGoc_Result">
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
-          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
-          <ScalarProperty Name="ten_nhom" ColumnName="ten_nhom" />
-          <ScalarProperty Name="ma_nhom_cha" ColumnName="ma_nhom_cha" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="dm_khoa">
-      <EntityTypeMapping TypeName="QL_TieuChuan2Model.dm_khoa">
-        <MappingFragment StoreEntitySet="dm_khoa">
-          <ScalarProperty Name="drivedulieu" ColumnName="drivedulieu" />
-          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen" />
-    <FunctionImportMapping FunctionImportName="sp_CapNhatPhanQuyen1" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatPhanQuyen1" />
-    <FunctionImportMapping FunctionImportName="sp_XoaPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.sp_XoaPhanQuyen" />
   </EntityContainerMapping>
 </Mapping>

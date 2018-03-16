@@ -13,38 +13,50 @@ namespace TieuChuanWebVer4.Controllers
         [HttpGet]
         public ActionResult GetGoogleDriveFiles()
         {
-            return View(GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString()));
+            if (Session["TaiKhoan"] != null)
+            {
+                return View(GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString()));
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [HttpGet]
         public ActionResult GetSubGoogleDriveFiles(string folderId)
         {
-            return View(GoogleDriveFilesRepository.GetSubDriveFiles(folderId));
+            if (Session["TaiKhoan"] != null)
+            {
+                return View(GoogleDriveFilesRepository.GetSubDriveFiles(folderId));
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [HttpGet]
         public ActionResult LayDuLieu()
         {
-            db.sp_LayDuLieu();
-            List<GoogleDriveFiles> lstDataMaster = GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString());
-            foreach (var item in lstDataMaster)
+            if (Session["TaiKhoan"] != null)
             {
-                if (!item.Name.Contains("MUCLUC") && !item.Name.Contains("MUC LUC") && !item.Name.Contains("BOSUNG") && !item.Name.Contains("TAILIEUHUONGDAN") && !item.Name.Contains("PHIEUKIEMTRA"))
+                db.sp_LayDuLieu();
+                List<GoogleDriveFiles> lstDataMaster = GoogleDriveFilesRepository.GetDriveFiles(Session["Drive"].ToString());
+                foreach (var item in lstDataMaster)
                 {
-                    List<GoogleDriveFiles> lstDataDetail = GoogleDriveFilesRepository.GetSubDriveFiles(item.Id);
-                    foreach (var item1 in lstDataDetail)
+                    if (!item.Name.Contains("MUCLUC") && !item.Name.Contains("MUC LUC") && !item.Name.Contains("BOSUNG") && !item.Name.Contains("TAILIEUHUONGDAN") && !item.Name.Contains("PHIEUKIEMTRA"))
                     {
-                        Guid soid = Guid.NewGuid();
-                        db.sp_CapNhapMaster(soid, item1.Name, item.Name, "Linh", DateTime.Now);
-                        List<GoogleDriveFiles> lstDataDetailDoc = GoogleDriveFilesRepository.GetSubDriveFiles(item1.Id);
-                        foreach (var item2 in lstDataDetailDoc)
+                        List<GoogleDriveFiles> lstDataDetail = GoogleDriveFilesRepository.GetSubDriveFiles(item.Id);
+                        foreach (var item1 in lstDataDetail)
                         {
-                            Guid id = Guid.NewGuid();
-                            db.sp_CapNhapDetail(id, soid, item2.Name, item2.Id, item2.Num);
+                            Guid soid = Guid.NewGuid();
+                            db.sp_CapNhapMaster(soid, item1.Name, item.Name, Session["TenNguoiDung"].ToString(), DateTime.Now);
+                            List<GoogleDriveFiles> lstDataDetailDoc = GoogleDriveFilesRepository.GetSubDriveFiles(item1.Id);
+                            foreach (var item2 in lstDataDetailDoc)
+                            {
+                                Guid id = Guid.NewGuid();
+                                db.sp_CapNhapDetail(id, soid, item2.Name, item2.Id, item2.Num);
+                            }
                         }
                     }
+                    //db.sp_CapNhapMaster(soid,item.Name,item.);
                 }
-                //db.sp_CapNhapMaster(soid,item.Name,item.);
+                return RedirectToAction("GetGoogleDriveFiles", "QuanLyDuLieu");
             }
-            return RedirectToAction("GetGoogleDriveFiles", "QuanLyDuLieu");
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }
