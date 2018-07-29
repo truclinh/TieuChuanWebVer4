@@ -33,7 +33,7 @@ namespace TieuChuanWebVer4.Controllers
                 ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
                 ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
                 var model = db.dm_bomon;
-                return PartialView("_ThongTinBoMonPartial", model.ToList());
+                return PartialView("_ThongTinBoMonPartial", model.OrderBy(n=>n.mabomon).ToList());
             }
             return RedirectToAction("DangNhap", "TaiKhoan");
         }

@@ -22,18 +22,20 @@ namespace TieuChuanWebVer4.Models
             //get Credentials from client_secret.json file 
             UserCredential credential;
 
-            using (var stream = new FileStream(@"E:\client_secret.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(@"D:\client_secret.json", FileMode.Open, FileAccess.Read))
             {
-                String FolderPath = @"E:\";
+                String FolderPath = @"D:\";
                 String FilePath = Path.Combine(FolderPath, "DriveServiceCredentials.json");
+                //  dsAuthorizationBroker.RedirectUri = ".";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     Scopes,
                     "user",
                     CancellationToken.None,
                     new FileDataStore(FilePath, true)).Result;
+
             }
-            //credential.RevokeTokenAsync(CancellationToken.None);
+            credential.RefreshTokenAsync(CancellationToken.None);
             //create Drive API service.
             DriveService service = new DriveService(new BaseClientService.Initializer()
             {
@@ -51,7 +53,7 @@ namespace TieuChuanWebVer4.Models
 
             // define parameters of request.
             FilesResource.ListRequest FileListRequest = service.Files.List();
-           // string s = "0B9hgKCBhg5FsZUlVT2swWlVIeGs";
+            // string s = "0B9hgKCBhg5FsZUlVT2swWlVIeGs";
             FileListRequest.Q = "'" + drive + "' in parents and trashed=false ";
             //listRequest.PageSize = 10;
             //listRequest.PageToken = 10;
@@ -65,7 +67,7 @@ namespace TieuChuanWebVer4.Models
             {
                 foreach (var file in files)
                 {
-                    if (!file.Name.Contains("MUCLUC") &&!file.Name.Contains("MUC LUC") && !file.Name.Contains("BOSUNG") && !file.Name.Contains("TAILIEUHUONGDAN") && !file.Name.Contains("PHIEUKIEMTRA"))
+                    if (!file.Name.Contains("MUCLUC") && !file.Name.Contains("MUC LUC") && !file.Name.Contains("BOSUNG") && !file.Name.Contains("TAILIEUHUONGDAN") && !file.Name.Contains("PHIEUKIEMTRA"))
                     {
                         number++;
                         GoogleDriveFiles File = new GoogleDriveFiles
@@ -110,22 +112,22 @@ namespace TieuChuanWebVer4.Models
                 {
                     //if (file.Parents != null)
                     //{
-                        number++;
-                        GoogleDriveFiles File = new GoogleDriveFiles
-                        {
-                            Num = number,
-                            Id = file.Id,
-                            Name = file.Name,
-                            Size = file.Size,
-                            Version = file.Version,
-                            Parents = file.Parents,
-                            ThumbnailLink = file.ThumbnailLink,
-                            WebContentLink = file.WebContentLink,
-                            WebViewLink = file.WebViewLink,
-                            CreatedTime = file.CreatedTime
-                        };
-                        FileList.Add(File);
-                   // }
+                    number++;
+                    GoogleDriveFiles File = new GoogleDriveFiles
+                    {
+                        Num = number,
+                        Id = file.Id,
+                        Name = file.Name,
+                        Size = file.Size,
+                        Version = file.Version,
+                        Parents = file.Parents,
+                        ThumbnailLink = file.ThumbnailLink,
+                        WebContentLink = file.WebContentLink,
+                        WebViewLink = file.WebViewLink,
+                        CreatedTime = file.CreatedTime
+                    };
+                    FileList.Add(File);
+                    // }
 
                 }
             }

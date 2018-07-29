@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Đổi mật khẩu";
+    //ViewBag.Title = "Đổi mật khẩu";
+    ViewBag.Title = "Change Password";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -43,28 +44,32 @@
     {
         <table>
             <tr>
-                <th colspan="2" style="text-align:center;margin-bottom:30px;color:red;font-size:large"><b>ĐỔI MẬT KHẨU</b></th>
+                <th colspan="2" style="text-align:center;margin-bottom:30px;color:red;font-size:large"><b>CHANGE PASSWORD</b></th>
             </tr>
             <tr class="trDMK">
-                <td>Tên đăng nhập:</td>
+                @*<td>Tên đăng nhập:</td>*@
+                <td>Username:</td>
                 <td><input type="text" name="txtTenDangNhap" maxlength="20" value="@Session["TenDangNhap"]" disabled /></td>
             </tr>
             <tr class="trDMK">
-                <td>Mật khẩu cũ:</td>
+                @*<td>Mật khẩu cũ:</td>*@
+                <td>Old Password:</td>
                 <td><input type="password" name="txtMatKhau" maxlength="20" /></td>
             </tr>
             <tr class="trDMK">
-                <td>Mật khẩu mới:</td>
+                @*<td>Mật khẩu mới:</td>*@
+                <td>New Password:</td>
                 <td><input type="password" name="txtMatKhauMoi" maxlength="20" /><br /></td>
             </tr>
             <tr class="trDMK">
-                <td>Xác nhận mật khẩu:</td>
+                @*<td>Xác nhận mật khẩu:</td>*@
+                <td>Confirm Password:</td>
                 <td><input type="password" name="txtXacNhanMK" maxlength="20" /></td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align:center">
-                    <input type="submit" value="Đồng ý" />
-                    <input type="button" id="btnHuy" value="Hủy" />
+                    <input type="submit" value="Change" />
+                    <input type="button" id="btnHuy" value="Cancel" />
                 </td>
             </tr>
         </table>

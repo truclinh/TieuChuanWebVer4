@@ -4,15 +4,17 @@
     ViewBag.Title = "Phân quyền người dùng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div  style="margin-left:50%;margin-top:5%">
-    @Html.DropDownList("cboTK", (IEnumerable<SelectListItem>)ViewBag.TK, "---Chọn TK---", new { @class = "cbo" })
+<div  style="margin-left:50%;margin-top:5%;font-size:15px;">
+    @Html.DropDownList("cboTK", (IEnumerable<SelectListItem>)ViewBag.TK, "---Chọn tài khoản---", new { @class = "cbo" })
     @*@Html.DropDownList("cboPQ", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn DMPQ---", new { @class = "cbo" })
     @Html.DropDownList("cboPQND", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn PQ---", new { @class = "cbo" })*@
-    <br /><input type="checkbox" name="chkAll" id="chkAll" />
-    <label for="chkAll">Tất cả</label>
+    <br /><b>
+    <input type="checkbox" name="chkAll" id="chkAll" style="margin-top:10px;margin-bottom:6px" />
+    <label for="chkAll" style="color:red;">Tất cả</label>
+</b>
     @using (Html.BeginForm("CapNhatPhanQuyen", "PhanQuyen", FormMethod.Post))
     {
-        <div id="divTest">
+        <div id="divTest" style="margin:10px">
             @foreach (var item in @ViewBag.Check)
             {
                 <input type="checkbox" id="chk@(item.ma_menu)" name="@item.ma_menu" value="@item.ma_menu" />
@@ -21,11 +23,14 @@
         </div>
         @Html.Hidden("mansd")
             <input type="submit" value="Lưu">
-        <input type="button" value="Bỏ lưu">
+        <input type="button" onclick="boLuu();" value="Bỏ lưu">
     }
 </div>
 <script>
     ribbon.SetActiveTabIndex(0);
+    function boLuu() {
+        $('input:checkbox').prop('checked', false);
+    }
     $(document).ready(function () {
         $('#chkAll').click(function () {
             $('input:checkbox').prop('checked', this.checked);

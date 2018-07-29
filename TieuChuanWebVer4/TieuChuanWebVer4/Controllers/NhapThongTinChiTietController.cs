@@ -1,6 +1,7 @@
 ﻿using DevExpress.Web.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -155,8 +156,16 @@ namespace TieuChuanWebVer4.Controllers
                 {
                     try
                     {
-                        db.sp_ThemMoiND(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
-                        Thread.Sleep(10000);
+                        item.id = id;
+                        item.ma_tieuchi = txtMaTC;
+                        item.ten_tieuchi = txtTenTC;
+                        item.nguoitao = Session["TenNguoiDung"].ToString();
+                        item.ngaytao = DateTime.Now;
+                        item.noidung = richEditString;
+                        db.hs_noidung.Add(item);
+                        db.SaveChanges();
+                        //db.sp_ThemMoiND(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
+                        //Thread.Sleep(10000);
                     }
                     catch (Exception e)
                     {
@@ -187,8 +196,19 @@ namespace TieuChuanWebVer4.Controllers
                         var modelItem = model.FirstOrDefault(it => it.id == id);
                         if (modelItem != null)
                         {
-                            db.sp_CapNhatND(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
-                            Thread.Sleep(10000);
+                            //db.sp_CapNhatND(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
+                            // Thread.Sleep(10000);
+                            modelItem.id = id;
+                            modelItem.ma_tieuchi = txtMaTC;
+                            modelItem.ten_tieuchi = txtTenTC;
+                            modelItem.nguoisua = Session["TenNguoiDung"].ToString();
+                            modelItem.ngaysua = DateTime.Now;
+                            modelItem.noidung = richEditString;
+                            db.Entry(modelItem).State = EntityState.Modified;
+                            db.SaveChanges();
+                            // db.hs_noidung.Add(modelItem);
+
+
                         }
                     }
                     catch (Exception e)
@@ -206,7 +226,7 @@ namespace TieuChuanWebVer4.Controllers
 
         public ActionResult NoiDungThemMoiPartial()
         {
-            if (Session["id"] != null)
+            if (Session["TaiKhoan"] != null)
             {
                 var model = db.hs_noidung;
                 //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
@@ -221,7 +241,7 @@ namespace TieuChuanWebVer4.Controllers
         }
         public ActionResult NoiDungThemMoi1Partial(System.Guid? id)
         {
-            if (Session["id"] != null)
+            if (Session["TaiKhoan"] != null)
             {
                 var model = db.hs_noidung;
                 //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
@@ -237,7 +257,7 @@ namespace TieuChuanWebVer4.Controllers
 
         public ActionResult NoiDungPartial(System.Guid? id)
         {
-            if (Session["id"] != null)
+            if (Session["TaiKhoan"] != null)
             {
                 var model = db.hs_noidung;
                 //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
@@ -253,7 +273,7 @@ namespace TieuChuanWebVer4.Controllers
         //-------------------------------------- 
         public ActionResult Dialog(string dinhdanh, string ma_tieuchi)
         {
-            if (Session["id"] != null)
+            if (Session["TaiKhoan"] != null)
             {
                 var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
                 ViewBag.DinhDanh = dinhdanh.ToString();
@@ -263,7 +283,7 @@ namespace TieuChuanWebVer4.Controllers
         }
         public ActionResult DanhSachTaiLieuPartial(string dinhdanh, string ma_tieuchi)
         {
-            if (Session["id"] != null)
+            if (Session["TaiKhoan"] != null)
             {
                 var da = db.sp_DanhSachTaiLieu(dinhdanh, ma_tieuchi).ToList();
                 return PartialView("DanhSachTaiLieuPartial", da);

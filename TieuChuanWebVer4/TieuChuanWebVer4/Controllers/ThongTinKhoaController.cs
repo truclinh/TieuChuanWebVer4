@@ -26,7 +26,7 @@ namespace TieuChuanWebVer4.Controllers
             if (Session["TaiKhoan"] != null)
             {
                 var model = db.dm_khoa;
-                return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
+                return PartialView("_ThongTinKhoaPartial", model.OrderBy(n => n.makhoa).ToList());
             }
             return RedirectToAction("DangNhap", "TaiKhoan");
         }

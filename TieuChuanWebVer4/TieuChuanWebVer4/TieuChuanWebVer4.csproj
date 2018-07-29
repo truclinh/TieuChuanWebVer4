@@ -214,6 +214,10 @@
     <Content Include="Models\TieuChuanModel.edmx.diagram">
       <DependentUpon>TieuChuanModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\publish2.pubxml" />
+    <None Include="Properties\PublishProfiles\publish3.pubxml" />
+    <None Include="Properties\PublishProfiles\publish4.pubxml" />
+    <None Include="Properties\PublishProfiles\publish_1.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Web.config" />

@@ -1,7 +1,8 @@
 ﻿@using TieuChuanWebVer4.Models;
 @model IEnumerable<ht_dm_nsd>
 @{
-    ViewBag.Title = "Quản lý người dùng";
+    //ViewBag.Title = "Quản lý người dùng";
+    ViewBag.Title = "User Management";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -36,7 +37,7 @@
     }
 
     div#khung {
-        margin-top: 1%;
+        margin-top: 5%;
     }
 
     .space {
@@ -71,11 +72,11 @@
     }
     function fncBtnXoaClick() {
         var x = document.getElementById("txtHiddenId_I").value;
-        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        var result = confirm("Are you sure you want to delete?");
         if (result) {
             var url = '@Url.Action("Xoa", "QuanLyNguoiDung")' + '?id=' + x;
             window.location.href = url;
-            alert("Đã xóa thành công");
+            alert("Deleted Successfully!!");
         }
         else {
             return false;
@@ -141,11 +142,11 @@
 
     <div style="width:100%;text-align:center;margin-top:2%">
         @*--------------------------------------Button Thêm*@
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalThem" name="btnThêm">Thêm</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalThem" name="btnThêm">Add</button>
         @*--------------------------------------Button Sửa*@
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSua" name="btnSua">Sửa</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSua" name="btnSua">Edit</button>
         @*--------------------------------------Button Xóa*@
-        <button type="button" class="btn btn-default" name="btnXoa" onclick="fncBtnXoaClick()">Xóa</button>
+        <button type="button" class="btn btn-default" name="btnXoa" onclick="fncBtnXoaClick()">Delete</button>
     </div>
 </div>
 
@@ -159,13 +160,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">THÊM NGƯỜI DÙNG</h4>
+                    <h4 class="modal-title">ADD USER</h4>
                 </div>
                 <div class="modal-body">
                     <table class="tableEdit">
                         <tr>
                             <td class="lbl">
-                                <label>Mã NSD</label>
+                                @*<label>Mã NSD</label>*@
+                                <label>User Code</label>
                             </td>
 
                             <td class="ten">
@@ -176,7 +178,8 @@
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Tên NSD</label>
+                                @*<label>Tên NSD</label>*@
+                                <label>Full Name</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -190,7 +193,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Mật khẩu</label>
+                                @*<label>Mật khẩu</label>*@
+                                <label>Password</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -201,7 +205,8 @@
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Ghi chú</label>
+                                @*<label>Ghi chú</label>*@
+                                <label>Note</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -216,18 +221,20 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Khoa</label>
+                                @*<label>Khoa</label>*@
+                                <label>Department</label>
                             </td>
                             <td class="ten">
                                 @*@Html.DevExpress().TextBox(settings =>
                                     {
                                         settings.Name = "txtNew_makhoa";
                                     }).GetHtml()*@
-                                @Html.DropDownList("txtNew_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Chọn khoa---", new { @class = "cbo" })
+                                @Html.DropDownList("txtNew_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Choose Department---", new { @class = "cbo" })
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Bộ môn</label>
+                                @*<label>Bộ môn</label>*@
+                                <label>Subject</label>
                             </td>
                             <td class="ten">
                                 @*@Html.DevExpress().TextBox(settings =>
@@ -235,7 +242,7 @@
                                         settings.Name = "txtNew_mabomon";
                                     }).GetHtml()*@
                                 @*@Html.DropDownList("txtNew_mabomon", (IEnumerable<SelectListItem>)ViewBag.DMBoMon1, "---Chọn bộ môn---", new { @class = "cbo" })*@
-                                @Html.DropDownList("txtNew_mabomon", new SelectList(string.Empty, "mabomon", "tenbomon"), "---Chọn Bộ môn---", new { @class = "cbo" })
+                                @Html.DropDownList("txtNew_mabomon", new SelectList(string.Empty, "mabomon", "tenbomon"), "---Choose Subject---", new { @class = "cbo" })
 
 
                             </td>
@@ -245,7 +252,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Mã nhóm</label>
+                                @*<label>Mã nhóm</label>*@
+                                <label>Group Code</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -258,8 +266,8 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                        <button type="submit" class="btn">Lưu</button>
-                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                        <button type="submit" class="btn">Save</button>
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </center>
                 </div>
             </div>
@@ -279,7 +287,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">SỬA NGƯỜI DÙNG</h4>
+                    @*<h4 class="modal-title">SỬA NGƯỜI DÙNG</h4>*@
+                    <h4 class="modal-title">EDIT USER</h4>
                     @Html.DevExpress().TextBox(settings =>
                {
                    settings.Name = "txtHiddenId";
@@ -291,7 +300,8 @@
                     <table class="tableEdit">
                         <tr>
                             <td class="lbl">
-                                <label>Mã NSD</label>
+                                @*<label>Mã NSD</label>*@
+                                <label>User Code</label>
                             </td>
 
                             <td class="ten">
@@ -302,7 +312,8 @@
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Tên NSD</label>
+                                @*<label>Tên NSD</label>*@
+                                <label>Full Name</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -316,7 +327,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Mật khẩu</label>
+                                @*<label>Mật khẩu</label>*@
+                                <label>Password</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -327,7 +339,8 @@
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Ghi chú</label>
+                                @*<label>Ghi chú</label>*@
+                                <label>Note</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -342,17 +355,18 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Khoa</label>
-                            </td>
+                                @*<label>Khoa</label>*@                            
+                                <label>Department</label></td>
                             <td class="ten">
-                                @Html.DropDownList("txt_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Chọn khoa---", new { @class = "cbo" })
+                                @Html.DropDownList("txt_makhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa1, "---Choose Department---", new { @class = "cbo" })
                             </td>
                             <td class="space">&nbsp;</td>
                             <td class="lbl">
-                                <label>Bộ môn</label>
+                                @*<label>Bộ môn</label>*@
+                                <label>Subject</label>
                             </td>
                             <td class="ten">
-                                @Html.DropDownList("txt_mabomon", (IEnumerable<SelectListItem>)ViewBag.DMBoMon1, "---Chọn bộ môn---", new { @class = "cbo" })
+                                @Html.DropDownList("txt_mabomon", (IEnumerable<SelectListItem>)ViewBag.DMBoMon1, "---Choose Subject---", new { @class = "cbo" })
 
 
                             </td>
@@ -362,7 +376,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Mã nhóm</label>
+                                @*<label>Mã nhóm</label>*@
+                                <label>Group Code</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -376,8 +391,8 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                        <button type="submit" class="btn" id="btnLuuSua">Lưu</button>
-                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                        <button type="submit" class="btn" id="btnLuuSua">Save</button>
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </center>
                 </div>
             </div>

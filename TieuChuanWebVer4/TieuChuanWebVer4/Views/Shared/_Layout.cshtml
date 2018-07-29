@@ -53,9 +53,9 @@
     @Html.DevExpress().Panel(settings =>
 {
     settings.Name = "HeaderPanel";
-    settings.FixedPosition = PanelFixedPosition.WindowTop;
+    //settings.FixedPosition = PanelFixedPosition.WindowTop;
     //settings.FixedPosition = PanelFixedPosition.None;
-    //settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToTop;
+    settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToTop;
     settings.Collapsible = true;
     settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 900;
     settings.SetContent(() =>

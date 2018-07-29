@@ -1,6 +1,7 @@
 ﻿using DevExpress.Web.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +26,7 @@ namespace TieuChuanWebVer4.Controllers
         {
                 var model = db.dm_tieuchi;
                 ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-                return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ngaytao).ToList());
+                return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ma_tieuchi).ToList());
         }
         public ActionResult SaveNewDocument(FormCollection f)
         {
@@ -40,13 +41,22 @@ namespace TieuChuanWebVer4.Controllers
 
                 Guid id = System.Guid.NewGuid();
                 var model = db.dm_tieuchi;
+                dm_tieuchi dm = new dm_tieuchi();
                 if (ModelState.IsValid)
                 {
                     try
                     {
-                        db.sp_ThemMoiTieuChi(id, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
+                        // db.sp_ThemMoiTieuChi(id, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
+                        dm.id = id;
+                        dm.ma_tieuchi = txtMaTC;
+                        dm.ten_tieuchi = txtTenTC;
+                        dm.ma_tieuchuan = txtMaTieuChuan;
+                        dm.noidung = txtNoiDung;
+                        dm.nguoitao = Session["TenNguoiDung"].ToString();
+                        dm.ngaytao = DateTime.Now;
+                        db.dm_tieuchi.Add(dm);
                         //model.Add(item);
-                       // db.SaveChanges();
+                        db.SaveChanges();
                     }
                     catch (Exception e)
                     {
@@ -78,9 +88,18 @@ namespace TieuChuanWebVer4.Controllers
                         var modelItem = model.FirstOrDefault(it => it.id == txtId);
                         if (modelItem != null)
                         {
-                            db.sp_CapNhatTieuChi(txtId, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
+                            //db.sp_CapNhatTieuChi(txtId, txtMaTC, txtTenTC, txtMaTieuChuan, Session["TenNguoiDung"].ToString(), DateTime.Now, txtNoiDung);
                             //UpdateModel(modelItem);
                             //db.SaveChanges();
+                            modelItem.id = txtId;
+                            modelItem.ma_tieuchi = txtMaTC;
+                            modelItem.ten_tieuchi = txtTenTC;
+                            modelItem.ma_tieuchuan = txtMaTieuChuan;
+                            modelItem.noidung = txtNoiDung;
+                            modelItem.nguoisua= Session["TenNguoiDung"].ToString();
+                            modelItem.ngaysua= DateTime.Now;
+                            db.Entry(modelItem).State = EntityState.Modified;
+                            db.SaveChanges();
                         }
                     }
                     catch (Exception e)
