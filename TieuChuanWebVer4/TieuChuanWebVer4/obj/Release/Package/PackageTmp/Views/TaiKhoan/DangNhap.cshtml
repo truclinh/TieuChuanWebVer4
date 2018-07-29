@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Đăng nhập";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
 }
 
@@ -110,14 +110,14 @@
     {
         <div class="back" style="width:100%;height:30px; border:none;">
             <span>
-                <img id="imgIcon" src="~/Content/Images/VTAccounting/Vector-Arts.ico" />Đăng nhập
+                <img id="imgIcon" src="~/Content/Images/VTAccounting/Vector-Arts.ico" />Login
             </span>
         </div>
         <div id="divThongTin">
             <table style="margin:0px auto;margin-top:5%">
                 <tr>
                     <td class="tdempty"></td>
-                    <td class="tdtrai">Tài khoản: </td>
+                    <td class="tdtrai">Username: </td>
                     <td class="tdphai">
                         <input type="text" name="txtTenDangNhap" id="txtTenDangNhap" class="txt" />
                     </td>
@@ -126,7 +126,7 @@
                 <tr>
                     <td class="tdempty"></td>
                     <td class="tdtrai">
-                        Mật khẩu:
+                        Password:
                     </td>
                     <td class="tdphai">
                         <input type="password" name="txtMatKhau" id="txtMatKhau" class="txt" />
@@ -136,29 +136,29 @@
                 <tr>
                     <td class="tdempty"></td>
                     <td class="tdtrai">
-                        Khoa:
+                        Department:
                     </td>
                     <td class="tdphai">
-                        @Html.DropDownList("cboKhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa, "---Chọn Khoa---", new { @class = "cbo" })
+                        @Html.DropDownList("cboKhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa, "---Choose Department---", new { @class = "cbo" })
                     </td>
                     <td class="tdempty"></td>
                 </tr>
                 <tr>
                     <td class="tdempty"></td>
                     <td class="tdtrai">
-                        Bộ môn:
+                        Subject:
                     </td>
                     <td class="tdphai">
                         @*@Html.DropDownList("cboBoMon", (IEnumerable<SelectListItem>)ViewBag.DMBoMon,"---Chọn Bộ môn---", new {@class = "cbo" })*@
-                        @Html.DropDownList("cboBoMon", new SelectList(string.Empty, "mabomon", "tenbomon"), "---Chọn Bộ môn---", new { @class = "cbo" })
+                        @Html.DropDownList("cboBoMon", new SelectList(string.Empty, "mabomon", "tenbomon"), "---Choose Subject---", new { @class = "cbo" })
                     </td>
                     <td class="tdempty"></td>
                 </tr>
             </table>
         </div>
         <div id="divBtn" class="back">
-            <input type="submit" id="btnSubmit" value="Tiếp tục" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/exec.png')" />
-            <input type="button" value="Thoát" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/ExitProgram.png')" />
+            <input type="submit" id="btnSubmit" value="Continue" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/exec.png')" />
+            <input type="button" value="Exit" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/ExitProgram.png')" />
         </div>
         @Html.ValidationSummary(true)
         <p id="lblThongBao"></p>
