@@ -1,0 +1,181 @@
+﻿
+@Html.DevExpress().Ribbon(settings =>
+{
+    settings.Name = "ribbon";
+    settings.ShowFileTab = false;
+    settings.AllowMinimize = true;
+    // settings.Theme = ;
+    //settings.ClientSideEvents.ActiveTabChanged=
+    //-------------------------------------- tab HỆ THỐNG
+    var tabHeThong = settings.Tabs.Add("HỆ THỐNG");
+    //Đăng nhập
+    var tasksGroupDangNhap = tabHeThong.Groups.Add("Đăng nhập");
+    tasksGroupDangNhap.Name = "DangNhap";
+    tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Đổi mật khẩu";
+        i.Name = "DoiMatKhau";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/change key.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("DoiMatKhau", "TaiKhoan");
+    });
+    tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Đăng nhập lại";
+        i.Name = "DangNhapLai";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/login2.png");
+        //((RibbonButtonItem)i).NavigateUrl = Url.Action("DangNhap", "TaiKhoan");
+    });
+    //Quản lý
+    var tasksGroupQuanLy = tabHeThong.Groups.Add("Quản lý");
+    tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Quản lý người dùng";
+        i.Name = "QuanLyNguoiDung";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/user2.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "QuanLyNguoiDung");
+    });
+    tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Thông tin khoa";
+        i.Name = "ThongTinKhoa";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/khoa.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "ThongTinKhoa");
+    });
+    tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Thông tin bộ môn";
+        i.Name = "ThongTinBoMon";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/bomon.ico");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "ThongTinBoMon");
+    });
+    var tasksGroupPhanQuyen = tabHeThong.Groups.Add("Phân quyền");
+    tasksGroupPhanQuyen.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Phân quyền người sử dụng";
+        i.Name = "PhanQuyenNguoiSuDung";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/user.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "PhanQuyen");
+    });
+
+    //-------------------------------------- tab TIÊU CHUẨN
+    var tabTieuChuan = settings.Tabs.Add("TIÊU CHUẨN");
+    //Đăng nhập
+    var tasksGroupDanhMuc = tabTieuChuan.Groups.Add("Quản lý tiêu chuẩn");
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Danh mục tiêu chuẩn";
+        i.Name = "DanhMucTieuChuan";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhMucTieuChuan");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Danh mục tiêu chí";
+        i.Name = "DanhMucTieuChi";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhMucTieuChi");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Quản lý dữ liệu";
+        i.Name = "QuanLyDuLieu";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/Works-in-progress-icon.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("GetGoogleDriveFiles", "QuanLyDuLieu");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Nhập thông tin chi tiết";
+        i.Name = "NhapThongTinChiTiet";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/nhaplieu.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "NhapThongTinChiTiet");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Xem chi tiết tiêu chuẩn";
+        i.Name = "XemChiTietTieuChuan";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "XemChiTietTieuChuan");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Danh sách mục lục";
+        i.Name = "DanhSachMucLuc";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhSachMucLuc");
+    });
+    tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "MC bổ sung lần 1";
+        i.Name = "DanhSachBoSung";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "MCBoSungLan1");
+    });
+    //-------------------------------------- tab TRỢ GIÚP
+    var tabTroGiup = settings.Tabs.Add("TRỢ GIÚP");
+    //Đăng nhập
+    var tasksGroupTroGiup = tabTroGiup.Groups.Add("Hướng dẫn");
+    tasksGroupTroGiup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "Hướng dẫn sử dụng";
+        i.Name = "HuongDanSuDung";
+        i.ClientEnabled = false;
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/help.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "HuongDanSuDung");
+    });
+}).GetHtml()   
+ @Html.Action("MenuPartial", "Home", new { @ma_nsd = @Session["TenDangNhap"].ToString() })
+<script>
+    
+    $(document).ready(function () {
+        $("#ribbon_T0G0I1").click(function () {
+            var save = window.confirm('Bạn có chắc chắn muốn Đăng nhâp lại?')
+            if (save == true) {
+                window.location.href ="@Url.Action("DangXuat", "TaiKhoan")";
+            }
+            else {
+                return false;
+            }
+        });
+    });
+</script>

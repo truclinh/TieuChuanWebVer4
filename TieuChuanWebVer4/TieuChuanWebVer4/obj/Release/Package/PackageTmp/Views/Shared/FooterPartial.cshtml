@@ -1,0 +1,37 @@
+﻿<footer>
+    <div style="background-color:white">
+        <div class="copyright" style="float:left;">
+            @Html.DevExpress().Label(settings =>
+{
+    settings.EncodeHtml = false;
+    settings.Text = "Người dùng:";
+}).GetHtml() <b>@Session["TenNguoiDung"]</b>
+</div>
+
+<div class="copyright" style="float:right;margin-right:10px;">
+    @Html.DevExpress().Label(settings =>
+{
+    settings.EncodeHtml = false;
+    settings.Text = "Thời gian: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Millisecond + " - "
+    + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+}).GetHtml() &nbsp;&nbsp;&nbsp;
+    <span id="lblClose"><abbr title="Đóng">X</abbr></span>
+</div>
+
+</div>
+</footer>
+<style>
+    #lblClose {
+        color: red;
+        font-weight: bold;
+        right: 0;
+        cursor:pointer;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#lblClose").click(function () {
+            $("#FooterPanel").hide();
+        });
+    });
+</script>

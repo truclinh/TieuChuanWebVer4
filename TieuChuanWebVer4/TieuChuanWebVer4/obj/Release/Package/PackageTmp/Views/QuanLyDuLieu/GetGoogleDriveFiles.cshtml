@@ -1,0 +1,136 @@
+﻿@model IEnumerable<TieuChuanWebVer4.Models.GoogleDriveFiles>
+
+@{
+    ViewBag.Title = "Quản lý dữ liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style type="text/css">
+    #header {
+        width: 100%;
+        background-color: #CCCCCC;
+        text-align: center;
+    }
+
+    #layouttable {
+        border: 0px;
+        width: 100%;
+        font-family: 'Segoe UI';
+    }
+
+        #layouttable td.col1 {
+            width: 20%;
+            vertical-align: top;
+        }
+
+        #layouttable td.col2 {
+            width: 60%;
+            vertical-align: top;
+            background-color: #E8E8E8;
+        }
+
+        #layouttable td.col3 {
+            width: 20%;
+            vertical-align: top;
+        }
+
+    tr, td {
+        border-collapse: collapse;
+        border: 1px solid #808080;
+    }
+
+    table {
+        margin-top: 20px;
+        width: 550px;
+        font-size: 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    td, th {
+        padding: 10px;
+    }
+
+    td {
+        background-color: white;
+        text-align: center;
+    }
+
+        td a {
+            text-decoration: none;
+        }
+
+    #btnLayDuLieu {
+        margin-top: 20px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+<script>
+    ribbon.SetActiveTabIndex(1);
+
+    function fncBtnLayDuLieu() {
+        var result = confirm("Bạn có chắc chắn muốn lấy lại dữ liệu?");
+        if (result) {
+           var url = '@Url.Action("LayDuLieu", "QuanLyDuLieu")';
+            window.location.href = url;
+            //alert("Lấy dữ liệu thành công");
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+<center>
+    @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnLayDuLieu";
+    settings.Text = "Lấy dữ liệu";
+    settings.UseSubmitBehavior = true;
+    settings.ClientSideEvents.Click = "fncBtnLayDuLieu";
+    settings.Images.Image.Url = Url.Content("~/Content/Images/VTAccounting/exec.png");
+    settings.ImagePosition = ImagePosition.Left;
+}).GetHtml()
+    @*@Html.ActionLink("LẤY DỮ LIỆU", "LayDuLieu")*@
+
+    <table class="table" border="1">
+        <tr id="header">
+            <th>
+                STT
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Ngày tạo
+            </th>
+            <th>
+                Thao tác
+            </th>
+        </tr>
+
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr id="layouttable">
+                    <td style="text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Num)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @string.Format("{0: MM/dd/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.CreatedTime).ToString()))
+                    </td>
+                    <td style="text-align:center;font-weight:bold">
+                        <a href="@Url.Action("GetSubGoogleDriveFiles","QuanLyDuLieu", new {@folderId=item.Id })">Mở</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <td colspan="6">No files found</td>
+        }
+    </table>
+</center>

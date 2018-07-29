@@ -1,0 +1,71 @@
+﻿@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "DanhMucTieuChuan";
+        settings.CallbackRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartial"};
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        //settings.Settings.ShowPreview = true;
+        // settings.PreviewFieldName = "noidung";
+        ///settings.PreviewEncodeHtml = true;
+        // settings.SetEditFormTemplateContent
+
+
+        settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowFocusedRow = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        //settings.Columns.Add("ma_tieuchuan");
+        //settings.Columns.Add("ten_tieuchuan");
+        //settings.Columns.Add("noidung");
+        settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_tieuchuan";
+            column.Caption = "Mã tiêu chuẩn";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ten_tieuchuan";
+            column.Caption = "Tên tiêu chuẩn";
+        });
+        settings.SettingsPager.PageSize = 12;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số tiêu chuẩn: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page
+            sender.PageIndex = 0;
+        };
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

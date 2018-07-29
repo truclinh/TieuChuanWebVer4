@@ -1,0 +1,64 @@
+﻿
+@{
+    //ViewBag.Title = "Xem chi tiết tiêu chuẩn";
+    ViewBag.Title = "View Detail Standard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    ribbon.SetActiveTabIndex(1);
+    //function OnNodeClick(s, e) {
+    //    alert(e.nodeKey);
+    //    //window.location.href = "Url.Action("RichEditPartial1", "Home")" + "?ma_tieuchi=" + e.nodeKey;
+    //}
+    function OnNodeClick(s, e) {
+        s.GetNodeValues(e.nodeKey, "ma_nhom;ten_nhom;noidung", OnCallback);
+    }
+    function OnCallback(values) {
+        //RichEdit.commands.insertText.execute(values[1]);
+
+        @*var url = "@Url.Action("RichEdit1", "Home")" + "?ma_tieuchi=" + values[0];
+        window.open(url, "_blank", "left=700,width=900,height=900");*@
+
+        //$('#RichEdit').load('/Home/RichEditPartial?ma_tieuchi='+values[1]);
+        //$('#mydiv').replaceAll("Url.Action("RichEdit1", "Home")" + "?ma_tieuchi=" + values[0]);
+
+        var url = '@Url.Action("RichEditPartial", "XemChiTietTieuChuan")';
+        url += '/?ma_tieuchi=' + values[0];
+        $("#mydiv").load(url);
+    }
+</script>
+
+@Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "Left1Panel";
+    settings.FixedPosition = PanelFixedPosition.WindowLeft;
+    //settings.FixedPosition = PanelFixedPosition.WindowLeft;
+    //settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToLeft;
+    settings.Collapsible = false;
+    //settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 450;
+    settings.Width = 330;
+    settings.ScrollBars = ScrollBars.Auto;
+    settings.SetContent(() =>
+    {
+        //ViewContext.Writer.Write(@"<input id='myButton' type='button' value='Button' />");
+        Html.RenderPartial("Left1PanelPartial");
+    });
+}).GetHtml()
+@Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "Right1Panel";
+    // settings.FixedPosition = PanelFixedPosition.None;
+    //settings.FixedPosition = PanelFixedPosition.None;
+    settings.Height= Unit.Percentage(100);
+    //settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.;
+    settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.Auto;
+    settings.ScrollBars = ScrollBars.Auto;
+    settings.Collapsible = false;
+    //settings.SettingsAdaptivity.CollapseAtWindowInnerWidth =Control.Unit.Percentage(100);
+    settings.SetContent(() =>
+    {
+        //ViewContext.Writer.Write(@"<div style='width:800px;height:800px'>ry</div>");
+        Html.RenderPartial("Right1PanelPartial");
+    });
+}).GetHtml()
+

@@ -1,0 +1,8 @@
+@Html.DevExpress().RichEdit(settings => {
+    settings.Name = "RichEdit2";
+    settings.CallbackRouteValues = new { Controller = "TaiKhoan", Action = "RichEdit2Partial" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+	settings.Height = 500;
+	settings.ReadOnly = false;
+    	settings.RibbonMode = RichEditRibbonMode.Ribbon;
+}).GetHtml()

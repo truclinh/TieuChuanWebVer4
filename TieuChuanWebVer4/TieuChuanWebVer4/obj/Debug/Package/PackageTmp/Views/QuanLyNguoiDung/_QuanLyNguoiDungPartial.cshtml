@@ -1,0 +1,138 @@
+﻿@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "QuanLyNguoiDung";
+        settings.CallbackRouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        //settings.Width = Unit.Percentage(100);
+
+        //settings.Settings.ShowGroupPanel = true;
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.Styles.FocusedRow.ForeColor = System.Drawing.Color.Red;
+        settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
+
+        settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
+        settings.CommandColumn.Width = 130;
+
+        settings.KeyFieldName = "id";
+
+        settings.SettingsPager.Visible = true;
+        //settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsCommandButton.NewButton.Text = "Thêm";
+        settings.SettingsCommandButton.EditButton.Text = "Sửa";
+        settings.SettingsCommandButton.DeleteButton.Text = "Xóa";
+
+        settings.SettingsCommandButton.UpdateButton.RenderMode = DevExpress.Web.GridCommandButtonRenderMode.Button;
+        settings.SettingsCommandButton.UpdateButton.Text = "Cập nhật";
+        settings.SettingsCommandButton.CancelButton.RenderMode = DevExpress.Web.GridCommandButtonRenderMode.Button;
+        settings.SettingsCommandButton.CancelButton.Text = "Hủy bỏ";
+        settings.Styles.CommandColumn.Font.Size = System.Web.UI.WebControls.FontUnit.Large;
+        settings.Styles.CommandColumn.Spacing = System.Web.UI.WebControls.Unit.Pixel(5);
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.CommandColumn.ShowClearFilterButton = true;
+        settings.SettingsCommandButton.ClearFilterButton.Text = "Hủy";
+
+        settings.SettingsText.ConfirmDelete = "Bạn có chắc chắn muốn xóa?";
+
+        // settings.Columns.Add("ma_nsd");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_nsd";
+            column.Caption = "Mã NSD";
+        });
+        //settings.Columns.Add("ten_nsd");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ten_nsd";
+            column.Caption = "Tên NSD";
+        });
+        //settings.Columns.Add("matkhau");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "matkhau";
+            column.Caption = "Mật khẩu";
+            var tbSettings = column.PropertiesEdit as TextBoxProperties;
+            tbSettings.Password = true;
+        });
+        // settings.Columns.Add("makhoa");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "makhoa";
+            column.Caption = "Khoa";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.EnableCallbackMode = true;
+            comboBoxProperties.DataSource = ViewBag.DMKhoa;
+            comboBoxProperties.TextField = "TenKhoa";
+            comboBoxProperties.ValueField = "MaKhoa";
+            comboBoxProperties.ValueType = typeof(string);
+
+        });
+        //settings.Columns.Add("mabomon");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "mabomon";
+            column.Caption = "Bộ môn";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.EnableCallbackMode = true;
+            comboBoxProperties.DataSource = ViewBag.DMBoMon;
+            comboBoxProperties.TextField = "TenBM";
+            comboBoxProperties.ValueField = "MaBM";
+            comboBoxProperties.ValueType = typeof(string);
+        });
+        //settings.Columns.Add("ma_nhom");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_nhom";
+            column.Caption = "Mã nhóm";
+        });
+        //settings.Columns.Add("ghichu");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ghichu";
+            column.Caption = "Ghi chú";
+        });
+        settings.SettingsPager.PageSize = 12;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số người dùng: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page
+            sender.PageIndex = 0;
+            sender.FocusedRowIndex = 0;
+        };
+        // settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
+

@@ -1,0 +1,106 @@
+﻿@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "ThongTinKhoa";
+        settings.CallbackRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
+
+        settings.SettingsCommandButton.NewButton.Text = "Thêm";
+        settings.SettingsCommandButton.EditButton.Text = "Sửa";
+        settings.SettingsCommandButton.DeleteButton.Text = "Xóa";
+
+        settings.SettingsCommandButton.UpdateButton.RenderMode = DevExpress.Web.GridCommandButtonRenderMode.Button;
+        settings.SettingsCommandButton.UpdateButton.Text = "Cập nhật";
+        settings.SettingsCommandButton.CancelButton.RenderMode = DevExpress.Web.GridCommandButtonRenderMode.Button;
+        settings.SettingsCommandButton.CancelButton.Text = "Hủy bỏ";
+        settings.Styles.CommandColumn.Font.Size = System.Web.UI.WebControls.FontUnit.Large;
+        settings.Styles.CommandColumn.Spacing = System.Web.UI.WebControls.Unit.Pixel(5);
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.Styles.FocusedRow.ForeColor = System.Drawing.Color.Red;
+        settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
+
+        settings.KeyFieldName = "id";
+        settings.Width = Unit.Percentage(50);
+
+        settings.SettingsPager.Visible = true;
+        //settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.CommandColumn.ShowClearFilterButton = true;
+        settings.SettingsCommandButton.ClearFilterButton.Text = "Hủy";
+
+        settings.SettingsText.ConfirmDelete = "Bạn có chắc chắn muốn xóa?";
+
+        settings.SettingsPager.PageSize = 12;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số khoa: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page
+            sender.PageIndex = 0;
+        };
+
+        // settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        //settings.Columns.Add("makhoa");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "makhoa";
+            column.Caption = "Mã khoa";
+        });
+
+        //settings.Columns.Add("tenkhoa");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "tenkhoa";
+            column.Caption = "Tên khoa";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "drivedulieu";
+            column.Caption = "Drive dữ liệu";
+        });
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số khoa: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page
+            sender.PageIndex = 0;
+            sender.FocusedRowIndex = 0;
+        };
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

@@ -1,0 +1,47 @@
+@model TieuChuanWebVer4.Models.sp_DuLieuChiTiet_Result
+@Html.DevExpress().RichEdit(settings =>
+{
+    settings.Name = "RichEdit";
+    settings.CallbackRouteValues = new { Controller = "XemChiTietTieuChuan", Action = "RichEditPartial", ma_tieuchi = Model.ma_tieuchi };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.RibbonMode = RichEditRibbonMode.OneLineRibbon;
+    settings.Height = 640;
+    settings.ReadOnly = false;
+    // settings.RibbonMode = RichEditRibbonMode.Ribbon;
+    settings.EnableClientSideAPI = true;
+    settings.ClientSideEvents.HyperlinkClick = "HyperlinkClick";
+    //settings.WorkDirectory = Server.MapPath("~/Documents/");
+    //settings.Settings.Behavior.SaveAllowed = false;
+    //settings.Settings.Behavior.CreateNewAllowed = false;
+    //settings.Settings.Behavior.OpenAllowed = false;
+    //settings.Settings.Behavior.SaveAsAllowed = false;
+    settings.Init = (s, e) =>
+    {
+        var rich = s as MVCxRichEdit;
+        rich.CreateDefaultRibbonTabs(true);
+        // rich.RibbonTabs[0].Visible = false;
+        rich.RibbonTabs[1].Visible = false;
+        rich.RibbonTabs[2].Visible = false;
+        rich.RibbonTabs[3].Visible = false;
+        rich.RibbonTabs[4].Visible = false;
+        rich.RibbonTabs[5].Visible = false;
+        rich.Settings.Behavior.Save = DevExpress.XtraRichEdit.DocumentCapability.Hidden;
+        rich.Settings.Behavior.SaveAs = DevExpress.XtraRichEdit.DocumentCapability.Hidden;
+        rich.Settings.Behavior.Open = DevExpress.XtraRichEdit.DocumentCapability.Hidden;
+        rich.Settings.Behavior.CreateNew = DevExpress.XtraRichEdit.DocumentCapability.Hidden;
+    };
+    settings.Saving = (source, args) =>
+    {
+        //  var bytes = RichEditExtension.SaveCopy("RichEdit", DevExpress.XtraRichEdit.DocumentFormat.Rtf);
+        var bytes = RichEditExtension.SaveCopy("RichEdit", DevExpress.XtraRichEdit.DocumentFormat.Rtf);
+        args.Handled = true;
+    };
+}).Open("document" + Model.ma_tieuchi, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
+<script>
+    function HyperlinkClick(s, e) {
+        e.handled = true;
+        var url = "/NhapThongTinChiTiet/Dialog?dinhdanh=" + e.targetUri + "&ma_tieuchi=@(Model.ma_tieuchi)";
+        //window.location.href = url;
+        window.open(url, "_blank", "toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no,left=900,width=520, height=520,scrollbars=yes")
+    }
+</script>

@@ -1,0 +1,118 @@
+﻿@using TieuChuanWebVer4.Models;
+@model IEnumerable<ht_dm_menu>
+@{
+    ViewBag.Title = "Phân quyền người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div  style="margin-left:50%;margin-top:5%">
+    @Html.DropDownList("cboTK", (IEnumerable<SelectListItem>)ViewBag.TK, "---Chọn TK---", new { @class = "cbo" })
+    @*@Html.DropDownList("cboPQ", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn DMPQ---", new { @class = "cbo" })
+    @Html.DropDownList("cboPQND", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn PQ---", new { @class = "cbo" })*@
+    <br /><input type="checkbox" name="chkAll" id="chkAll" />
+    <label for="chkAll">Tất cả</label>
+    @using (Html.BeginForm("CapNhatPhanQuyen", "PhanQuyen", FormMethod.Post))
+    {
+        <div id="divTest">
+            @foreach (var item in @ViewBag.Check)
+            {
+                <input type="checkbox" id="chk@(item.ma_menu)" name="@item.ma_menu" value="@item.ma_menu" />
+            <label for="@item.ma_menu">@item.ten_menu</label><br />
+            }
+        </div>
+        @Html.Hidden("mansd")
+            <input type="submit" value="Lưu">
+        <input type="button" value="Bỏ lưu">
+    }
+</div>
+<script>
+    ribbon.SetActiveTabIndex(0);
+    $(document).ready(function () {
+        $('#chkAll').click(function () {
+            $('input:checkbox').prop('checked', this.checked);
+        });
+        if ($("#cboTK").find('option:selected').text() == "---Chọn TK---") {
+            $('input:checkbox').attr("disabled", true);
+        } else {
+            $('input:checkbox').attr("disabled", false);
+        }
+       
+        $("#cboTK").change(function () {
+            $('#chkkAll').click(function () {
+                $('input:checkbox').prop('checked', this.checked);
+            });
+            if ($("#cboTK").find('option:selected').text() == "---Chọn TK---") {
+                $('input:checkbox').attr("disabled", true);
+            } else {
+                $('input:checkbox').attr("disabled", false);
+            }
+            //$('input:checkbox').attr("disabled", false);
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            //$("#cboPQ").empty();
+            //$("#cboPQND").empty();
+            $("#mansd").val(selectedValue);
+           // $("#divTest").empty();
+            // alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getDanhMucPhanQuyen", "PhanQuyen")', // we are calling json method
+                dataType: 'json',
+                data: { ma_nsd: selectedValue },
+                success: function (data) {
+                  
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                        $.each(data, function (i, x) {
+                          //  alert(JSON.stringify(item));
+                            //$("#cboPQ").append('<option value="' + bomon.Text + '">' +
+                            //    bomon.Value + '</option>');
+                            //$("#divTest").append(' <input type="checkbox" id="' + item.Value + '"  value="' + item.Value +
+                            //    '" /><label>' + item.Text  + '</label></br>');
+
+                            //$("#divTest").append(' <input type="checkbox" name="' + item.ma_menu + '"  value="' + item.ma_menu +
+                            //'"  /><label >' + item.ten_menu + '.....' + item.ma_nhom + '</label><br/>');
+
+                            // $("#divTest").append('<p>' + item.ten_menu + '</p><br/>');
+                            if ($("#chk" + x.ma_menu).val() == x.ma_menu) {
+                                //  alert(x.ma_menu);
+                                $("#chk" + x.ma_menu).prop('checked', false);
+                            }
+                        });
+                   
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getPhanQuyenNguoiDung", "PhanQuyen")', // we are calling json method
+                        dataType: 'json',
+                        data: { ma_nsd: selectedValue },
+                        success: function (data) {
+                                // states contains the JSON formatted list
+                                // of states passed from the controller
+                                $.each(data, function (i, x) {
+                                    //alert(JSON.stringify(item));
+                                    //$("#cboPQND").append('<option value="' + bomon.Text + '">' +
+                                    //    bomon.Value + '</option>');
+    //                                $("#divTest").append(' <input type="checkbox" id="' + item.Value + '"  value="' + item.Value +
+    //'" checked /><label style="color:red">' + item.Text + '</label></br>');
+
+                               //     $("#divTest").append(' <input type="checkbox" name="' + item.ma_menu + '"  value="' + item.ma_menu +
+                               //'" checked /><label style="color:red">' + item.ten_menu + '.....' + item.ma_nhom + '</label><br/>');
+
+                                    if ($("#chk"+x.ma_menu).val() == x.ma_menu) {
+                                      //  alert(x.ma_menu);
+                                        $("#chk" + x.ma_menu).prop('checked', true);
+                                    }
+                                    //  $("#divTest").append('<p  style="color:red">' + item.ten_menu + '</p><br/>');
+                                });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+        });
+    });
+</script>

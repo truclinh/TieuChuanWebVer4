@@ -1,0 +1,64 @@
+﻿@{
+    var treeList = Html.DevExpress().TreeList(settings =>
+    {
+        settings.Name = "TreeList";
+        settings.CallbackRouteValues = new { Controller = "XemChiTietTieuChuan", Action = "TreeListPartial" };
+
+
+        settings.KeyFieldName = "ma_nhom";
+        settings.ParentFieldName = "ma_nhom_cha";
+        //settings.Columns.Add(
+        //        column => {
+        //            column.FieldName = "nhom";
+        //        }
+        //    );
+        settings.Columns.Add(
+    column =>
+    {
+        column.FieldName = "ma_nhom";
+        column.Visible = false;
+    }
+);
+        settings.Columns.Add(
+    column =>
+    {
+        column.FieldName = "ten_nhom";
+        column.Caption = "Tên nhóm";
+    }
+);
+        settings.Columns.Add(
+   column =>
+   {
+       column.FieldName = "noidung";
+       column.Caption = "Nội dung";
+       column.Visible = false;
+   }
+);
+        //        settings.Columns.Add(
+        //    column => {
+        //        column.FieldName = "ma_nhom_cha";
+        //    }
+        //);
+
+        settings.SettingsPager.Visible = true;
+        settings.SettingsCookies.StoreExpandedNodes = true;
+        settings.Settings.ShowTreeLines = true;
+        settings.Settings.GridLines = System.Web.UI.WebControls.GridLines.Horizontal;
+        //  settings.SettingsBehavior.ExpandCollapseAction = DevExpress.Web.ASPxTreeList.TreeListExpandCollapseAction.Button;
+        settings.SettingsBehavior.AllowFocusedNode = true;
+        //settings.Styles.FocusedNode.BackColor = System.Drawing.Color.FromArgb(0, 170, 198);
+        //settings.Styles.SelectionCell.BackColor = System.Drawing.Color.FromArgb(0, 170, 198);
+        //settings.Styles.SelectedNode.BackColor = System.Drawing.Color.FromArgb(0, 170, 198);
+        //settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+        settings.Width = 300;
+        //settings.Height = 1000;
+        settings.Settings.SuppressOuterGridLines = true;
+        settings.ClientSideEvents.NodeClick = "OnNodeClick";
+        settings.PreRender = (sender, e) =>
+        {
+            //if (Session["TreeListState"] == null)
+            ((MVCxTreeList)sender).ExpandToLevel(2);
+        };
+    });
+}
+@treeList.Bind(Model).GetHtml()

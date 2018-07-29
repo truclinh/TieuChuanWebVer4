@@ -1,0 +1,86 @@
+﻿@model TieuChuanWebVer4.Models.dm_tieuchuan
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Views/Shared/_LayoutWord.cshtml";
+}
+@Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@using (Html.BeginForm("SaveEditDocument", "DanhMucTieuChuan"))
+{
+    @Html.Hidden("id", Model.id)
+        @Html.Action("NoiDungPartial")
+    <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:2% ;">
+        <div style="width:40%;float:left;">
+            <div style="width:30%;float:left">
+                @Html.DevExpress().Label(settings =>
+   {
+       settings.Text = "Mã tiêu chuẩn";
+   }).GetHtml()
+            </div>
+            <div style="width:70%;float:left;">
+                @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ma_tieuchuan";
+    settings.Text = Model.ma_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+            </div>
+
+        </div>
+        <div style="width:40%;float:left;">
+            <div style="width:30%;float:left;">
+                @Html.DevExpress().Label(settings =>
+           {
+               settings.Text = "Tên tiêu chuẩn";
+           }).GetHtml()
+            </div>
+            <div style="width:70%;float:left;">
+                @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ten_tieuchuan";
+    settings.Text = Model.ten_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+            </div>
+        </div>
+        <div style="width:20%;float:left;">
+            @Html.DevExpress().Button(settings =>
+   {
+       settings.Name = "btnLuu";
+       settings.Text = "Lưu";
+       settings.UseSubmitBehavior = true;
+       // settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+       settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+       settings.ImagePosition = ImagePosition.Left;
+   }).GetHtml()
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnBoLuu";
+           settings.Text = "Bỏ lưu";
+           // settings.ClientSideEvents.Click = "fncBtnBoLuuClick";
+           //settings.UseSubmitBehavior = true;
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnBoLuu').click(function () {
+            var url = '@Url.Action("Index", "DanhMucTieuChuan")';
+            window.location.href = url;
+        });
+    });
+</script>
+<style>
+    #frmTieuChuan {
+        margin-top: 8px;
+    }
+</style>

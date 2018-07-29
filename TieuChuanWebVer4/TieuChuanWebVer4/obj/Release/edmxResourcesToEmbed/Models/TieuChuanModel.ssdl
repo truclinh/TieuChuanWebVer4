@@ -1,0 +1,994 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_TieuChuan2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.bang1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="bang1">
+          <Property Name="A" Type="nvarchar" MaxLength="255" />
+          <Property Name="B" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="bang1_final">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="A" Type="nvarchar" MaxLength="255" />
+    <Property Name="B" Type="nvarchar" MaxLength="255" />
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.bang2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="bang2">
+          <Property Name="F1" Type="datetime" />
+          <Property Name="F2" Type="nvarchar(max)" />
+          <Property Name="F3" Type="float" />
+          <Property Name="F4" Type="nvarchar(max)" />
+          <Property Name="F5" Type="nvarchar(max)" />
+          <Property Name="F6" Type="nvarchar(max)" />
+          <Property Name="F7" Type="nvarchar(max)" />
+          <Property Name="F8" Type="nvarchar(max)" />
+          <Property Name="F9" Type="float" />
+          <Property Name="F10" Type="nvarchar(max)" />
+          <Property Name="F11" Type="nvarchar(max)" />
+          <Property Name="F12" Type="nvarchar(max)" />
+          <Property Name="F13" Type="nvarchar(max)" />
+          <Property Name="F14" Type="nvarchar(max)" />
+          <Property Name="F15" Type="nvarchar(max)" />
+          <Property Name="F16" Type="nvarchar(max)" />
+          <Property Name="F17" Type="nvarchar(max)" />
+          <Property Name="F18" Type="float" />
+          <Property Name="F19" Type="nvarchar(max)" />
+          <Property Name="F20" Type="nvarchar(max)" />
+          <Property Name="F21" Type="nvarchar(max)" />
+          <Property Name="F22" Type="nvarchar(max)" />
+          <Property Name="F23" Type="nvarchar(max)" />
+          <Property Name="F24" Type="nvarchar(max)" />
+          <Property Name="F25" Type="nvarchar(max)" />
+          <Property Name="F26" Type="nvarchar(max)" />
+          <Property Name="F27" Type="nvarchar(max)" />
+          <Property Name="F28" Type="nvarchar(max)" />
+          <Property Name="F29" Type="nvarchar(max)" />
+          <Property Name="F30" Type="nvarchar(max)" />
+          <Property Name="F31" Type="nvarchar(max)" />
+          <Property Name="F32" Type="nvarchar(max)" />
+          <Property Name="F33" Type="nvarchar(max)" />
+          <Property Name="F34" Type="nvarchar(max)" />
+          <Property Name="F35" Type="nvarchar(max)" />
+          <Property Name="F36" Type="nvarchar(max)" />
+          <Property Name="F37" Type="nvarchar(max)" />
+          <Property Name="F38" Type="nvarchar(max)" />
+          <Property Name="F39" Type="nvarchar(max)" />
+          <Property Name="F40" Type="nvarchar(max)" />
+          <Property Name="F41" Type="nvarchar(max)" />
+          <Property Name="F42" Type="nvarchar(max)" />
+          <Property Name="F43" Type="nvarchar(max)" />
+          <Property Name="F44" Type="nvarchar(max)" />
+          <Property Name="F45" Type="nvarchar(max)" />
+          <Property Name="F46" Type="nvarchar(max)" />
+          <Property Name="F47" Type="nvarchar(max)" />
+          <Property Name="F48" Type="nvarchar(max)" />
+          <Property Name="F49" Type="nvarchar(max)" />
+          <Property Name="F50" Type="nvarchar(max)" />
+          <Property Name="F51" Type="nvarchar(max)" />
+          <Property Name="F52" Type="nvarchar(max)" />
+          <Property Name="F53" Type="nvarchar(max)" />
+          <Property Name="F54" Type="nvarchar(max)" />
+          <Property Name="F55" Type="nvarchar(max)" />
+          <Property Name="F56" Type="nvarchar(max)" />
+          <Property Name="F57" Type="nvarchar(max)" />
+          <Property Name="F58" Type="nvarchar(max)" />
+          <Property Name="F59" Type="nvarchar(max)" />
+          <Property Name="F60" Type="nvarchar(max)" />
+          <Property Name="F61" Type="nvarchar(max)" />
+          <Property Name="F62" Type="nvarchar(max)" />
+          <Property Name="F63" Type="nvarchar(max)" />
+          <Property Name="F64" Type="nvarchar(max)" />
+          <Property Name="F65" Type="nvarchar(max)" />
+          <Property Name="F66" Type="nvarchar(max)" />
+          <Property Name="F67" Type="nvarchar(max)" />
+          <Property Name="F68" Type="nvarchar(max)" />
+          <Property Name="F69" Type="nvarchar(max)" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.data' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="data">
+          <Property Name="f0_" Type="float" />
+          <Property Name="t1_time" Type="float" />
+          <Property Name="t1_machine" Type="float" />
+          <Property Name="t1_time_left" Type="float" />
+          <Property Name="t1_up_time" Type="float" />
+          <Property Name="t1_w1_evicted" Type="float" />
+          <Property Name="t1_w1_failed" Type="float" />
+          <Property Name="t1_w1_finished" Type="float" />
+          <Property Name="t1_w1_killed" Type="float" />
+          <Property Name="t1_w1_lost" Type="float" />
+          <Property Name="t1_w1_running" Type="float" />
+          <Property Name="t1_w1_started" Type="float" />
+          <Property Name="t1_w1_cpu" Type="float" />
+          <Property Name="t1_w1_mem" Type="float" />
+          <Property Name="t1_w1_disk" Type="float" />
+          <Property Name="t1_w1_cpi" Type="float" />
+          <Property Name="t1_w1_mai" Type="float" />
+          <Property Name="t1_w2_evicted" Type="float" />
+          <Property Name="t1_w2_failed" Type="float" />
+          <Property Name="t1_w2_finished" Type="float" />
+          <Property Name="t1_w2_killed" Type="float" />
+          <Property Name="t1_w2_lost" Type="float" />
+          <Property Name="t1_w2_running" Type="float" />
+          <Property Name="t1_w2_started" Type="float" />
+          <Property Name="t1_w2_cpu" Type="float" />
+          <Property Name="t1_w2_mem" Type="float" />
+          <Property Name="t1_w2_disk" Type="float" />
+          <Property Name="t1_w2_cpi" Type="float" />
+          <Property Name="t1_w2_mai" Type="float" />
+          <Property Name="t1_w3_evicted" Type="float" />
+          <Property Name="t1_w3_failed" Type="float" />
+          <Property Name="t1_w3_finished" Type="float" />
+          <Property Name="t1_w3_killed" Type="float" />
+          <Property Name="t1_w3_lost" Type="float" />
+          <Property Name="t1_w3_running" Type="float" />
+          <Property Name="t1_w3_started" Type="float" />
+          <Property Name="t1_w3_cpu" Type="float" />
+          <Property Name="t1_w3_mem" Type="float" />
+          <Property Name="t1_w3_disk" Type="float" />
+          <Property Name="t1_w3_cpi" Type="float" />
+          <Property Name="t1_w3_mai" Type="float" />
+          <Property Name="t1_w4_evicted" Type="float" />
+          <Property Name="t1_w4_failed" Type="float" />
+          <Property Name="t1_w4_finished" Type="float" />
+          <Property Name="t1_w4_killed" Type="float" />
+          <Property Name="t1_w4_lost" Type="float" />
+          <Property Name="t1_w4_running" Type="float" />
+          <Property Name="t1_w4_started" Type="float" />
+          <Property Name="t1_w4_cpu" Type="float" />
+          <Property Name="t1_w4_mem" Type="float" />
+          <Property Name="t1_w4_disk" Type="float" />
+          <Property Name="t1_w4_cpi" Type="float" />
+          <Property Name="t1_w4_mai" Type="float" />
+          <Property Name="t1_w5_evicted" Type="float" />
+          <Property Name="t1_w5_failed" Type="float" />
+          <Property Name="t1_w5_finished" Type="float" />
+          <Property Name="t1_w5_killed" Type="float" />
+          <Property Name="t1_w5_lost" Type="float" />
+          <Property Name="t1_w5_running" Type="float" />
+          <Property Name="t1_w5_started" Type="float" />
+          <Property Name="t1_w5_cpu" Type="float" />
+          <Property Name="t1_w5_mem" Type="float" />
+          <Property Name="t1_w5_disk" Type="float" />
+          <Property Name="t1_w5_cpi" Type="float" />
+          <Property Name="t1_w5_mai" Type="float" />
+          <Property Name="t1_w6_evicted" Type="float" />
+          <Property Name="t1_w6_failed" Type="float" />
+          <Property Name="t1_w6_finished" Type="float" />
+          <Property Name="t1_w6_killed" Type="float" />
+          <Property Name="t1_w6_lost" Type="float" />
+          <Property Name="t1_w6_running" Type="float" />
+          <Property Name="t1_w6_started" Type="float" />
+          <Property Name="t1_w6_cpu" Type="float" />
+          <Property Name="t1_w6_mem" Type="float" />
+          <Property Name="t1_w6_disk" Type="float" />
+          <Property Name="t1_w6_cpi" Type="float" />
+          <Property Name="t1_w6_mai" Type="float" />
+          <Property Name="t1_avg1h_evicted" Type="float" />
+          <Property Name="t1_sd1h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_failed" Type="float" />
+          <Property Name="t1_sd1h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_finished" Type="float" />
+          <Property Name="t1_sd1h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_killed" Type="float" />
+          <Property Name="t1_sd1h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_lost" Type="float" />
+          <Property Name="t1_sd1h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_running" Type="float" />
+          <Property Name="t1_sd1h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_started" Type="float" />
+          <Property Name="t1_sd1h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_cpu" Type="float" />
+          <Property Name="t1_sd1h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_mem" Type="float" />
+          <Property Name="t1_sd1h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_disk" Type="float" />
+          <Property Name="t1_sd1h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_cpi" Type="float" />
+          <Property Name="t1_sd1h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg1h_mai" Type="float" />
+          <Property Name="t1_sd1h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv1h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_evicted" Type="float" />
+          <Property Name="t1_sd12h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_failed" Type="float" />
+          <Property Name="t1_sd12h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_finished" Type="float" />
+          <Property Name="t1_sd12h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_killed" Type="float" />
+          <Property Name="t1_sd12h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_lost" Type="float" />
+          <Property Name="t1_sd12h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_running" Type="float" />
+          <Property Name="t1_sd12h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_started" Type="float" />
+          <Property Name="t1_sd12h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_cpu" Type="float" />
+          <Property Name="t1_sd12h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_mem" Type="float" />
+          <Property Name="t1_sd12h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_disk" Type="float" />
+          <Property Name="t1_sd12h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_cpi" Type="float" />
+          <Property Name="t1_sd12h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg12h_mai" Type="float" />
+          <Property Name="t1_sd12h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv12h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_evicted" Type="float" />
+          <Property Name="t1_sd24h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_failed" Type="float" />
+          <Property Name="t1_sd24h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_finished" Type="float" />
+          <Property Name="t1_sd24h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_killed" Type="float" />
+          <Property Name="t1_sd24h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_lost" Type="float" />
+          <Property Name="t1_sd24h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_running" Type="float" />
+          <Property Name="t1_sd24h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_started" Type="float" />
+          <Property Name="t1_sd24h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_cpu" Type="float" />
+          <Property Name="t1_sd24h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_mem" Type="float" />
+          <Property Name="t1_sd24h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_disk" Type="float" />
+          <Property Name="t1_sd24h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_cpi" Type="float" />
+          <Property Name="t1_sd24h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg24h_mai" Type="float" />
+          <Property Name="t1_sd24h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv24h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_evicted" Type="float" />
+          <Property Name="t1_sd48h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_failed" Type="float" />
+          <Property Name="t1_sd48h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_finished" Type="float" />
+          <Property Name="t1_sd48h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_killed" Type="float" />
+          <Property Name="t1_sd48h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_lost" Type="float" />
+          <Property Name="t1_sd48h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_running" Type="float" />
+          <Property Name="t1_sd48h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_started" Type="float" />
+          <Property Name="t1_sd48h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_cpu" Type="float" />
+          <Property Name="t1_sd48h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_mem" Type="float" />
+          <Property Name="t1_sd48h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_disk" Type="float" />
+          <Property Name="t1_sd48h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_cpi" Type="float" />
+          <Property Name="t1_sd48h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg48h_mai" Type="float" />
+          <Property Name="t1_sd48h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv48h_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_evicted" Type="float" />
+          <Property Name="t1_sd72h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_evicted" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_failed" Type="float" />
+          <Property Name="t1_sd72h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_failed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_finished" Type="float" />
+          <Property Name="t1_sd72h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_finished" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_killed" Type="float" />
+          <Property Name="t1_sd72h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_killed" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_lost" Type="float" />
+          <Property Name="t1_sd72h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_lost" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_running" Type="float" />
+          <Property Name="t1_sd72h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_running" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_started" Type="float" />
+          <Property Name="t1_sd72h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_started" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_cpu" Type="float" />
+          <Property Name="t1_sd72h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_cpu" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_mem" Type="float" />
+          <Property Name="t1_sd72h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_mem" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_disk" Type="float" />
+          <Property Name="t1_sd72h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_disk" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_cpi" Type="float" />
+          <Property Name="t1_sd72h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_cv72h_cpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="t1_avg72h_mai" Type="float" />
+          <Property Name="t1_sd72h_mai" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="dm_bomon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="mabomon" Type="nvarchar" MaxLength="50" />
+    <Property Name="tenbomon" Type="nvarchar" MaxLength="200" />
+    <Property Name="makhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="googledrive" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="dm_dinhdanh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="dinhdanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="ma_tieuchi" Type="nvarchar" MaxLength="50" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+  </EntityType>
+  <EntityType Name="dm_khoa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="makhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="tenkhoa" Type="nvarchar" MaxLength="200" />
+    <Property Name="drivedulieu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="dm_tieuchi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_tieuchi" Type="nvarchar" MaxLength="512" />
+    <Property Name="ma_tieuchuan" Type="nvarchar" MaxLength="50" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="512" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+    <Property Name="noidung" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="dm_tieuchuan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_tieuchuan" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_tieuchuan" Type="nvarchar" MaxLength="256" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="512" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+    <Property Name="noidung" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.DSKHOABS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DSKHOABS">
+          <Property Name="hoten" Type="nvarchar" MaxLength="255" />
+          <Property Name="daihoc" Type="nvarchar" MaxLength="255" />
+          <Property Name="thacsi" Type="nvarchar" MaxLength="255" />
+          <Property Name="tiensi" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.'Form Responses 1$'' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="'Form Responses 1$'">
+          <Property Name="stt" Type="float" />
+          <Property Name="a" Type="datetime" />
+          <Property Name="b" Type="nvarchar" MaxLength="255" />
+          <Property Name="c" Type="float" />
+          <Property Name="d" Type="nvarchar" MaxLength="255" />
+          <Property Name="e" Type="nvarchar" MaxLength="255" />
+          <Property Name="f" Type="nvarchar" MaxLength="255" />
+          <Property Name="g" Type="nvarchar" MaxLength="255" />
+          <Property Name="h" Type="nvarchar" MaxLength="255" />
+          <Property Name="i" Type="nvarchar" MaxLength="255" />
+          <Property Name="j" Type="nvarchar" MaxLength="255" />
+          <Property Name="k" Type="nvarchar" MaxLength="255" />
+          <Property Name="l" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="hs_noidung">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="nvarchar" MaxLength="50" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="128" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_tieuchi" Type="nvarchar" MaxLength="512" />
+    <Property Name="noidung" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="hs_taptinct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="soid" Type="uniqueidentifier" />
+    <Property Name="tentaptin" Type="nvarchar" MaxLength="512" />
+    <Property Name="tinhtrang" Type="char" MaxLength="1" />
+    <Property Name="driveid" Type="nvarchar" MaxLength="512" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="128" />
+    <Property Name="sott" Type="int" />
+  </EntityType>
+  <EntityType Name="hs_tapting">
+    <Key>
+      <PropertyRef Name="soid" />
+    </Key>
+    <Property Name="soid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="dinhdanh" Type="nvarchar" MaxLength="256" />
+    <Property Name="ma_tieuchi" Type="nvarchar" MaxLength="50" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+    <Property Name="ten_tieuchi" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="ht_dm_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_form" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_form" Type="nvarchar" MaxLength="256" />
+    <Property Name="loaict" Type="nvarchar" MaxLength="20" />
+    <Property Name="ma_nhom" Type="nvarchar" MaxLength="50" />
+    <Property Name="them" Type="bit" />
+    <Property Name="xoa" Type="bit" />
+    <Property Name="sua" Type="bit" />
+    <Property Name="xem" Type="bit" />
+    <Property Name="in" Type="bit" />
+  </EntityType>
+  <EntityType Name="ht_dm_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_menu" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_menu" Type="nvarchar" MaxLength="128" />
+    <Property Name="ma_nhom" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ht_dm_nsd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_nsd" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_nsd" Type="nvarchar" MaxLength="256" />
+    <Property Name="matkhau" Type="nvarchar" MaxLength="50" />
+    <Property Name="makhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="mabomon" Type="nvarchar" MaxLength="50" />
+    <Property Name="ma_nhom" Type="nvarchar" MaxLength="50" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="128" />
+    <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaysua" Type="datetime" />
+    <Property Name="uyquyen" Type="nvarchar" MaxLength="256" />
+    <Property Name="ds_tk" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.ht_dm_ttdn' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ht_dm_ttdn">
+          <Property Name="id" Type="uniqueidentifier" />
+          <Property Name="tencty" Type="nvarchar" MaxLength="512" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="512" />
+          <Property Name="dienthoai" Type="nvarchar" MaxLength="512" />
+          <Property Name="fax" Type="nvarchar" MaxLength="512" />
+          <Property Name="email" Type="nvarchar" MaxLength="512" />
+          <Property Name="masothue" Type="nvarchar" MaxLength="128" />
+          <Property Name="website" Type="nvarchar" MaxLength="512" />
+          <Property Name="nguoitao" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaytao" Type="datetime" />
+          <Property Name="nguoisua" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaysua" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="ht_nsd_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_nsd" Type="nvarchar" MaxLength="50" />
+    <Property Name="ma_form" Type="nvarchar" MaxLength="50" />
+    <Property Name="them" Type="bit" />
+    <Property Name="xoa" Type="bit" />
+    <Property Name="sua" Type="bit" />
+    <Property Name="xem" Type="bit" />
+    <Property Name="in" Type="bit" />
+    <Property Name="ten_form" Type="nvarchar" MaxLength="128" />
+    <Property Name="ma_nhom" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ht_nsd_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ma_nsd" Type="nvarchar" MaxLength="50" />
+    <Property Name="ma_menu" Type="nvarchar" MaxLength="50" />
+    <Property Name="ten_menu" Type="nvarchar" MaxLength="128" />
+    <Property Name="ma_nhom" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ketqua">
+          <Property Name="F1" Type="datetime" />
+          <Property Name="F2" Type="nvarchar(max)" />
+          <Property Name="F3" Type="float" />
+          <Property Name="F4" Type="nvarchar(max)" />
+          <Property Name="F5" Type="nvarchar(max)" />
+          <Property Name="F6" Type="nvarchar(max)" />
+          <Property Name="F7" Type="nvarchar(max)" />
+          <Property Name="F8" Type="nvarchar(max)" />
+          <Property Name="F9" Type="float" />
+          <Property Name="F10" Type="nvarchar(max)" />
+          <Property Name="F11" Type="nvarchar(max)" />
+          <Property Name="F12" Type="nvarchar(max)" />
+          <Property Name="F13" Type="nvarchar(max)" />
+          <Property Name="F14" Type="nvarchar(max)" />
+          <Property Name="F15" Type="nvarchar(max)" />
+          <Property Name="F16" Type="nvarchar(max)" />
+          <Property Name="F17" Type="nvarchar(max)" />
+          <Property Name="F18" Type="float" />
+          <Property Name="F19" Type="nvarchar(max)" />
+          <Property Name="F20" Type="nvarchar(max)" />
+          <Property Name="F21" Type="nvarchar(max)" />
+          <Property Name="F22" Type="nvarchar(max)" />
+          <Property Name="F23" Type="nvarchar(max)" />
+          <Property Name="F24" Type="nvarchar(max)" />
+          <Property Name="F25" Type="nvarchar(max)" />
+          <Property Name="F26" Type="nvarchar(max)" />
+          <Property Name="F27" Type="nvarchar(max)" />
+          <Property Name="F28" Type="nvarchar(max)" />
+          <Property Name="F29" Type="nvarchar(max)" />
+          <Property Name="F30" Type="nvarchar(max)" />
+          <Property Name="F31" Type="nvarchar(max)" />
+          <Property Name="F32" Type="nvarchar(max)" />
+          <Property Name="F33" Type="nvarchar(max)" />
+          <Property Name="F34" Type="nvarchar(max)" />
+          <Property Name="F35" Type="nvarchar(max)" />
+          <Property Name="F36" Type="nvarchar(max)" />
+          <Property Name="F37" Type="nvarchar(max)" />
+          <Property Name="F38" Type="nvarchar(max)" />
+          <Property Name="F39" Type="nvarchar(max)" />
+          <Property Name="F40" Type="nvarchar(max)" />
+          <Property Name="F41" Type="nvarchar(max)" />
+          <Property Name="F42" Type="nvarchar(max)" />
+          <Property Name="F43" Type="nvarchar(max)" />
+          <Property Name="F44" Type="nvarchar(max)" />
+          <Property Name="F45" Type="nvarchar(max)" />
+          <Property Name="F46" Type="nvarchar(max)" />
+          <Property Name="F47" Type="nvarchar(max)" />
+          <Property Name="F48" Type="nvarchar(max)" />
+          <Property Name="F49" Type="nvarchar(max)" />
+          <Property Name="F50" Type="nvarchar(max)" />
+          <Property Name="F51" Type="nvarchar(max)" />
+          <Property Name="F52" Type="nvarchar(max)" />
+          <Property Name="F53" Type="nvarchar(max)" />
+          <Property Name="F54" Type="nvarchar(max)" />
+          <Property Name="F55" Type="nvarchar(max)" />
+          <Property Name="F56" Type="nvarchar(max)" />
+          <Property Name="F57" Type="nvarchar(max)" />
+          <Property Name="F58" Type="nvarchar(max)" />
+          <Property Name="F59" Type="nvarchar(max)" />
+          <Property Name="F60" Type="nvarchar(max)" />
+          <Property Name="F61" Type="nvarchar(max)" />
+          <Property Name="F62" Type="nvarchar(max)" />
+          <Property Name="F63" Type="nvarchar(max)" />
+          <Property Name="F64" Type="nvarchar(max)" />
+          <Property Name="F65" Type="nvarchar(max)" />
+          <Property Name="F66" Type="nvarchar(max)" />
+          <Property Name="F67" Type="nvarchar(max)" />
+          <Property Name="F68" Type="nvarchar(max)" />
+          <Property Name="F69" Type="nvarchar(max)" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Function Name="cn_CongNoTongHop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matk" Type="nvarchar" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+    <Parameter Name="tableTemp" Type="nvarchar" Mode="In" />
+    <Parameter Name="loai" Type="bit" Mode="In" />
+    <Parameter Name="noibo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="cn_CongNoTongHopChiTiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maBp" Type="nvarchar" Mode="In" />
+    <Parameter Name="maHh" Type="nvarchar" Mode="In" />
+    <Parameter Name="maKh" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiNte" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_dv" Type="nvarchar" Mode="In" />
+    <Parameter Name="dkno" Type="decimal" Mode="In" />
+    <Parameter Name="dkco" Type="decimal" Mode="In" />
+    <Parameter Name="ckno" Type="decimal" Mode="In" />
+    <Parameter Name="ckco" Type="decimal" Mode="In" />
+    <Parameter Name="dkno_nt" Type="decimal" Mode="In" />
+    <Parameter Name="dkco_nt" Type="decimal" Mode="In" />
+    <Parameter Name="ckno_nt" Type="decimal" Mode="In" />
+    <Parameter Name="ckco_nt" Type="decimal" Mode="In" />
+    <Parameter Name="tableTemp" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="month" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="hd_PhuLuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="soid" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="LayBangTheoCot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="column_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="table_name" Type="nvarchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="table_name" Type="nvarchar" MaxLength="128" />
+          <Property Name="column_name" Type="nvarchar" MaxLength="20" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ngay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_BaoCaoThucHienHopDong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableTempTT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempHD" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempNT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="loaihd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_cdt" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_kh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_da" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_ct" Type="nvarchar" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_BaoCaoThucHienHopDongCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableTempTT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempHD" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempNT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_BaoCaoThucHienHopDongMua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableTempTT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempHD" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempNT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_BaoCaoThucHienHopDongMuaCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableTempTT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempHD" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tableTempNT" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhapDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="soid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="tentaptin" Type="nvarchar" Mode="In" />
+    <Parameter Name="driveid" Type="nvarchar" Mode="In" />
+    <Parameter Name="sott" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhapMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="soid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="dinhdanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatPhanQuyen1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_menu" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+    <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatThongTinBM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenbomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="googledrive" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="drivedulieu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CapNhatTieuChuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachCanBoCongChucVienChucNLD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DanhSachLuongPhuCapNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="luongcoban" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNghiemThuTongHop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DanhSachNhanVienDiNuocNgoai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNhanVienKhenThuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNhanVienKyLuat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNhanVienNghiPhep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+    <Parameter Name="ma_nv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNhanVienThamGiaBaoHiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DanhSachNhanVienThamGiaDaoTao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DanhSachNhanVienTheoPhongBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DanhSachTaiLieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dinhdanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DuLieuChiTiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DuLieuGoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LayDuLieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+    <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiThongTinBM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenbomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="googledrive" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="drivedulieu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiTieuChuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_tieuchuan" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+    <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThongKeNgayNghiPhepCuaNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_XoaPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spDanhMucPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="String" Type="varchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="items" Type="varchar" MaxLength="8000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="spPhanQuyenNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="tc_SoQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="matk" Type="nvarchar" Mode="In" />
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+    <Parameter Name="noibo" Type="bit" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="th_BaoCaoChiTietTheoNganHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tempTable" Type="nvarchar" Mode="In" />
+    <Parameter Name="tuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="denNgay" Type="datetime" Mode="In" />
+    <Parameter Name="loai" Type="bit" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="th_BaoCaoQuanLyTaiSan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="denNgay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="th_CanDoiPhatSinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+    <Parameter Name="tableTemp" Type="nvarchar" Mode="In" />
+    <Parameter Name="loai" Type="bit" Mode="In" />
+    <Parameter Name="noibo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="th_SoChiTiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="denNgay" Type="datetime" Mode="In" />
+    <Parameter Name="maTK" Type="nvarchar" Mode="In" />
+    <Parameter Name="noibo" Type="bit" Mode="In" />
+    <Parameter Name="loai" Type="bit" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="th_TongHopChiPhiTheoBoPhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tempTable" Type="nvarchar" Mode="In" />
+    <Parameter Name="tuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="denNgay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="thangnam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="date" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="QL_TieuChuan2ModelStoreContainer">
+    <EntitySet Name="bang1_final" EntityType="Self.bang1_final" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dm_bomon" EntityType="Self.dm_bomon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dm_dinhdanh" EntityType="Self.dm_dinhdanh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dm_khoa" EntityType="Self.dm_khoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dm_tieuchi" EntityType="Self.dm_tieuchi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dm_tieuchuan" EntityType="Self.dm_tieuchuan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hs_noidung" EntityType="Self.hs_noidung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hs_taptinct" EntityType="Self.hs_taptinct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hs_tapting" EntityType="Self.hs_tapting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_dm_form" EntityType="Self.ht_dm_form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_dm_menu" EntityType="Self.ht_dm_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_dm_nsd" EntityType="Self.ht_dm_nsd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_nsd_form" EntityType="Self.ht_nsd_form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_nsd_menu" EntityType="Self.ht_nsd_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

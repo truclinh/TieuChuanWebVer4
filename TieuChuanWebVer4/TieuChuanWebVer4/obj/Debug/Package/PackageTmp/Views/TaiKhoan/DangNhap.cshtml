@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<style>
+    div#frm_login {
+        width: 400px;
+        height: 230px;
+        background-color: #dbe7f8;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        margin-top: 9%;
+        border: 1px solid #3b5a82;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    td.tdempty {
+        width: 6%;
+    }
+
+    td.tdtrai {
+        width: 25%;
+        text-align: left;
+    }
+
+    td.tdphai {
+        width: 75%;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tr {
+        margin: 20px;
+    }
+
+    input.button-add {
+        background-repeat: no-repeat;
+        height: 25px;
+        width: 90px;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        text-align: right;
+        margin-top: 3px;
+        background-color: transparent;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    div.back {
+        background: linear-gradient(#dbe7f8, #b2d4ff, #dbe7f8);
+    }
+
+    .cbo {
+        width: 240px;
+        height: 30px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .txt {
+        width: 90%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    div#divThongTin {
+        width: 99%;
+        height: 160px;
+        border: 1px solid #a0c4eb;
+        background-color: #e3efff;
+        margin: 0px auto;
+    }
+
+    img#imgIcon {
+        width: 18px;
+        height: auto;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+
+    div#divBtn {
+        width: 100%;
+        height: 30px;
+        border: none;
+        background-color: white;
+        text-align: center;
+        padding-top: 1%;
+    }
+
+    .error {
+        font-size: 12px;
+        color: red;
+        float: left;
+    }
+
+        .error::before {
+            content: " ";
+        }
+</style>
+
+
+<div id="frm_login">
+    @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post, new { id = "frmDangNhap" }))
+    {
+        <div class="back" style="width:100%;height:30px; border:none;">
+            <span>
+                <img id="imgIcon" src="~/Content/Images/VTAccounting/Vector-Arts.ico" />Đăng nhập
+            </span>
+        </div>
+        <div id="divThongTin">
+            <table style="margin:0px auto;margin-top:5%">
+                <tr>
+                    <td class="tdempty"></td>
+                    <td class="tdtrai">Tài khoản: </td>
+                    <td class="tdphai">
+                        <input type="text" name="txtTenDangNhap" id="txtTenDangNhap" class="txt" />
+                    </td>
+                    <td class="tdempty"></td>
+                </tr>
+                <tr>
+                    <td class="tdempty"></td>
+                    <td class="tdtrai">
+                        Mật khẩu:
+                    </td>
+                    <td class="tdphai">
+                        <input type="password" name="txtMatKhau" id="txtMatKhau" class="txt" />
+                    </td>
+                    <td class="tdempty"></td>
+                </tr>
+                <tr>
+                    <td class="tdempty"></td>
+                    <td class="tdtrai">
+                        Khoa:
+                    </td>
+                    <td class="tdphai">
+                        @Html.DropDownList("cboKhoa", (IEnumerable<SelectListItem>)ViewBag.DMKhoa, "---Chọn Khoa---", new { @class = "cbo" })
+                    </td>
+                    <td class="tdempty"></td>
+                </tr>
+                <tr>
+                    <td class="tdempty"></td>
+                    <td class="tdtrai">
+                        Bộ môn:
+                    </td>
+                    <td class="tdphai">
+                        @*@Html.DropDownList("cboBoMon", (IEnumerable<SelectListItem>)ViewBag.DMBoMon,"---Chọn Bộ môn---", new {@class = "cbo" })*@
+                        @Html.DropDownList("cboBoMon", new SelectList(string.Empty, "mabomon", "tenbomon"), "---Chọn Bộ môn---", new { @class = "cbo" })
+                    </td>
+                    <td class="tdempty"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="divBtn" class="back">
+            <input type="submit" id="btnSubmit" value="Tiếp tục" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/exec.png')" />
+            <input type="button" value="Thoát" class="button-add" style="background-image: url('../../Content/Images/VTAccounting/ExitProgram.png')" />
+        </div>
+        @Html.ValidationSummary(true)
+        <p id="lblThongBao"></p>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#frmDangNhap").validate({
+            rules: {
+                txtTenDangNhap: "required",
+                txtMatKhau: "required",
+                cboKhoa: "required",
+                cboBoMon: "required"
+            },
+            messages: {
+                txtTenDangNhap: "(*)",
+                txtMatKhau: "(*)",
+                cboKhoa: "(*)",
+                cboBoMon: "(*)"
+            }
+        });
+
+        $("#cboKhoa").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            $("#cboBoMon").empty();
+           // alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getBM", "TaiKhoan")', // we are calling json method
+                dataType: 'json',
+                data: { makhoa: selectedValue },
+                success: function (data) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                    $.each(data, function (i, bomon) {
+                        $("#cboBoMon").append('<option value="' +bomon.Text + '">' +
+                            bomon.Value + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+        });
+    });
+</script>

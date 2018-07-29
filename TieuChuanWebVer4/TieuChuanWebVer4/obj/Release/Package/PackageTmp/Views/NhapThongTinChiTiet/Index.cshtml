@@ -1,0 +1,111 @@
+﻿@model IEnumerable<TieuChuanWebVer4.Models.hs_noidung>
+
+@{
+    ViewBag.Title = "Nhập thông tin chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    ribbon.SetActiveTabIndex(1);
+    //document.getElementById("ribbon_State").SetActiveTabIndex(1);
+    function OnGridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchi;ten_tieuchi;noidung', OnGetRowValues);
+    }
+    function OnGetRowValues(values) {
+        txtHiddenId.SetText(values[0]);
+        txt_ma_tieuchi.SetText(values[1]);
+        txt_ten_tieuchi.SetText(values[2]);
+        txt_noidung.SetText(values[3]);
+    }
+    function fncBtnThemClick() {
+        //var x = document.getElementById("txtHiddenId_I").value;
+        var url = '@Url.Action("ThemMoi", "NhapThongTinChiTiet")';
+        window.location.href = url;
+       // window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
+        //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
+        // alert(x);
+    }
+    function fncBtnSuaClick() {
+        var x = document.getElementById("txtHiddenId_I").value;
+        var url = '@Url.Action("ChinhSua", "NhapThongTinChiTiet")' + '?id=' + x;
+        window.location.href = url;
+        //window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
+        //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
+        // alert(x);
+    }
+    function fncBtnXoaClick() {
+        var x = document.getElementById("txtHiddenId_I").value;
+        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        if (result) {
+            var url = '@Url.Action("Xoa", "NhapThongTinChiTiet")' + '?id=' + x;
+            window.location.href = url;
+            alert("Đã xóa thành công");
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+<style>
+    #txtHiddenId {
+        display: none;
+    }
+
+    .cs {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        width: 700px;
+        border-radius: 20px;
+        border: 2px solid blue;
+        margin: 0px auto;
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+
+    table#NhapThongTinChiTiet {
+        width: 30%;
+        margin: auto;
+    }
+
+    div#khung {
+        margin-top: 5%;
+    }
+</style>
+
+@Html.DevExpress().TextBox(settings =>
+    {
+        settings.Name = "txtHiddenId";
+        settings.ReadOnly = true;
+        // settings.ClientVisible = false;
+    }).GetHtml()
+<div id="khung">
+    @Html.Action("NhapThongTinChiTietPartial")
+    <div style="width:100%;text-align:center;margin-top:2%">
+        @*--------------------------------------Button Thêm*@
+        @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnThem";
+    settings.Text = "Thêm";
+    settings.ClientSideEvents.Click = "fncBtnThemClick";
+}).GetHtml()
+        @*--------------------------------------Button Sửa*@
+        @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnSua";
+    settings.Text = "Sửa";
+    settings.ClientSideEvents.Click = "fncBtnSuaClick";
+}).GetHtml()
+        @*--------------------------------------Button Xóa*@
+        @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnXoa";
+    settings.Text = "Xóa";
+    settings.ClientSideEvents.Click = "fncBtnXoaClick";
+}).GetHtml()
+    </div>
+</div>
+<!--End Modal Sửa-->

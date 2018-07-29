@@ -1,0 +1,42 @@
+﻿@Html.DevExpress().NavBar(navBarSettings =>
+{
+    navBarSettings.Name = "NavBarMain";
+    navBarSettings.Groups.Add(navBarGroupSettings =>
+    {
+        navBarGroupSettings.Text = "Main";
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Overview";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(4)";
+        });
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Reports";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(5)";
+        });
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Analitics";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(6)";
+        });
+    });
+    navBarSettings.Groups.Add(navBarGroupSettings =>
+    {
+        navBarGroupSettings.Text = "Export";
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Rtf";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(7)";
+        });
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Xls";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(8)";
+        });
+        navBarGroupSettings.Items.Add(navBarGroupItemSettings =>
+        {
+            navBarGroupItemSettings.Text = "Pdf";
+            navBarGroupItemSettings.NavigateUrl = "javascript:void(9)";
+        });
+    });
+}).GetHtml()

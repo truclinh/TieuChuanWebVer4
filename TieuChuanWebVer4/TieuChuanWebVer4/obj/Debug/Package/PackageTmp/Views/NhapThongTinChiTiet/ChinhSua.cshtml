@@ -1,0 +1,95 @@
+﻿@model TieuChuanWebVer4.Models.hs_noidung
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Views/Shared/_LayoutWord.cshtml";
+}
+<script>
+    function SelectionChanged(s, e) {
+        e.handled = true;
+        var url = "/NhapThongTinChiTiet/Dialog?dinhdanh=" + e.targetUri + "&ma_tieuchi=@(Model.ma_tieuchi)";
+        //window.location.href = url;
+        window.open(url, "_blank", "toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no,left=900,width=520, height=520,scrollbars=yes")
+
+    }
+    $(document).ready(function () {
+        $('#btnBoLuu').click(function () {
+            var url = '@Url.Action("Index", "NhapThongTinChiTiet")';
+            window.location.href = url;
+           
+        });
+    });
+</script>
+@Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@using (Html.BeginForm("SaveEditDocument", "NhapThongTinChiTiet"))
+{
+    @Html.Hidden("id", Model.id)
+    @Html.Action("NoiDungPartial")
+    <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:2% ;">
+        <div style="width:40%;float:left;">
+            <div style="width:30%;float:left">
+                @Html.DevExpress().Label(settings =>
+   {
+       settings.Text = "Mã tiêu chí";
+   }).GetHtml()
+            </div>
+            <div style="width:70%;float:left;">
+                @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ma_tieuchi";
+    settings.Text = Model.ma_tieuchi;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+            </div>
+
+        </div>
+        <div style="width:40%;float:left;">
+            <div style="width:30%;float:left;">
+                @Html.DevExpress().Label(settings =>
+           {
+               settings.Text = "Tên tiêu chí";
+           }).GetHtml()
+            </div>
+            <div style="width:70%;float:left;">
+                @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ten_tieuchi";
+    settings.Text = Model.ten_tieuchi;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+            </div>
+        </div>
+        <div style="width:20%;float:left;">
+            @Html.DevExpress().Button(settings =>
+   {
+       settings.Name = "btnLuu";
+       settings.Text = "Lưu";
+       settings.UseSubmitBehavior = true;
+       // settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+       settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+       settings.ImagePosition = ImagePosition.Left;
+   }).GetHtml()
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnBoLuu";
+           settings.Text = "Bỏ lưu";
+           // settings.ClientSideEvents.Click = "fncBtnBoLuuClick";
+           //settings.UseSubmitBehavior = true;
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+    </div>
+}
+
+<style>
+    #frmTieuChuan {
+        margin-top: 8px;
+    }
+</style>

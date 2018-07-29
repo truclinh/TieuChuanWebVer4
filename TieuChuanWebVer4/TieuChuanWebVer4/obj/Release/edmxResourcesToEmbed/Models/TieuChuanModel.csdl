@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_TieuChuan2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="LayBangTheoCot_Result">
+    <Property Name="table_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="column_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="Split_Result">
+    <Property Name="items" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityContainer Name="QL_TieuChuan2Entities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="LayBangTheoCot" IsComposable="true" ReturnType="Collection(QL_TieuChuan2Model.LayBangTheoCot_Result)">
+      <Parameter Name="column_name" Mode="In" Type="String" />
+      <Parameter Name="table_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(QL_TieuChuan2Model.Split_Result)">
+      <Parameter Name="String" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cn_CongNoTongHop">
+      <Parameter Name="matk" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+      <Parameter Name="tableTemp" Mode="In" Type="String" />
+      <Parameter Name="loai" Mode="In" Type="Boolean" />
+      <Parameter Name="noibo" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="cn_CongNoTongHopChiTiet">
+      <Parameter Name="maBp" Mode="In" Type="String" />
+      <Parameter Name="maHh" Mode="In" Type="String" />
+      <Parameter Name="maKh" Mode="In" Type="String" />
+      <Parameter Name="loaiNte" Mode="In" Type="String" />
+      <Parameter Name="ma_dv" Mode="In" Type="String" />
+      <Parameter Name="dkno" Mode="In" Type="Decimal" />
+      <Parameter Name="dkco" Mode="In" Type="Decimal" />
+      <Parameter Name="ckno" Mode="In" Type="Decimal" />
+      <Parameter Name="ckco" Mode="In" Type="Decimal" />
+      <Parameter Name="dkno_nt" Mode="In" Type="Decimal" />
+      <Parameter Name="dkco_nt" Mode="In" Type="Decimal" />
+      <Parameter Name="ckno_nt" Mode="In" Type="Decimal" />
+      <Parameter Name="ckco_nt" Mode="In" Type="Decimal" />
+      <Parameter Name="tableTemp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllData">
+      <Parameter Name="month" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="hd_PhuLuc">
+      <Parameter Name="soid" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BaoCaoThucHienHopDong">
+      <Parameter Name="tableTempTT" Mode="In" Type="String" />
+      <Parameter Name="tableTempHD" Mode="In" Type="String" />
+      <Parameter Name="tableTempNT" Mode="In" Type="String" />
+      <Parameter Name="loaihd" Mode="In" Type="String" />
+      <Parameter Name="ma_cdt" Mode="In" Type="String" />
+      <Parameter Name="ma_kh" Mode="In" Type="String" />
+      <Parameter Name="ma_da" Mode="In" Type="String" />
+      <Parameter Name="ma_ct" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BaoCaoThucHienHopDongCT">
+      <Parameter Name="tableTempTT" Mode="In" Type="String" />
+      <Parameter Name="tableTempHD" Mode="In" Type="String" />
+      <Parameter Name="tableTempNT" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BaoCaoThucHienHopDongMua">
+      <Parameter Name="tableTempTT" Mode="In" Type="String" />
+      <Parameter Name="tableTempHD" Mode="In" Type="String" />
+      <Parameter Name="tableTempNT" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BaoCaoThucHienHopDongMuaCT">
+      <Parameter Name="tableTempTT" Mode="In" Type="String" />
+      <Parameter Name="tableTempHD" Mode="In" Type="String" />
+      <Parameter Name="tableTempNT" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhapDetail">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="soid" Mode="In" Type="Guid" />
+      <Parameter Name="tentaptin" Mode="In" Type="String" />
+      <Parameter Name="driveid" Mode="In" Type="String" />
+      <Parameter Name="sott" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhapMaster">
+      <Parameter Name="soid" Mode="In" Type="Guid" />
+      <Parameter Name="dinhdanh" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatQLNguoiDung">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ten_nsd" Mode="In" Type="String" />
+      <Parameter Name="matkhau" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+      <Parameter Name="ghichu" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatThongTinBM">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="tenbomon" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="googledrive" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatThongTinKhoa">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+      <Parameter Name="drivedulieu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatTieuChi">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatTieuChuan">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachCanBoCongChucVienChucNLD" />
+    <FunctionImport Name="sp_DanhSachLuongPhuCapNhanVien">
+      <Parameter Name="luongcoban" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNghiemThuTongHop" />
+    <FunctionImport Name="sp_DanhSachNhanVienDiNuocNgoai">
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNhanVienKhenThuong">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNhanVienKyLuat">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNhanVienNghiPhep">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+      <Parameter Name="ma_nv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNhanVienThamGiaBaoHiem" />
+    <FunctionImport Name="sp_DanhSachNhanVienThamGiaDaoTao">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachNhanVienTheoPhongBan" />
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QL_TieuChuan2Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QL_TieuChuan2Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LayDuLieu" />
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiQLNguoiDung">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ten_nsd" Mode="In" Type="String" />
+      <Parameter Name="matkhau" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+      <Parameter Name="ghichu" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiThongTinBM">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="tenbomon" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="googledrive" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiThongTinKhoa">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+      <Parameter Name="drivedulieu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiTieuChi">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiTieuChuan">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeNgayNghiPhepCuaNhanVien">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spDanhMucPhanQuyen" ReturnType="Collection(QL_TieuChuan2Model.spDanhMucPhanQuyen_Result)">
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPhanQuyenNguoiDung" ReturnType="Collection(QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result)">
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="tc_SoQuy">
+      <Parameter Name="matk" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+      <Parameter Name="noibo" Mode="In" Type="Boolean" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="th_BaoCaoChiTietTheoNganHang">
+      <Parameter Name="tempTable" Mode="In" Type="String" />
+      <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="denNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="loai" Mode="In" Type="Boolean" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="th_BaoCaoQuanLyTaiSan">
+      <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="denNgay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="th_CanDoiPhatSinh">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+      <Parameter Name="tableTemp" Mode="In" Type="String" />
+      <Parameter Name="loai" Mode="In" Type="Boolean" />
+      <Parameter Name="noibo" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="th_SoChiTiet">
+      <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="denNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="maTK" Mode="In" Type="String" />
+      <Parameter Name="noibo" Mode="In" Type="Boolean" />
+      <Parameter Name="loai" Mode="In" Type="Boolean" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="th_TongHopChiPhiTheoBoPhan">
+      <Parameter Name="tempTable" Mode="In" Type="String" />
+      <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="denNgay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatND">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiND">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachTaiLieu" ReturnType="Collection(QL_TieuChuan2Model.sp_DanhSachTaiLieu_Result)">
+      <Parameter Name="dinhdanh" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DuLieuChiTiet" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuChiTiet_Result)" />
+    <FunctionImport Name="sp_DuLieuGoc" ReturnType="Collection(QL_TieuChuan2Model.sp_DuLieuGoc_Result)" />
+    <FunctionImport Name="sp_CapNhatPhanQuyen">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ma_menu" Mode="In" Type="String" />
+      <Parameter Name="ten_menu" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatPhanQuyen1">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ma_menu" Mode="In" Type="String" />
+      <Parameter Name="ten_menu" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaPhanQuyen">
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
+    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
+    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
+    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
+    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
+    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
+    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
+    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
+    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
+    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
+    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
+    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
+    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
+    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
+    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDanhMucPhanQuyen_Result">
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="spPhanQuyenNguoiDung_Result">
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="sp_DanhSachTaiLieu_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="Guid" Name="soid" Nullable="true" />
+    <Property Type="String" Name="tentaptin" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="tinhtrang" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="driveid" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="ghichu" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="sott" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_DuLieuChiTiet_Result">
+    <Property Type="String" Name="ma_tieuchi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidung" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_DuLieuGoc_Result">
+    <Property Type="Boolean" Name="nhom" Nullable="true" />
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_nhom" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="ma_nhom_cha" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="bang1_final">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="A" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="B" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dm_bomon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenbomon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="googledrive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_dinhdanh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="dinhdanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="dm_khoa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenkhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="drivedulieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_tieuchi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="noidung" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dm_tieuchuan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchuan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hs_noidung">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hs_taptinct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="soid" Type="Guid" />
+    <Property Name="tentaptin" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="tinhtrang" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="driveid" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="sott" Type="Int32" />
+  </EntityType>
+  <EntityType Name="hs_tapting">
+    <Key>
+      <PropertyRef Name="soid" />
+    </Key>
+    <Property Name="soid" Type="Guid" Nullable="false" />
+    <Property Name="dinhdanh" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tieuchi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="ten_tieuchi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_dm_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_form" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="loaict" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="them" Type="Boolean" />
+    <Property Name="xoa" Type="Boolean" />
+    <Property Name="sua" Type="Boolean" />
+    <Property Name="xem" Type="Boolean" />
+    <Property Name="in" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ht_dm_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_dm_nsd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_nsd" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="makhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mabomon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
+    <Property Name="nguoisua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysua" Type="DateTime" Precision="3" />
+    <Property Name="uyquyen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ds_tk" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_nsd_form">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="them" Type="Boolean" />
+    <Property Name="xoa" Type="Boolean" />
+    <Property Name="sua" Type="Boolean" />
+    <Property Name="xem" Type="Boolean" />
+    <Property Name="in" Type="Boolean" />
+    <Property Name="ten_form" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_nsd_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="ma_nsd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ma_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ten_menu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ma_nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>
