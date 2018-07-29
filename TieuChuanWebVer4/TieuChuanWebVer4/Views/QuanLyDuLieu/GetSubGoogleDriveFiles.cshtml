@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TieuChuanWebVer4.Models.GoogleDriveFiles>
 @{
-    ViewBag.Title = "Quản lý dữ liệu";
+    ViewBag.Title = "Data Management";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -68,7 +68,7 @@
     ribbon.SetActiveTabIndex(1);
 
     function fncBtnLayDuLieu() {
-        var result = confirm("Bạn có chắc chắn muốn lấy lại dữ liệu?");
+        var result = confirm("Are you sure you want to get data again?");
         if (result) {
            var url = '@Url.Action("LayDuLieu", "QuanLyDuLieu")';
             window.location.href = url;
@@ -83,7 +83,7 @@
     @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnLayDuLieu";
-    settings.Text = "Lấy dữ liệu";
+    settings.Text = "Get Data";
     settings.UseSubmitBehavior = true;
     settings.ClientSideEvents.Click = "fncBtnLayDuLieu";
     settings.Images.Image.Url = Url.Content("~/Content/Images/VTAccounting/exec.png");
@@ -93,16 +93,16 @@
     <table class="table" border="1">
         <tr id="header">
             <th>
-                STT
+                No.
             </th>
             <th>
-                Tên
+                Name
             </th>
             <th>
-                Ngày tạo
+                Create Date
             </th>
             <th>
-                Thao tác
+                Act
             </th>
         </tr>
 
@@ -121,11 +121,11 @@
                 <td style="font-weight:bold">
                     @if (!item.Name.Contains(".pdf") && !item.Name.Contains(".doc"))
                 {
-                        <a href="@Url.Action("GetSubGoogleDriveFiles", "QuanLyDuLieu", new { @folderId = item.Id })">Mở</a>
+                        <a href="@Url.Action("GetSubGoogleDriveFiles", "QuanLyDuLieu", new { @folderId = item.Id })">Open</a>
                     }
                     else
                     {
-                        <a href="@item.WebViewLink" target="_blank">Xem</a>
+                        <a href="@item.WebViewLink" target="_blank">View</a>
                     }
                 </td>
             </tr>

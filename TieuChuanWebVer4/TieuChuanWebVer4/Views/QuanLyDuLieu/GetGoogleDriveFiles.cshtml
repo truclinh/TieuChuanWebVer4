@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<TieuChuanWebVer4.Models.GoogleDriveFiles>
 
 @{
-    ViewBag.Title = "Quản lý dữ liệu";
+    // ViewBag.Title = "Quản lý dữ liệu";
+    ViewBag.Title = "Data Management";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -71,7 +72,7 @@
         alert("hghghg");
 });
     function fncBtnLayDuLieu() {
-        var result = confirm("Bạn có chắc chắn muốn lấy lại dữ liệu?");
+        var result = confirm("Are you sure you want to get data again?");
         if (result) {
            var url = '@Url.Action("LayDuLieu", "QuanLyDuLieu")';
             window.location.href = url;
@@ -86,7 +87,8 @@
     @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnLayDuLieu";
-    settings.Text = "Lấy dữ liệu";
+    // settings.Text = "Lấy dữ liệu";
+    settings.Text = "Get Data";
     settings.UseSubmitBehavior = true;
     settings.ClientSideEvents.Click = "fncBtnLayDuLieu";
     settings.Images.Image.Url = Url.Content("~/Content/Images/VTAccounting/exec.png");
@@ -97,16 +99,17 @@
     <table class="table" border="1">
         <tr id="header">
             <th>
-                STT
+                @*STT*@
+                No.
             </th>
             <th>
-                Tên
+                Name
             </th>
             <th>
-                Ngày tạo
+                Create Date
             </th>
             <th>
-                Thao tác
+                Act
             </th>
         </tr>
 
@@ -125,7 +128,7 @@
                         @string.Format("{0: MM/dd/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.CreatedTime).ToString()))
                     </td>
                     <td style="text-align:center;font-weight:bold">
-                        <a href="@Url.Action("GetSubGoogleDriveFiles","QuanLyDuLieu", new {@folderId=item.Id })">Mở</a>
+                        <a href="@Url.Action("GetSubGoogleDriveFiles","QuanLyDuLieu", new {@folderId=item.Id })">Open</a>
                     </td>
                 </tr>
             }

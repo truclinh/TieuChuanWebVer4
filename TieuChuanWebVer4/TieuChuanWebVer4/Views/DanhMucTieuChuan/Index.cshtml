@@ -1,7 +1,8 @@
 ﻿@using TieuChuanWebVer4.Models;
 @model IEnumerable<dm_tieuchuan>
 @{
-    ViewBag.Title = "Danh mục tiêu chuẩn";
+    //ViewBag.Title = "Danh mục tiêu chuẩn";
+ViewBag.Title = "Standard Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*<p name="DetailNotes"></p>*@
@@ -32,11 +33,11 @@
     }
     function fncBtnXoaClick() {
         var x = document.getElementById("txtHiddenId_I").value;
-        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        var result = confirm("Are you sure you want to delete?");
         if (result) {
             var url = '@Url.Action("Xoa", "DanhMucTieuChuan")' + '?id=' + x;
             window.location.href = url;
-            alert("Đã xóa thành công");
+            alert("Deleted Successfully!!");
         }
         else {
             return false;
@@ -86,21 +87,21 @@
         @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnThem";
-    settings.Text = "Thêm";
+    settings.Text = "Add";
     settings.ClientSideEvents.Click = "fncBtnThemClick";
 }).GetHtml()
         @*--------------------------------------Button Sửa*@
         @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnSua";
-    settings.Text = "Sửa";
+    settings.Text = "Edit";
     settings.ClientSideEvents.Click = "fncBtnSuaClick";
 }).GetHtml()
         @*--------------------------------------Button Xóa*@
         @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnXoa";
-    settings.Text = "Xóa";
+    settings.Text = "Delete";
     settings.ClientSideEvents.Click = "fncBtnXoaClick";
 }).GetHtml()
     </div>

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TieuChuanWebVer4.Models.sp_DanhSachTaiLieu_Result>
 @{
-    ViewBag.Title = "Tài liệu";
+    ViewBag.Title = "Document";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
 <style>
@@ -20,12 +20,12 @@ background-color: white;
 </style>
 <center>
     <table>
-       <tr><td style="font-weight:bold;text-align:center" colspan="2">TÀI LIỆU CHO <b style="color:red">@(ViewBag.DinhDanh)</b></td></tr>
+       <tr><td style="font-weight:bold;text-align:center" colspan="2">DOCUMENTS FOR <b style="color:red">@(ViewBag.DinhDanh)</b></td></tr>
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.tentaptin</td>
-                <td><a href="https://drive.google.com/open?id=@item.driveid" target="_blank">Xem</a></td>
+                <td><a href="https://drive.google.com/open?id=@item.driveid" target="_blank">View</a></td>
             </tr>
         }
 

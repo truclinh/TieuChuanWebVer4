@@ -1,16 +1,17 @@
 ﻿@using TieuChuanWebVer4.Models;
 @model IEnumerable<ht_dm_menu>
 @{
-    ViewBag.Title = "Phân quyền người dùng";
+    //ViewBag.Title = "Phân quyền người dùng";
+    ViewBag.Title = "User Permission";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div  style="margin-left:50%;margin-top:5%;font-size:15px;">
-    @Html.DropDownList("cboTK", (IEnumerable<SelectListItem>)ViewBag.TK, "---Chọn tài khoản---", new { @class = "cbo" })
+    @Html.DropDownList("cboTK", (IEnumerable<SelectListItem>)ViewBag.TK, "---Choose Account---", new { @class = "cbo" })
     @*@Html.DropDownList("cboPQ", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn DMPQ---", new { @class = "cbo" })
     @Html.DropDownList("cboPQND", new SelectList(string.Empty, "ma_menu", "ten_menu"), "---Chọn PQ---", new { @class = "cbo" })*@
     <br /><b>
     <input type="checkbox" name="chkAll" id="chkAll" style="margin-top:10px;margin-bottom:6px" />
-    <label for="chkAll" style="color:red;">Tất cả</label>
+    <label for="chkAll" style="color:red;">Check All</label>
 </b>
     @using (Html.BeginForm("CapNhatPhanQuyen", "PhanQuyen", FormMethod.Post))
     {
@@ -22,8 +23,8 @@
             }
         </div>
         @Html.Hidden("mansd")
-            <input type="submit" value="Lưu">
-        <input type="button" onclick="boLuu();" value="Bỏ lưu">
+            <input type="submit" value="Save">
+        <input type="button" onclick="boLuu();" value="Cancel">
     }
 </div>
 <script>
@@ -35,7 +36,7 @@
         $('#chkAll').click(function () {
             $('input:checkbox').prop('checked', this.checked);
         });
-        if ($("#cboTK").find('option:selected').text() == "---Chọn TK---") {
+        if ($("#cboTK").find('option:selected').text() == "---Choose Account---") {
             $('input:checkbox').attr("disabled", true);
         } else {
             $('input:checkbox').attr("disabled", false);
@@ -45,7 +46,7 @@
             $('#chkkAll').click(function () {
                 $('input:checkbox').prop('checked', this.checked);
             });
-            if ($("#cboTK").find('option:selected').text() == "---Chọn TK---") {
+            if ($("#cboTK").find('option:selected').text() == "---Choose Account---") {
                 $('input:checkbox').attr("disabled", true);
             } else {
                 $('input:checkbox').attr("disabled", false);
