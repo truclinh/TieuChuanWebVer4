@@ -42,20 +42,22 @@
         settings.Columns.Add(column =>
         {
             column.FieldName = "ma_tieuchuan";
-            column.Caption = "Mã tiêu chuẩn";
+            //column.Caption = "Mã tiêu chuẩn";
+            column.Caption = "Standard Code";
         });
         settings.Columns.Add(column =>
         {
             column.FieldName = "ten_tieuchuan";
-            column.Caption = "Tên tiêu chuẩn";
+            //column.Caption = "Tên tiêu chuẩn";
+            column.Caption = "Standard Name";
         });
-        settings.SettingsPager.PageSize = 12;
+        settings.SettingsPager.PageSize = 10;
         settings.SettingsPager.FirstPageButton.Visible = true;
-        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.FirstPageButton.Text = "First page";
         settings.SettingsPager.LastPageButton.Visible = true;
 
-        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
-        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số tiêu chuẩn: {2})";
+        settings.SettingsPager.LastPageButton.Text = "Last page";
+        settings.SettingsPager.Summary.Text = " Page {0}/{1} (Standard Total: {2})";
         settings.PreRender = (s, e) =>
         {
             var sender = s as MVCxGridView;

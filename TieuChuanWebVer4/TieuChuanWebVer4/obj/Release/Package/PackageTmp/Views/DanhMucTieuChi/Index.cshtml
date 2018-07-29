@@ -1,7 +1,8 @@
 ﻿@using TieuChuanWebVer4.Models;
 @model IEnumerable<dm_tieuchi>
 @{
-    ViewBag.Title = "Danh mục tiêu chí";
+    //ViewBag.Title = "Danh mục tiêu chí";
+    ViewBag.Title = "Criteria Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,11 +38,11 @@
     }
     function fncBtnXoaClick() {
         var x = document.getElementById("txtHiddenId_I").value;
-        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        var result = confirm("Are you sure you want to delete?");
         if (result) {
             var url = '@Url.Action("Xoa", "DanhMucTieuChi")' + '?id=' + x;
             window.location.href = url;
-            alert("Đã xóa thành công");
+            alert("Deleted Successfully!!");
         }
         else {
             return false;
@@ -97,11 +98,11 @@
     @Html.Action("DanhMucTieuChiPartial")
     <div style="width:100%;text-align:center;margin-top:2%">
         @*--------------------------------------Button Thêm*@
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalThem" name="btnThêm">Thêm</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalThem" name="btnThêm">Add</button>
         @*--------------------------------------Button Sửa*@
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSua" name="btnSua">Sửa</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSua" name="btnSua">Edit</button>
         @*--------------------------------------Button Xóa*@
-        <button type="button" class="btn btn-default" name="btnXoa" onclick="fncBtnXoaClick()">Xóa</button>
+        <button type="button" class="btn btn-default" name="btnXoa" onclick="fncBtnXoaClick()">Delete</button>
     </div>
 </div>
 @using (Html.BeginForm("SaveNewDocument", "DanhMucTieuChi"))
@@ -114,13 +115,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">THÊM TIÊU CHÍ</h4>
+                    @*<h4 class="modal-title">THÊM TIÊU CHÍ</h4>*@
+                    <h4 class="modal-title">ADD CRITERIA</h4>
                 </div>
                 <div class="modal-body">
                     <table>
                         <tr>
                             <td class="lbl">
-                                <label>Mã tiêu chí</label>
+                                @*<label>Mã tiêu chí</label>*@
+                                <label>Criteria Code</label>
                             </td>
 
                             <td class="ten">
@@ -135,7 +138,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Tên tiêu chí</label>
+                                @*<label>Tên tiêu chí</label>*@
+                                <label>Criteria Name</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -149,7 +153,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Nội dung</label>
+                                @*<label>Nội dung</label>*@
+                                <label>Content</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -163,10 +168,11 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Tiêu chuẩn</label>
+                                @*<label>Tiêu chuẩn</label>*@
+                                <label>Standard</label>
                             </td>
                             <td class="ten">
-                                @Html.DropDownList("txtNew_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Chọn tiêu chuẩn---", new { @class = "cbo" })
+                                @Html.DropDownList("txtNew_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Choose Standard---", new { @class = "cbo" })
                             </td>
                         </tr>
 
@@ -174,8 +180,8 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                        <button type="submit" class="btn">Lưu</button>
-                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                        <button type="submit" class="btn">Save</button>
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </center>
                 </div>
             </div>
@@ -195,7 +201,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">SỬA TIÊU CHÍ</h4>
+                    @*<h4 class="modal-title">SỬA TIÊU CHÍ</h4>*@
+                    <h4 class="modal-title">EDIT CRITERIA</h4>
                     @Html.DevExpress().TextBox(settings =>
 {
     settings.Name = "txtHiddenId";
@@ -207,7 +214,8 @@
                     <table>
                         <tr>
                             <td class="lbl">
-                                <label>Mã tiêu chí</label>
+                                @*<label>Mã tiêu chí</label>*@
+                                <label>Criteria Code</label>
                             </td>
 
                             <td class="ten">
@@ -222,7 +230,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Tên tiêu chí</label>
+                                @*<label>Tên tiêu chí</label>*@
+                                <label>Criteria Name</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -236,7 +245,8 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Nội dung</label>
+                                @*<label>Nội dung</label>*@
+                                <label>Content</label>
                             </td>
                             <td class="ten">
                                 @Html.DevExpress().TextBox(settings =>
@@ -250,10 +260,11 @@
                         </tr>
                         <tr>
                             <td class="lbl">
-                                <label>Tiêu chuẩn</label>
+                                @*<label>Tiêu chuẩn</label>*@
+                                <label>Standard</label>
                             </td>
                             <td class="ten">
-                                @Html.DropDownList("txt_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Chọn tiêu chuẩn---", new { @class = "cbo" })
+                                @Html.DropDownList("txt_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Choose Standard---", new { @class = "cbo" })
                             </td>
                         </tr>
 
@@ -261,8 +272,8 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                        <button type="submit" class="btn" id="btnLuuSua">Lưu</button>
-                        <button type="button" class="btn" data-dismiss="modal">Bỏ lưu</button>
+                        <button type="submit" class="btn" id="btnLuuSua">Save</button>
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </center>
                 </div>
             </div>

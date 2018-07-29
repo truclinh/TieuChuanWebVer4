@@ -4,7 +4,7 @@
             @Html.DevExpress().Label(settings =>
 {
     settings.EncodeHtml = false;
-    settings.Text = "Người dùng:";
+    settings.Text = "User:";
 }).GetHtml() <b>@Session["TenNguoiDung"]</b>
 </div>
 
@@ -12,7 +12,7 @@
     @Html.DevExpress().Label(settings =>
 {
     settings.EncodeHtml = false;
-    settings.Text = "Thời gian: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Millisecond + " - "
+    settings.Text = "Time: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Millisecond + " - "
     + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
 }).GetHtml() &nbsp;&nbsp;&nbsp;
     <span id="lblClose"><abbr title="Đóng">X</abbr></span>

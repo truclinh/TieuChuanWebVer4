@@ -58,19 +58,22 @@
         settings.Columns.Add(column =>
         {
             column.FieldName = "ma_nsd";
-            column.Caption = "Mã NSD";
+            //column.Caption = "Mã NSD";
+            column.Caption = "User Code";
         });
         //settings.Columns.Add("ten_nsd");
         settings.Columns.Add(column =>
         {
             column.FieldName = "ten_nsd";
-            column.Caption = "Tên NSD";
+            //column.Caption = "Tên NSD";
+            column.Caption = "Full Name";
         });
         //settings.Columns.Add("matkhau");
         settings.Columns.Add(column =>
         {
             column.FieldName = "matkhau";
-            column.Caption = "Mật khẩu";
+            //column.Caption = "Mật khẩu";
+            column.Caption = "Password";
             var tbSettings = column.PropertiesEdit as TextBoxProperties;
             tbSettings.Password = true;
         });
@@ -78,7 +81,8 @@
         settings.Columns.Add(column =>
         {
             column.FieldName = "makhoa";
-            column.Caption = "Khoa";
+            //column.Caption = "Khoa";
+            column.Caption = "Department";
             column.ColumnType = MVCxGridViewColumnType.ComboBox;
             var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
             comboBoxProperties.EnableCallbackMode = true;
@@ -92,7 +96,8 @@
         settings.Columns.Add(column =>
         {
             column.FieldName = "mabomon";
-            column.Caption = "Bộ môn";
+            //column.Caption = "Bộ môn";
+            column.Caption = "Subject";
             column.ColumnType = MVCxGridViewColumnType.ComboBox;
             var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
             comboBoxProperties.EnableCallbackMode = true;
@@ -105,21 +110,24 @@
         settings.Columns.Add(column =>
         {
             column.FieldName = "ma_nhom";
-            column.Caption = "Mã nhóm";
+            //column.Caption = "Mã nhóm";
+            column.Caption = "Group Code";
         });
         //settings.Columns.Add("ghichu");
         settings.Columns.Add(column =>
         {
             column.FieldName = "ghichu";
-            column.Caption = "Ghi chú";
+            //column.Caption = "Ghi chú";
+            column.Caption = "Note";
         });
-        settings.SettingsPager.PageSize = 12;
+        settings.SettingsPager.PageSize = 8;
         settings.SettingsPager.FirstPageButton.Visible = true;
-        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.FirstPageButton.Text = "First page";
+
         settings.SettingsPager.LastPageButton.Visible = true;
 
-        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
-        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số người dùng: {2})";
+        settings.SettingsPager.LastPageButton.Text = "Last page";
+        settings.SettingsPager.Summary.Text = " Page {0}/{1} (User Total: {2})";
         settings.PreRender = (s, e) =>
         {
             var sender = s as MVCxGridView;

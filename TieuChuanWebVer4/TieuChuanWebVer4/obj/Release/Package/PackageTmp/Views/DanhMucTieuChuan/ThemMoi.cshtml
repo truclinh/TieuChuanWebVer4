@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Thêm mới";
+    ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_LayoutWord.cshtml";
 }
 @Html.DevExpress().GetStyleSheets(
@@ -11,13 +11,14 @@
 @using (Html.BeginForm("SaveNewDocument", "DanhMucTieuChuan"))
 {
         @Html.Action("NoiDungThemMoiPartial")
-    <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:2% ;">
+    <div style="width:93%;height:25px;margin-left: auto;margin-right:auto; margin-top:1% ;">
         <div style="width:40%;float:left;">
             <div style="width:30%;float:left">
                 @Html.DevExpress().Label(settings =>
-   {
-       settings.Text = "Mã tiêu chuẩn";
-   }).GetHtml()
+           {
+               //settings.Text = "Mã tiêu chuẩn";
+               settings.Text = "Standard Code";
+           }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
                 @Html.DevExpress().TextBox(settings =>
@@ -31,7 +32,8 @@
             <div style="width:30%;float:left;">
                 @Html.DevExpress().Label(settings =>
            {
-               settings.Text = "Tên tiêu chuẩn";
+               //settings.Text = "Tên tiêu chuẩn";
+               settings.Text = "Standard Name";
            }).GetHtml()
             </div>
             <div style="width:70%;float:left;">
@@ -46,7 +48,7 @@
             @Html.DevExpress().Button(settings =>
        {
            settings.Name = "btnLuu";
-           settings.Text = "Lưu";
+           settings.Text = "Save";
            settings.UseSubmitBehavior = true;
            //settings.ClientSideEvents.Click = "fncBtnLuu1Click";
            settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
@@ -55,7 +57,7 @@
             @Html.DevExpress().Button(settings =>
        {
            settings.Name = "btnBoLuu";
-           settings.Text = "Bỏ lưu";
+           settings.Text = "Cancel";
            // settings.ClientSideEvents.Click = "fncBtnBoLuuClick";
            //settings.UseSubmitBehavior = true;
            settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");

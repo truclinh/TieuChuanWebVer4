@@ -7,13 +7,16 @@
     // settings.Theme = ;
     //settings.ClientSideEvents.ActiveTabChanged=
     //-------------------------------------- tab HỆ THỐNG
-    var tabHeThong = settings.Tabs.Add("HỆ THỐNG");
+    //var tabHeThong = settings.Tabs.Add("HỆ THỐNG");
+    var tabHeThong = settings.Tabs.Add("SYSTEM");
     //Đăng nhập
-    var tasksGroupDangNhap = tabHeThong.Groups.Add("Đăng nhập");
+    //var tasksGroupDangNhap = tabHeThong.Groups.Add("Đăng nhập");
+    var tasksGroupDangNhap = tabHeThong.Groups.Add("Account");
     tasksGroupDangNhap.Name = "DangNhap";
     tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Đổi mật khẩu";
+        //i.Text = "Đổi mật khẩu";
+        i.Text = "Change Password";
         i.Name = "DoiMatKhau";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -23,7 +26,8 @@
     });
     tasksGroupDangNhap.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Đăng nhập lại";
+        //i.Text = "Đăng nhập lại";
+        i.Text = "Login Again";
         i.Name = "DangNhapLai";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -32,10 +36,12 @@
         //((RibbonButtonItem)i).NavigateUrl = Url.Action("DangNhap", "TaiKhoan");
     });
     //Quản lý
-    var tasksGroupQuanLy = tabHeThong.Groups.Add("Quản lý");
+    //var tasksGroupQuanLy = tabHeThong.Groups.Add("Quản lý");
+    var tasksGroupQuanLy = tabHeThong.Groups.Add("Management");
     tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Quản lý người dùng";
+        //i.Text = "Quản lý người dùng";
+        i.Text = "User Management";
         i.Name = "QuanLyNguoiDung";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -45,7 +51,8 @@
     });
     tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Thông tin khoa";
+        //i.Text = "Thông tin khoa";
+        i.Text = "Department Information";
         i.Name = "ThongTinKhoa";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -55,7 +62,8 @@
     });
     tasksGroupQuanLy.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Thông tin bộ môn";
+        //i.Text = "Thông tin bộ môn";
+        i.Text = "Subject Information";
         i.Name = "ThongTinBoMon";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -63,10 +71,12 @@
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/bomon.ico");
         ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "ThongTinBoMon");
     });
-    var tasksGroupPhanQuyen = tabHeThong.Groups.Add("Phân quyền");
+    //var tasksGroupPhanQuyen = tabHeThong.Groups.Add("Phân quyền");
+    var tasksGroupPhanQuyen = tabHeThong.Groups.Add("Permission");
     tasksGroupPhanQuyen.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Phân quyền người sử dụng";
+        //i.Text = "Phân quyền người sử dụng";
+        i.Text = "User Permission";
         i.Name = "PhanQuyenNguoiSuDung";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -76,12 +86,15 @@
     });
 
     //-------------------------------------- tab TIÊU CHUẨN
-    var tabTieuChuan = settings.Tabs.Add("TIÊU CHUẨN");
+    //var tabTieuChuan = settings.Tabs.Add("TIÊU CHUẨN");
+    var tabTieuChuan = settings.Tabs.Add("STANDARD");
     //Đăng nhập
-    var tasksGroupDanhMuc = tabTieuChuan.Groups.Add("Quản lý tiêu chuẩn");
+    // var tasksGroupDanhMuc = tabTieuChuan.Groups.Add("Quản lý tiêu chuẩn");
+    var tasksGroupDanhMuc = tabTieuChuan.Groups.Add("Standard Management");
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Danh mục tiêu chuẩn";
+        //i.Text = "Danh mục tiêu chuẩn";
+        i.Text = "Standard Category";
         i.Name = "DanhMucTieuChuan";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -91,7 +104,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Danh mục tiêu chí";
+        //i.Text = "Danh mục tiêu chí";
+        i.Text = "Criteria Category";
         i.Name = "DanhMucTieuChi";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -101,7 +115,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Quản lý dữ liệu";
+        //i.Text = "Quản lý dữ liệu";
+        i.Text = "Data Management";
         i.Name = "QuanLyDuLieu";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -111,7 +126,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Nhập thông tin chi tiết";
+        //i.Text = "Nhập thông tin chi tiết";
+        i.Text = "Input Detail Information";
         i.Name = "NhapThongTinChiTiet";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -121,7 +137,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Xem chi tiết tiêu chuẩn";
+        //i.Text = "Xem chi tiết tiêu chuẩn";
+        i.Text = "View Detail Standard";
         i.Name = "XemChiTietTieuChuan";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -131,7 +148,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Danh sách mục lục";
+        //i.Text = "Danh sách mục lục";
+        i.Text = "Category";
         i.Name = "DanhSachMucLuc";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -141,7 +159,8 @@
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "MC bổ sung lần 1";
+        // i.Text = "MC bổ sung lần 1";
+        i.Text = "Additional 1";
         i.Name = "DanhSachBoSung";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -150,12 +169,14 @@
         ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "MCBoSungLan1");
     });
     //-------------------------------------- tab TRỢ GIÚP
-    var tabTroGiup = settings.Tabs.Add("TRỢ GIÚP");
+    var tabTroGiup = settings.Tabs.Add("HELP");
     //Đăng nhập
-    var tasksGroupTroGiup = tabTroGiup.Groups.Add("Hướng dẫn");
+    //var tasksGroupTroGiup = tabTroGiup.Groups.Add("Hướng dẫn");
+    var tasksGroupTroGiup = tabTroGiup.Groups.Add("Guide");
     tasksGroupTroGiup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
-        i.Text = "Hướng dẫn sử dụng";
+        //i.Text = "Hướng dẫn sử dụng";
+        i.Text = "User Manual";
         i.Name = "HuongDanSuDung";
         i.ClientEnabled = false;
         i.Size = RibbonItemSize.Large;
@@ -169,7 +190,7 @@
     
     $(document).ready(function () {
         $("#ribbon_T0G0I1").click(function () {
-            var save = window.confirm('Bạn có chắc chắn muốn Đăng nhâp lại?')
+            var save = window.confirm('Are you sure you want to login again?')
             if (save == true) {
                 window.location.href ="@Url.Action("DangXuat", "TaiKhoan")";
             }

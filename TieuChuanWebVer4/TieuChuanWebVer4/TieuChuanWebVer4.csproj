@@ -215,6 +215,7 @@
       <DependentUpon>TieuChuanModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\publish2.pubxml" />
+    <None Include="Properties\PublishProfiles\publish29072018.pubxml" />
     <None Include="Properties\PublishProfiles\publish3.pubxml" />
     <None Include="Properties\PublishProfiles\publish4.pubxml" />
     <None Include="Properties\PublishProfiles\publish_1.pubxml" />
